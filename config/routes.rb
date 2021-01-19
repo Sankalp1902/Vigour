@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get "admin", to:"admin#index"
   get "super", to:"super#index"
   get "reception", to:"reception#index"
+  get "Authenticate", to:"authenticate#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
