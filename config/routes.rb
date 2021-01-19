@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get "reception", to:"reception#index"
   get "Authenticate", to:"authenticate#index"
   get "authenticate", to:"authenticate#index"
+  get "forgot-password", to:"authenticate#forgot-password"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
