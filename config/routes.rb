@@ -1,9 +1,5 @@
 Rails.application.routes.draw do  
-  get 'contact/index'
-  get 'reception/index'
-  get 'super/index'
-  get 'admin/index'
-
+ 
   get '', to: "welcome#index"
   get "welcome", to: "welcome#index"
   get "contact", to:"contact#index"
