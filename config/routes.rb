@@ -1,5 +1,6 @@
 Rails.application.routes.draw do  
  
+  get 'authenticate/index'
   get '', to: "welcome#index"
   get "welcome", to: "welcome#index"
   get "contact", to:"contact#index"
