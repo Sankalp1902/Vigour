@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "Authenticate" => "authenticate#index"
   get "authenticate" => "authenticate#index"
   get "forgot-password" => "authenticate#forgot-password"
+  get "logout" => "authenticate#logout"
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

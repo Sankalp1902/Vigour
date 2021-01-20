@@ -9,24 +9,16 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
 
 	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
 	<script>
-		/*var firebaseConfig = {
+		var firebaseConfig = {
 			apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
 			authDomain: "vigourservice-2426b.firebaseapp.com",
 			databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
@@ -37,42 +29,21 @@
 			measurementId: "G-0ZBXCN1DQ6"
 		};
 		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();*/
+		firebase.analytics();
 	</script>
 
 	<script type="text/javascript">
-		function sendEmail() {
-
-			var x = document.getElementById("email").value;
-
-			if(x==''){
-			var element = document.getElementById("empty-div");
-				element.classList.add("show");		
-				 setTimeout(function(){
-            element.classList.remove("show");	           
-    }, 3000);
-			}else{				
-			var auth = firebase.auth();
-			var emailAddress = x;			
-
-			auth.sendPasswordResetEmail(emailAddress).then(function() {				
-				var element = document.getElementById("success-div");
-				element.classList.add("show");
-				setTimeout(function(){
-            element.classList.remove("show");	           
-    }, 3000);
-			}).catch(function(error) {
-				var element = document.getElementById("failed-div");
-				element.classList.add("show");	
-				setTimeout(function(){
-            element.classList.remove("show");	           
-    }, 3000);			
-			});
-		}
+		function signOut(){
+		    firebase.auth().signOut().then(function() {
+  			window.location.href="/";
+		}, function(error) {
+		  // An error happened.
+		  console.log(error+"Can't log out.");
+		});
 		}
 	</script>
 </head>
-<body>
+<body onload="signOut()">
 	 <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -86,11 +57,9 @@
     </div>
     <!-- Preloader Start -->
 	                                  
-</div>
-</div>
-
 
 <script src="./assets/js/main.js"></script>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
