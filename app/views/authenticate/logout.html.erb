@@ -26,7 +26,7 @@
 	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
 	<script>
-		var firebaseConfig = {
+		/*var firebaseConfig = {
 			apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
 			authDomain: "vigourservice-2426b.firebaseapp.com",
 			databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
@@ -37,7 +37,7 @@
 			measurementId: "G-0ZBXCN1DQ6"
 		};
 		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
+		firebase.analytics();*/
 	</script>
 
 	<script type="text/javascript">
@@ -79,83 +79,17 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    Logging out
                 </div>
             </div>
         </div>
     </div>
     <!-- Preloader Start -->
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100" style="max-width: 700px;">
-				
-
-				<div class="login100-form validate-form" style="margin: 0 auto;" >
-					<span class="login100-form-title js-tilt">
-						Forgot password
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="email" name="email" required id="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>				
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onClick="sendEmail()">
-							Send password reset link
-						</button>
-					</div>
-
-					<div class="text-center p-t-12">						
-						
-						<%= link_to "Go back to homepage", "/" , class: "txt2" %>
-					</div>
-					
-				
-				</div>
-			</div>
-			<div id="success-div" class="alert alert-success alert-dismissible bg-success text-white border-0 fade"
-				role="alert" style="position: absolute; z-index: 100000;top:30px;
-				right:30px; max-width: 500px">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<strong>Link sent - </strong> Please click on the link that you received to reset your password.
-			</div>
-
-		<div id="failed-div" class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade" role="alert" style="position: absolute; z-index: 100000; bottom:30px; right:30px; max-width: 500px">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>Error - </strong> Check the Email-id you entered! Either you mistyped or you're unregistered.</div>
-
-<div id="empty-div" class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade" role="alert" style="position: absolute; z-index: 100000; bottom:30px; right:30px; max-width: 500px">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>Error - </strong> Email-id required!</div>                                    
+	                                  
 </div>
 </div>
 
-<!--===============================================================================================-->	
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/tilt/tilt.jquery.min.js"></script>
-<script >
-	$('.js-tilt').tilt({
-		scale: 1.1
-	})
-</script>
-<!--===============================================================================================-->
-<script src="js/main.js"></script>
+
 <script src="./assets/js/main.js"></script>
 
 </body>
