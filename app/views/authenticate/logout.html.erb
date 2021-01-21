@@ -9,7 +9,7 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
-	
+
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
@@ -34,32 +34,32 @@
 
 	<script type="text/javascript">
 		function signOut(){
-		    firebase.auth().signOut().then(function() {
-  			window.location.href="/";
-		}, function(error) {
-		  // An error happened.
-		  console.log(error+"Can't log out.");
-		});
+			firebase.auth().signOut().then(function() {
+				window.location.href="/";
+			}, function(error) {
+			
+			console.log(error+"Can't log out.");
+			});
 		}
 	</script>
 </head>
 <body onload="signOut()">
-	 <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    Logging out
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
-	                                  
+	<!-- ? Preloader Start -->
+	<div id="preloader-active">
+		<div class="preloader d-flex align-items-center justify-content-center">
+			<div class="preloader-inner position-relative">
+				<div class="preloader-circle"></div>
+				<div class="preloader-img pere-text">
+					Logging out
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Preloader Start -->
 
-<script src="./assets/js/main.js"></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="./assets/js/main.js"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

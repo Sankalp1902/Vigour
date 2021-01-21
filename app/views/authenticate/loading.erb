@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<!--==========================only for loading icon=======================================================-->
+	<link rel="stylesheet" href="assets/css/style.css">
+<!-- *******************************************************************************************
+Firebase services
+*********************************************************************************************-->
+
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+<script>
+	var firebaseConfig = {
+		apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
+		authDomain: "vigourservice-2426b.firebaseapp.com",
+		databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
+		projectId: "vigourservice-2426b",
+		storageBucket: "vigourservice-2426b.appspot.com",
+		messagingSenderId: "559196423373",
+		appId: "1:559196423373:web:c0516b94d9866559b45584",
+		measurementId: "G-0ZBXCN1DQ6"
+	};
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+
+
+var database = firebase.database();
+
+var userId;
+firebase.auth().onAuthStateChanged(user => {  
+	if(user) {
+		//console.log(user.uid);   console.log(user.email); console.log(user.phone);  console.log(user.identifier);  
+		var userId = firebase.auth().currentUser.uid;
+
+		return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+		var Post = (snapshot.val() && snapshot.val().Post);
+		console.log(Post);
+		var username = (snapshot.val() && snapshot.val().name) || 'User';
+		if(Post==null){
+
+/*
+			 firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+*/
+
+			 var user = {
+	            Name: username,
+	            Post: "user",
+	            Email: null,
+	            Phone: null
+	        }
+        	//writeUserData(user);
+firebase.database().ref('users/' + userId).set(user).catch(error => {
+        console.log(error.message)
+    });
+
+
+
+			window.location.href="/";
+
+
+		}else if(Post=="user"){
+			window.location.href="/";
+		}else if(Post=="Clinic_admin"){
+			window.location.href="/admin";
+		}else if(Post=="admin"){
+			window.location.href="/super";
+		}else if(Post=="Receptionist"){
+			window.location.href="/reception";
+		}
+  		
+  
+		});
+		//firebase.database().ref('users/' + uid).once("value", snap => {
+		//	console.log(snap.val())		})
+	}
+	else{
+		window.location.href="/authenticate";
+	}
+})
+</script>
+</head>
+<body>
+	<!-- ? Preloader Start -->
+	<div id="preloader-active">
+		<div class="preloader d-flex align-items-center justify-content-center">
+			<div class="preloader-inner position-relative">
+				<div class="preloader-circle"></div>
+				<div class="preloader-img pere-text">
+				fetching </br> details..
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Preloader Start -->
+
+<!--only for loading icon-->
+<!--script src="./assets/js/main.js"></script-->
+<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
+
+</body>
+</html>

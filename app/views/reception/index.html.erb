@@ -10,7 +10,41 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Reception: Vigour</title>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
+        authDomain: "vigourservice-2426b.firebaseapp.com",
+        databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
+        projectId: "vigourservice-2426b",
+        storageBucket: "vigourservice-2426b.appspot.com",
+        messagingSenderId: "559196423373",
+        appId: "1:559196423373:web:c0516b94d9866559b45584",
+        measurementId: "G-0ZBXCN1DQ6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+<script type="text/javascript">
+    var user = firebase.auth().currentUser;
+    var post;
+
+    if (user != null) {
+      post = user.Post;
+      if(post!="Receptionist"){
+        console.log("Unauthorized access!")
+        window.location.href="/authenticate";
+      }
+    }else {
+    window.location.href="/authenticate";
+  }
+
+</script> 
+
     <!-- Custom CSS -->
     <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
