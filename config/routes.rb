@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get "forgot-password" => "authenticate#forgot-password"
   get "logout" => "authenticate#logout"
   get "loading" => "authenticate#loading"
+  get "profile" => "welcome#profile"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

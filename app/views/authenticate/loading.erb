@@ -32,64 +32,44 @@ Firebase services
 	};
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
+	var database = firebase.database();
 
+	var userId;
+	firebase.auth().onAuthStateChanged(user => {  
+		if(user) {
+//console.log(user.uid);   console.log(user.email); console.log(user.phone);  console.log(user.identifier);  
+var userId = firebase.auth().currentUser.uid;
 
-var database = firebase.database();
-
-var userId;
-firebase.auth().onAuthStateChanged(user => {  
-	if(user) {
-		//console.log(user.uid);   console.log(user.email); console.log(user.phone);  console.log(user.identifier);  
-		var userId = firebase.auth().currentUser.uid;
-
-		return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-		var Post = (snapshot.val() && snapshot.val().Post);
-		console.log(Post);
-		var username = (snapshot.val() && snapshot.val().name) || 'User';
-		if(Post==null){
-
-/*
-			 firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-*/
-
-			 var user = {
-	            Name: username,
-	            Post: "user",
-	            Email: null,
-	            Phone: null
-	        }
-        	//writeUserData(user);
-firebase.database().ref('users/' + userId).set(user).catch(error => {
-        console.log(error.message)
-    });
-
-
-
-			window.location.href="/";
-
-
-		}else if(Post=="user"){
-			window.location.href="/";
-		}else if(Post=="Clinic_admin"){
-			window.location.href="/admin";
-		}else if(Post=="admin"){
-			window.location.href="/super";
-		}else if(Post=="Receptionist"){
-			window.location.href="/reception";
+return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+	var Post = (snapshot.val() && snapshot.val().Post);
+	console.log(Post);
+	var username = (snapshot.val() && snapshot.val().name) || 'User';
+	if(Post==null){
+		var user = {
+			Name: username,
+			Post: "user",
+			Email: "Not set",
+			Phone: "Not set",
+			Photo: "https://img.icons8.com/color/48/000000/user-male-circle--v2.png"
 		}
-  		
-  
+		firebase.database().ref('users/' + userId).set(user).catch(error => {
+			console.log(error.message)
 		});
-		//firebase.database().ref('users/' + uid).once("value", snap => {
-		//	console.log(snap.val())		})
+		window.location.href="/";
+	}else if(Post=="user"){
+		window.location.href="/";
+	}else if(Post=="Clinic_admin"){
+		window.location.href="/admin";
+	}else if(Post=="admin"){
+		window.location.href="/super";
+	}else if(Post=="Receptionist"){
+		window.location.href="/reception";
 	}
-	else{
-		window.location.href="/authenticate";
-	}
+});
+}
+else{
+	window.location.href="/authenticate";
+}
 })
 </script>
 </head>
