@@ -29,19 +29,18 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
 </script>
-<script type="text/javascript">
-    var user = firebase.auth().currentUser;
-    var post;
-
-    if (user != null) {
-      post = user.Post;
-      if(post!="Receptionist"){
-        console.log("Unauthorized access!")
+<script type="text/javascript">    
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var post = user.Post;
+          if(post!="Receptionist"){
+            console.log("Unauthorized access!")
+            window.location.href="/authenticate";
+          }
+      } else {
         window.location.href="/authenticate";
       }
-    }else {
-    window.location.href="/authenticate";
-  }
+});
 
 </script> 
 

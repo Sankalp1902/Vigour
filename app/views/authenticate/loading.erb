@@ -32,12 +32,12 @@ Firebase services
 	};
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
-	var database = firebase.database();
 
-	var userId;
+
+	var database = firebase.database();
 	firebase.auth().onAuthStateChanged(user => {  
 		if(user) {
-//console.log(user.uid);   console.log(user.email); console.log(user.phone);  console.log(user.identifier);  
+//console.log(user.uid);  console.log(user.displayName);  console.log(user.email); console.log(user.phoneNumber); console.log(user.photoURL);  console.log(user.providerId);  
 var userId = firebase.auth().currentUser.uid;
 
 return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
@@ -45,12 +45,8 @@ return firebase.database().ref('/users/' + userId).once('value').then((snapshot)
 	console.log(Post);
 	var username = (snapshot.val() && snapshot.val().name) || 'User';
 	if(Post==null){
-		var user = {
-			Name: username,
-			Post: "user",
-			Email: "Not set",
-			Phone: "Not set",
-			Photo: "https://img.icons8.com/color/48/000000/user-male-circle--v2.png"
+		var user = {			
+			Post: "user",			
 		}
 		firebase.database().ref('users/' + userId).set(user).catch(error => {
 			console.log(error.message)

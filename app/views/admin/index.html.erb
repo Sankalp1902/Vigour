@@ -20,19 +20,17 @@
     firebase.analytics();
 </script>
 <script type="text/javascript">
-    var user = firebase.auth().currentUser;
-    var post;
-
-    if (user != null) {
-      post = user.Post;
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var post = user.Post;
       if(post!="Clinic_admin"){
         console.log("Unauthorized access!")
         window.location.href="/authenticate";
       }
-    }else {
+  } else {
     window.location.href="/authenticate";
   }
-
+});  
 </script>    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

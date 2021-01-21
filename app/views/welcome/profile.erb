@@ -9,6 +9,39 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
+
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
+        authDomain: "vigourservice-2426b.firebaseapp.com",
+        databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
+        projectId: "vigourservice-2426b",
+        storageBucket: "vigourservice-2426b.appspot.com",
+        messagingSenderId: "559196423373",
+        appId: "1:559196423373:web:c0516b94d9866559b45584",
+        measurementId: "G-0ZBXCN1DQ6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+<script type="text/javascript">
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var post = user.Post;
+      if(post!="user"){
+        console.log("Unauthorized access!")
+        window.location.href="/authenticate";
+      }
+  } else {
+    window.location.href="/authenticate";
+  }
+});  
+</script>
+
+
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -17,13 +50,14 @@
     <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
     <link rel="stylesheet" href="assets/css/gijgo.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/animated-headline.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="profile/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -32,7 +66,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    Welcome
+                    Loading</br>profile
                 </div>
             </div>
         </div>
@@ -83,499 +117,186 @@
     </header>
 
     <main>
-        <!--? Hero Area Start-->
-        <div class="slider-area hero-bg1 hero-overly">
-            <div class="single-slider hero-overly  slider-height1 d-flex align-items-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10 col-lg-10">
-                            <!-- Hero Caption -->
-                            <div class="hero__caption ">
-                                <h2 style="color: white;">India's best online appointment scheduling platform!</h2>
-                                <!--p>India's best online appointment scheduling platform</p-->
-                            </div>
-                            <!--Hero form -->
-                            <form action="#" class="search-box mb-100">
-
-                                <div class="select-form">
-                                    <div class="select-itms">
-                                        <select name="select" id="select1">
-                                            <option value="">State</option>
-                                            <option value="">Andher Pradesh</option>
-                                            <option value="">Gujarat</option>
-                                            <option value="">kerla</option>
-                                            <option value="">Uttrakhand</option>
-                                            <option value="">Uttar Pradesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="input-form">
-                                    <input type="text" placeholder="Doctor/Specialization">
-                                </div>
-                                <div class="search-form">
-                                    <a href="#"><i class="ti-search"></i> Search</a>
-                                </div>	
-                            </form>	
-                            <!-- hero category1 img //category-img text-center-->
-                            <div class="category-img text-center">
-                                <a href="listing.html"> <img src="assets/images/hero_category1.png" style="border-radius: 20%"></a>
-                                <a href="listing.html"> <img src="assets/images/hero_category2.png" style="border-radius: 20%"></a>
-                                <a href="listing.html"> <img src="assets/images/hero_category3.png" style="border-radius: 20%"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="main-content">
+ 
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello Jesse</h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            <a href="#!" class="btn btn-info">Edit profile</a>
+          </div>
         </div>
-        <!--Hero Area End-->
-        <!--? Popular Locations Start 01-->
-        <div class="popular-location border-bottom section-padding40">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle text-center mb-80">
-                            <h2>Review</h2>
-                        </div>
-                    </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class="rounded-circle">
+                  </a>
                 </div>
-                
-                <!-- Popular Locations End -->
-                <!--? Popular Directory Start -->
-                <div class="popular-directorya-area  border-bottom section-padding40 fix">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Section Tittle -->
-                                <div class="section-tittle text-center mb-80">
-                                    <h2>Top Doctors:</h2>
-                                    <p>Let's you know the top doctors appoinment .</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="directory-active">
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/images/t1.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. S.k Joshi</a></h3>
-                                        <p>Allahabad</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Heart Doctor</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/images/t2.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. Sumit Vannkey</a></h3>
-                                        <p>kerla</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Neurologist</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/images/t3.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#"></a>Dr.Aaron</h3>
-                                        <p>Aadher Pradesh</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Brain Tumer</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/images/t4.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <a href="#"><img src="assets/img/gallery/t4.png" alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. Sanjay Singh</a></h3>
-                                        <p>Lucknow</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Cardiologist</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              <div class="d-flex justify-content-between">
+                <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
+                <a href="#" class="btn btn-sm btn-default float-right">Message</a>
+              </div>
+            </div>
+            <div class="card-body pt-0 pt-md-4">
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                    <div>
+                      <span class="heading">22</span>
+                      <span class="description">Friends</span>
                     </div>
-                </div>
-                <!--? Popular Directory End -->
-                <!--? Want To work 01-->
-                <section class="wantToWork-area">
-                    <div class="container">
-                        <div class="wants-wrapper w-padding2">
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-xl-7 col-lg-9 col-md-8">
-                                    <div class="wantToWork-caption wantToWork-caption2">
-                                        <h2>How to apply?</h2>
-                                        <p>Let's you the details about our website.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-3 col-md-4">
-                                    <a href="#" class="btn f-right sm-left">Explore Listing</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                      <span class="heading">10</span>
+                      <span class="description">Photos</span>
                     </div>
-                </section>
-                <!-- Want To work End -->
-                <!--? Our Services Start -->
-                <div class="our-services  border-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class=" col-lg-4 col-md-6 col-sm-6">
-                                <div class="single-services mb-30">
-                                    <div class="services-ion">
-                                        <span>01</span>
-                                    </div>
-                                    <div class="services-cap">
-                                        <h5><a href="#">Find Businesses</a></h5>
-                                        <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-lg-4 col-md-6 col-sm-6">
-                                <div class="single-services mb-30">
-                                    <div class="services-ion">
-                                        <span>02</span>
-                                    </div>
-                                    <div class="services-cap">
-                                        <h5><a href="#">Review Listings</a></h5>
-                                        <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-lg-4 col-md-6 col-sm-6">
-                                <div class="single-services mb-30">
-                                    <div class="services-ion">
-                                        <span>03</span>
-                                    </div>
-                                    <div class="services-cap">
-                                        <h5><a href="#">Make a Reservation</a></h5>
-                                        <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                      <span class="heading">89</span>
+                      <span class="description">Comments</span>
                     </div>
-                </div>
-                <!-- Our Services End -->
-                <!--? Popular Directory Start -->
-                <div class="popular-directorya-area section-padding40 border-bottom fix">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Section Tittle -->
-                                <div class="section-tittle text-center mb-80">
-                                    <h2>New Directory</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="directory-active">
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/img/gallery/doctor.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. Jasmin</a></h3>
-                                        <p>kerla</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>General Surgeon</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/img/gallery/doctor4.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr.Myur singaniya</a></h3>
-                                        <p>Jammu and Kashmir</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Dermatologistst</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/img/gallery/doctor3.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. frankel</a></h3>
-                                        <p>Noida</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>Pediatricianst</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single -->
-                            <div class="properties pb-20">
-                                <div class="properties__card">
-                                    <div class="properties__img overlay1">
-                                        <a href="#"><img src="assets/img/gallery/doctor1.png" alt=""></a>
-                                        <div class="img-text">
-                                            <span>$$$</span>
-                                            <span>Closed</span>
-                                        </div>
-                                        <div class="icon">
-                                            <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                        </div>
-                                    </div>
-                                    <div class="properties__caption">
-                                        <h3><a href="#">Dr. Aayush sharma</a></h3>
-                                        <p>Delhi</p>
-                                    </div>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                            <h3>General Physicians</h3>
-                                        </div>
-                                        <div class="heart">
-                                            <img src="assets/img/gallery/heart1.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Popular Directory End -->
-                <!--? Popular Locations Start 01-->
-                <div class="popular-location border-bottom section-padding40">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Section Tittle -->
-                                <div class="section-tittle text-center mb-80">
-                                    <h2>News & Updates</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="single-location mb-30">
-                                    <div class="location-img">
-                                        <img src="assets/img/gallery/home-blog1.png" alt="">
-                                    </div>
-                                    <div class="location-details">
-                                        <a href="#" class="location-btn">Tips</a>
-                                        <ul>
-                                            <li>12 March   I   by Alan</li>
-                                        </ul>
-                                        <p><a href="blog_details.html">The Best Yoga and Exercise For Your Relaxation</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="single-location mb-30">
-                                    <div class="location-img">
-                                        <img src="assets/img/gallery/home-blog2.png" alt="">
-                                    </div>
-                                    <div class="location-details">
-                                        <a href="#" class="location-btn">Tips</a>
-                                        <ul>
-                                            <li>12 March   I   by Alan</li>
-                                        </ul>
-                                        <p><a href="blog_details.html">Fruits are healthy for body as well as mind.</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Popular Locations End -->
-                <!--? Want To work 02-->
-                <section class="wantToWork-area">
-                    <div class="container">
-                        <div class="wants-wrapper w-padding2">
-                            <div class="row justify-content-between">
-                                <div class="col-xl-8 col-lg-8 col-md-7">
-                                    <div class="wantToWork-caption wantToWork-caption2">
-                                        <img src="assets/img/logo/logo2_footer.png" alt="" class="mb-20">
-                                        <p>Users and submit their own items. You can create different packages and by connecting with your
-                                        PayPal or Stripe account charge users for registration to your directory portal.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-5">
-                                    <div class="footer-social f-right sm-left">
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Want To work End -->
-                <!--? Want To work 01-->
-                <section class="wantToWork-area">
-                    <div class="container">
-                        <div class="wants-wrapper">
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-xl-7 col-lg-9 col-md-8">
-                                    <div class="wantToWork-caption wantToWork-caption2">
-                                        <div class="main-menu2">
-                                            <nav>
-                                                <ul>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="explore.html">Explore</a></li> 
-                                                    <li><a href="pages.html">Pages</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-2 col-lg-3 col-md-4">
-                                    <a href="#" class="btn f-right sm-left">Add Listing</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Want To work End -->
-            </main>
-            <footer>
-                <div class="footer-wrapper pt-30">
-                    <!-- footer-bottom -->
-                    <div class="footer-bottom-area">
-                        <div class="container">
-                            <div class="footer-border">
-                                <div class="row d-flex justify-content-between align-items-center">
-                                    <div class="col-xl-10 col-lg-9 ">
-                                        <div class="footer-copy-right">
-                                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
                   </div>
-              </footer>
+                </div>
+              </div>
+              <div class="text-center">
+                <h3>
+                  Jessica Jones<span class="font-weight-light">, 27</span>
+                </h3>
+                <div class="h5 font-weight-300">
+                  <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                </div>
+                <div class="h5 mt-4">
+                  <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i>University of Computer Science
+                </div>
+                <hr class="my-4">
+                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                <a href="#">Show more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My account</h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form>
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-username">Username</label>
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Email address</label>
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">First name</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Last name</label>
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-address">Address</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">City</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Country</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Postal code</label>
+                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group focused">
+                    <label>About Me</label>
+                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </main>
+         <footer class="footer">
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6 m-auto text-center">
+        <div class="copyright">
+          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
               <!-- Scroll Up -->
               <div id="back-top" >
