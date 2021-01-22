@@ -272,17 +272,29 @@
 
 				if(snapshot.exists()){
 					snapshot.forEach(function(data){						
-						var appointee = data.val();           						
+						var appointee = data.val();   
+            var key = data.key; // Get the key of the child                  					
 						var age= appointee.Age;
 						var name= appointee.Name;
-						var gender=appointee.Gender;
-						console.log(key);
-						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><a href='#!' class='btn btn-info'>Remove</a></div></div><hr class='my-4'>";        
+						var gender=appointee.Gender;		            
+						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><button class='btn btn-info' onclick='delete_appointee("+'"'+key+'"'+");'>Remove</button></div></div><hr class='my-4'>";        
 					});
 				}
 			});
 		}
 	});
+
+
+  function delete_appointee( x ){
+    var userId = firebase.auth().currentUser.uid;
+    
+    firebase.database().ref('/users/' + userId + '/Appointee/'+x).remove() .then(function() {
+    console.log("Remove succeeded.")
+  })
+  .catch(function(error) {
+    console.log("Remove failed: " + error.message)
+  });
+  }
 </script>
 <script type="text/javascript">  
 	firebase.auth().onAuthStateChanged(function(user) {
