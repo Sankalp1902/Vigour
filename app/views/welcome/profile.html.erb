@@ -235,7 +235,9 @@
 
 </div>
 
-<a href="#!" class="btn btn-info">Add appointee</a>
+
+<button type="button" class="btn btn-info" data-toggle="modal"
+                                        data-target="#signup-modal">Add appointee</button>
 <!-- Description -->
 </div>
 </form>
@@ -261,11 +263,68 @@
 	<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
 </div>
 
+
+
+
+ <!-- Signup modal content -->
+                                <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <div class="modal-body">
+                                                <div class="text-center mt-2 mb-3">
+                                                    <h1>
+                                                        Add Appointee
+                                                    </h1>
+                                                </div>
+
+                                                <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_appointee(this)">
+
+                                                    <div class="form-group">
+                                                        <label for="username">Name</label>
+                                                        <input class="form-control" type="text" id="a_name" name="a_name"
+                                                            required="" placeholder="Patient's name">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="age">Age</label>
+                                                        <input class="form-control" type="tel" required=""
+                                                            id="a_age" name="a_age" placeholder="Age of Patient">
+                                                    </div>
+                                                    
+                                                  <label for="age">Gender</label>
+                                                    <div class="form-group">                                        
+                                                  <select class="" required id="a_gender" name="a_gender">
+                                                      <option selected disabled>Select</option>
+                                                      <option value="Male">Male</option>
+                                                      <option value="Female">Female</option>
+                                                  </select>
+                                              </div>
+                                                   <br>
+                                                    <div class="form-group text-center">
+                                                        <button class="btn btn-primary" onclick="Add_appointee()" type="submit">Add appointee</button>
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+
+
+
+
+
 <!-- JS here -->
 <script type="text/javascript">
+
+var last_node;
+var database = firebase.database();
 	firebase.auth().onAuthStateChanged(function(user) {
 		if(user){
-			var database = firebase.database();
+			
 			var userId = firebase.auth().currentUser.uid;
 
 			return firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
@@ -276,30 +335,58 @@
             var key = data.key; // Get the key of the child                  					
 						var age= appointee.Age;
 						var name= appointee.Name;
-<<<<<<< HEAD
-						var gender=appointee.Gender;		            
-						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><button class='btn btn-info' onclick='delete_appointee("+'"'+key+'"'+");'>Remove</button></div></div><hr class='my-4'>";        
-=======
-						var gender=appointee.Gender;
-						
-						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><a href='#!' class='btn btn-info'>Remove</a></div></div><hr class='my-4'>";        
->>>>>>> f2fd0c54f7067b3c0b8bdae98eaf582a5f9d469f
+						var gender=appointee.Gender;	
+            last_node=key;	            
+						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' disabled id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' disabled id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' disabled id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><button class='btn btn-info' onclick='delete_appointee("+'"'+key+'"'+");'>Remove</button></div></div><hr class='my-4'>";        
 					});
 				}
 			});
 		}
 	});
 
+  
 
-  function delete_appointee( x ){
+  function delete_appointee( x ){    
     var userId = firebase.auth().currentUser.uid;
     
     firebase.database().ref('/users/' + userId + '/Appointee/'+x).remove() .then(function() {
-    console.log("Remove succeeded.")
+    window.location.href="/profile";
   })
   .catch(function(error) {
     console.log("Remove failed: " + error.message)
   });
+  }
+
+
+  function Add_appointee(form){
+
+    var userId = firebase.auth().currentUser.uid;
+    var name= form.a_name.value;
+    var age= form.a_age.value;
+    var gender= form.a_gender.value;
+    
+    var node=last_node;
+    if(node){
+      var n= last_node.toString().substring(4);
+      var x= parseInt(n);
+      x+=1;
+      node='user'+x;
+    }else{
+      node='user0';
+    }
+    
+if(age && gender && name){
+  firebase.database().ref('/users/' + userId + '/Appointee/'+node).set({
+    Age: age,
+    Name: name,
+    Gender : gender
+  }).then(function() {
+    window.location.href="/profile";
+  })
+  .catch(function(error) {
+    console.log("addition failed: " + error.message)
+  });
+}
   }
 </script>
 <script type="text/javascript">  
