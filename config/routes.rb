@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  
   root "welcome#index"   
   get '' => "welcome#index"
+  get 'index' => "welcome#index"
   get "welcome" => "welcome#index"
   get "contact" => "contact#index"
   get "admin" => "admin#index"
