@@ -1,123 +1,119 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>DirectoryListing</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-
-<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-<script>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>DirectoryListing</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+  <script>
     var firebaseConfig = {
-        apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
-        authDomain: "vigourservice-2426b.firebaseapp.com",
-        databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
-        projectId: "vigourservice-2426b",
-        storageBucket: "vigourservice-2426b.appspot.com",
-        messagingSenderId: "559196423373",
-        appId: "1:559196423373:web:c0516b94d9866559b45584",
-        measurementId: "G-0ZBXCN1DQ6"
+      apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
+      authDomain: "vigourservice-2426b.firebaseapp.com",
+      databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
+      projectId: "vigourservice-2426b",
+      storageBucket: "vigourservice-2426b.appspot.com",
+      messagingSenderId: "559196423373",
+      appId: "1:559196423373:web:c0516b94d9866559b45584",
+      measurementId: "G-0ZBXCN1DQ6"
     };
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-</script>
-<script type="text/javascript">
-
-  var database = firebase.database();
-   firebase.auth().onAuthStateChanged(user => {  
-    if(user) {
-//console.log(user.uid);  console.log(user.displayName);  console.log(user.email); console.log(user.phoneNumber); console.log(user.photoURL);  console.log(user.providerId);  
-var userId = firebase.auth().currentUser.uid;
-
-return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-  var Post = (snapshot.val() && snapshot.val().Post);
-  
-  if(Post!="user"){
-    window.location.href="/authenticate";
-  }
-});
-}
-else{
-  window.location.href="/authenticate";
-}
-})
-</script>
+  </script>
+  <script type="text/javascript">
+    var database = firebase.database();
+    firebase.auth().onAuthStateChanged(user => {  
+      if(user) { 
+        var userId = firebase.auth().currentUser.uid;
+        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+          var Post = (snapshot.val() && snapshot.val().Post);            
+        });
+        if(Post!="user"){
+          window.location.href="/authenticate";
+        }
+      }
+      else{
+        window.location.href="/authenticate";
+      }
+    })
+  </script>
 
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="assets/css/gijgo.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="profile/style.css" rel="stylesheet">
+  <!-- CSS here -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/slicknav.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
+  <link rel="stylesheet" href="assets/css/gijgo.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/css/slick.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="profile/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    Loading</br>profile
-                </div>
-            </div>
-        </div>
+  <!-- ? Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+        Loading</br>profile
+      </div>
     </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparent">
-            <div class="main-header header-sticky">
-                <div class="container-fluid">
-                    <div class="menu-wrapper d-flex align-items-center justify-content-between">
-                        <!-- Logo -->
-                        <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
-                        </div>
-                        <!-- Main-menu -->
-                        <div class="main-menu f-right d-none d-lg-block">
-                            <nav>
-                                <ul id="navigation">
-                                	<li><a href="contact.html">About us</a></li>
-                                	<li><a href="contact.html">Testimonial</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
-                                    <!--login-->
-                                    <li id="profile_photo"></li>                                    
-                                </ul>
-                            </nav>
-                        </div>          
-                        <!-- Header-btn -->
-                        
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
+  </div>
+</div>
+<!-- Preloader Start -->
+<header>
+  <!-- Header Start -->
+  <div class="header-area header-transparent">
+    <div class="main-header header-sticky">
+      <div class="container-fluid">
+        <div class="menu-wrapper d-flex align-items-center justify-content-between">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+          </div>
+          <!-- Main-menu -->
+          <div class="main-menu f-right d-none d-lg-block">
+            <nav>
+              <ul id="navigation">
+                <li><a href="contact.html">About us</a></li>
+                <li><a href="contact.html">Testimonial</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <!--login-->
+                <li id="profile_photo"></li>                                    
+              </ul>
+            </nav>
+          </div>          
+          <!-- Header-btn -->
 
-    <main>
-    <div class="main-content">
- 
+          <!-- Mobile Menu -->
+          <div class="col-12">
+            <div class="mobile_menu d-block d-lg-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+</header>
+
+<main>
+  <div class="main-content">
+
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
@@ -126,8 +122,8 @@ else{
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
-            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            <h1 class="display-2 text-white" id="greeting">Hi, </h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see your past appointments, edit your profile, and manage users appointed under your profile.</p>
             <a href="#!" class="btn btn-info">Edit profile</a>
           </div>
         </div>
@@ -208,34 +204,55 @@ else{
               <form>
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                  
+                    <div class="row">
+                      <div class="col-lg-6">
+
+                        <div class="row">
+                          <div class="form-group focused f">
+                            <label class="form-control-label" for="input-username">Username</label>
+                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Not set">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="form-group focused f">
+                            <label class="form-control-label" for="input-email">Email address</label>
+                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="Not set">
+                          </div>
+                        </div>
+                        
+
+                        <div class="row">
+                          <div class="form-group focused f">
+                            <label class="form-control-label" for="input-phone">Phone number</label>
+                            <input type="tel" id="input-phone" class="form-control form-control-alternative" placeholder="Not set">
+                          </div>
+                        </div>
+
                       </div>
+
+                      <div class="col-lg-6">
+                        
+   
+     <div class="circle text-center">
+       <!-- User Profile Image -->
+       <img class="profile-pic" id="profile-pic" height="250" width="250" src="">                
+     </div>
+     <div class="p-image">
+       <i class="fa fa-camera upload-button"></i>
+        <input class="file-upload" type="file" accept="image/*"/>
+     </div>
+  
+
+
+
+
+
                     </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
-                      </div>
-                    </div>
-                  </div>
+                  
+</div>
+
                 </div>
                 <hr class="my-4">
                 <!-- Address -->
@@ -285,78 +302,120 @@ else{
         </div>
       </div>
     </div>
-    </div>
-    </main>
-         <footer class="footer">
-    <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6 m-auto text-center">
-        <div class="copyright">
-          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-        </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="row align-items-center justify-content-xl-between">
+    <div class="col-xl-6 m-auto text-center">
+      <div class="copyright">
+        <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-              <!-- Scroll Up -->
-              <div id="back-top" >
-                <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-            </div>
+<!-- Scroll Up -->
+<div id="back-top" >
+  <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
 
-            <!-- JS here -->
+<!-- JS here -->
 
-             <script type="text/javascript">  
-                firebase.auth().onAuthStateChanged(function(user) {
-                    if (user) {
-                        var photo_url = user.photoURL;                                               
-                        document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";   
-                    } else {
-                        document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";   
-                    }
-                });
-            </script>
+<script type="text/javascript">  
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var photo_url = user.photoURL;   
+      if(photo_url){                                            
+        document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";
+      }else{
+        document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
+      } 
 
-            <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-            <!-- Jquery, Popper, Bootstrap -->
-            <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-            <script src="./assets/js/popper.min.js"></script>
-            <script src="./assets/js/bootstrap.min.js"></script>
-            <!-- Jquery Mobile Menu -->
-            <script src="./assets/js/jquery.slicknav.min.js"></script>
+      var displayName = user.displayName;
+      var email = user.email;
+      var phone = user.phoneNumber;  
 
-            <!-- Jquery Slick , Owl-Carousel Plugins -->
-            <script src="./assets/js/owl.carousel.min.js"></script>
-            <script src="./assets/js/slick.min.js"></script>
-            <!-- One Page, Animated-HeadLin -->
-            <script src="./assets/js/wow.min.js"></script>
-            <script src="./assets/js/animated.headline.js"></script>
-            <script src="./assets/js/jquery.magnific-popup.js"></script>
+      document.getElementById('greeting').innerHTML +=displayName;            
+      document.getElementById('input-username').value =displayName;
+      document.getElementById('input-email').value = email;            
+      document.getElementById('input-phone').value = phone;
+      document.getElementById("profile-pic").src = photo_url;
 
-            <!-- Date Picker -->
-            <script src="./assets/js/gijgo.min.js"></script>
-            <!-- Nice-select, sticky -->
-            <script src="./assets/js/jquery.nice-select.min.js"></script>
-            <script src="./assets/js/jquery.sticky.js"></script>
-            <!-- Progress -->
-            <script src="./assets/js/jquery.barfiller.js"></script>
+    } else {
+      document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
+    }
+  });
+</script>
 
-            <!-- counter , waypoint,Hover Direction -->
-            <script src="./assets/js/jquery.counterup.min.js"></script>
-            <script src="./assets/js/waypoints.min.js"></script>
-            <script src="./assets/js/jquery.countdown.min.js"></script>
-            <script src="./assets/js/hover-direction-snake.min.js"></script>
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="./assets/js/jquery.slicknav.min.js"></script>
 
-            <!-- contact js -->
-            <script src="./assets/js/contact.js"></script>
-            <script src="./assets/js/jquery.form.js"></script>
-            <script src="./assets/js/jquery.validate.min.js"></script>
-            <script src="./assets/js/mail-script.js"></script>
-            <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
 
-            <!-- Jquery Plugins, main Jquery -->	
-            <script src="./assets/js/plugins.js"></script>
-            <script src="./assets/js/main.js"></script>
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+});
+</script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="./assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<!-- Progress -->
+<script src="./assets/js/jquery.barfiller.js"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="./assets/js/jquery.counterup.min.js"></script>
+<script src="./assets/js/waypoints.min.js"></script>
+<script src="./assets/js/jquery.countdown.min.js"></script>
+<script src="./assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->  
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
 
 
 
-        </body>
-        </html>
+</body>
+</html>

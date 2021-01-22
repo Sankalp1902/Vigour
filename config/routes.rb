@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   get "logout" => "authenticate#logout"
   get "loading" => "authenticate#loading"
   get "profile" => "welcome#profile"
-  get "Register-clinic" => "authenticate#registerclinic"
+  get "register-clinic" => "authenticate#registerclinic"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

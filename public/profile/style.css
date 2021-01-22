@@ -336,6 +336,44 @@ a>code {
   color: inherit;
 }
 
+
+
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 1000px !important;
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+    margin: 0 auto        
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.p-image {
+  position: relative;
+  color: #666666;
+  margin: 0 auto;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -482,6 +520,10 @@ a>code {
   .order-xl-2 {
     order: 2;
   }
+}
+
+.f{
+  width: 25rem;
 }
 
 .form-control {

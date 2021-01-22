@@ -594,10 +594,14 @@
             <script type="text/javascript">  
                 firebase.auth().onAuthStateChanged(function(user) {
                     if (user) {
-                        var photo_url = user.photoURL;                                               
-                        document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";   
+                        var photo_url = user.photoURL;   
+                        if(photo_url){                                            
+                        document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";
+                        }else{
+                            document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
+                        }   
                     } else {
-                        document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";   
+                        document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
                     }
                 });
             </script> 

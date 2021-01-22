@@ -15,6 +15,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
 <script>
     var firebaseConfig = {
         apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
@@ -30,17 +31,21 @@
     firebase.analytics();
 </script>
 <script type="text/javascript">
-        firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var post = user.Post;
-      if(post!="admin"){
-        console.log("Unauthorized access!")
+    var database = firebase.database();
+    firebase.auth().onAuthStateChanged(user => {  
+      if(user) { 
+        var userId = firebase.auth().currentUser.uid;
+        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+          var Post = (snapshot.val() && snapshot.val().Post);
+          if(Post!="admin"){
+            window.location.href="/authenticate";
+          }
+        });
+      }
+      else{
         window.location.href="/authenticate";
       }
-  } else {
-    window.location.href="/authenticate";
-  }
-});
+    })
 </script> 
     
     <!-- Custom CSS -->

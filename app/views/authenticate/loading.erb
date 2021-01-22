@@ -33,40 +33,37 @@ Firebase services
 	firebase.initializeApp(firebaseConfig);
 	firebase.analytics();
 
-
 	var database = firebase.database();
-	firebase.auth().onAuthStateChanged(user => {  
-		if(user) {
-//console.log(user.uid);  console.log(user.displayName);  console.log(user.email); console.log(user.phoneNumber); console.log(user.photoURL);  console.log(user.providerId);  
-var userId = firebase.auth().currentUser.uid;
 
-return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-	var Post = (snapshot.val() && snapshot.val().Post);
-	console.log(Post);
-	var username = (snapshot.val() && snapshot.val().name) || 'User';
-	if(Post==null){
-		var user = {			
-			Post: "user",			
+	firebase.auth().onAuthStateChanged(user => {
+		if(user) {
+			var userId = firebase.auth().currentUser.uid;
+			return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+				
+				var Post = (snapshot.val() && snapshot.val().Post);
+				if(Post==null){
+					var user = {			
+						Post: "user",			
+					}
+					firebase.database().ref('users/' + userId).set(user).catch(error => {
+						console.log(error.message);
+					});
+					window.location.href="/";
+				}else if(Post=="user"){
+					window.location.href="/";
+				}else if(Post=="Clinic_admin"){
+					window.location.href="/admin";
+				}else if(Post=="admin"){
+					window.location.href="/super";
+				}else if(Post=="Receptionist"){
+					window.location.href="/reception";
+				}
+			});
 		}
-		firebase.database().ref('users/' + userId).set(user).catch(error => {
-			console.log(error.message)
-		});
-		window.location.href="/";
-	}else if(Post=="user"){
-		window.location.href="/";
-	}else if(Post=="Clinic_admin"){
-		window.location.href="/admin";
-	}else if(Post=="admin"){
-		window.location.href="/super";
-	}else if(Post=="Receptionist"){
-		window.location.href="/reception";
-	}
-});
-}
-else{
-	window.location.href="/authenticate";
-}
-})
+		else{
+			window.location.href="/authenticate";
+		}
+	})
 </script>
 </head>
 <body>
@@ -82,10 +79,6 @@ else{
 	</div>
 </div>
 <!-- Preloader Start -->
-
-<!--only for loading icon-->
-<!--script src="./assets/js/main.js"></script-->
-<!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
 
 </body>
 </html>
