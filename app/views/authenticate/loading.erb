@@ -43,7 +43,8 @@ Firebase services
 				var Post = (snapshot.val() && snapshot.val().Post);
 				if(Post==null){
 					var user = {			
-						Post: "user",			
+						Post: "user",
+									
 					}
 					firebase.database().ref('users/' + userId).set(user).catch(error => {
 						console.log(error.message);

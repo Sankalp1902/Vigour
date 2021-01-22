@@ -29,15 +29,16 @@
 	</script>
 	<script type="text/javascript">
 		var database = firebase.database();
+    var Post;
 		firebase.auth().onAuthStateChanged(user => {  
-			if(user) { 
+			if(user) {         
 				var userId = firebase.auth().currentUser.uid;
 				return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-					var Post = (snapshot.val() && snapshot.val().Post);            
-				});
-				if(Post!="user"){
-					window.location.href="/authenticate";
-				}
+					Post = (snapshot.val() && snapshot.val().Post);  
+          if(Post!="user"){          
+          window.location.href="/authenticate";
+        }                  
+				});				        
 			}
 			else{
 				window.location.href="/authenticate";
@@ -93,6 +94,7 @@
 								<li><a href="contact.html">About us</a></li>
 								<li><a href="contact.html">Testimonial</a></li>
 								<li><a href="contact.html">Contact us</a></li>
+                <li><a href="/logout">Log out</a></li>
 								<!--login-->
 								<li id="profile_photo"></li>                                    
 							</ul>
