@@ -227,57 +227,21 @@
 								<hr class="my-4">
 								<!-- Address -->
 								<h6 class="heading-small text-muted mb-4">Appointee information</h6>
-
-								<div class="pl-lg-4">
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group focused">
-												<label class="form-control-label" for="input-city">Name</label>
-												<input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
-											</div>
-										</div>
-										<div class="col-lg-4">
-											<!--div class="form-group focused">
-												<label class="form-control-label" for="input-country">Gender</label>
-												<input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
-											</div-->
-											<div class="form-group focused">
-                                    <label class="form-control-label" for="input-city">Name</label>
-                                    <div class="p-t-10 form-control form-control-alternative">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender" value="Male">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span> / </span>
-                                        <label class="radio-container">Female
-                                            <input type="radio" name="gender" value="Female">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-										</div>
-
-										<div class="col-lg-2">
-											<div class="form-group">
-												<label class="form-control-label" for="input-country">Age</label>
-												<input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
-											</div>
-										</div>
-										<a href="#!" class="btn btn-info">Remove</a>
+<div id="appointee-container">
 								
-									</div>
-								</div>
-								<hr class="my-4">
-								<a href="#!" class="btn btn-info">Add appointee</a>
-								
-								<!-- Description -->
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+
+</div>
+
+<a href="#!" class="btn btn-info">Add appointee</a>
+<!-- Description -->
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </main>
 <footer class="footer">
@@ -296,7 +260,28 @@
 </div>
 
 <!-- JS here -->
+<script type="text/javascript">
+	firebase.auth().onAuthStateChanged(function(user) {
+		if(user){
+			var database = firebase.database();
+			var userId = firebase.auth().currentUser.uid;
 
+			return firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
+
+				if(snapshot.exists()){
+					snapshot.forEach(function(data){						
+						var appointee = data.val();           						
+						var age= appointee.Age;
+						var name= appointee.Name;
+						var gender=appointee.Gender;
+						console.log(key);
+						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><a href='#!' class='btn btn-info'>Remove</a></div></div><hr class='my-4'>";        
+					});
+				}
+			});
+		}
+	});
+</script>
 <script type="text/javascript">  
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
