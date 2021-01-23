@@ -1,317 +1,317 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>DirectoryListing</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="manifest" href="site.webmanifest">
-	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>DirectoryListing</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
-	<script>
-		var firebaseConfig = {
-			apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
-			authDomain: "vigourservice-2426b.firebaseapp.com",
-			databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
-			projectId: "vigourservice-2426b",
-			storageBucket: "vigourservice-2426b.appspot.com",
-			messagingSenderId: "559196423373",
-			appId: "1:559196423373:web:c0516b94d9866559b45584",
-			measurementId: "G-0ZBXCN1DQ6"
-		};
-		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
-	</script>
-	<script type="text/javascript">
-		var database = firebase.database();
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
+      authDomain: "vigourservice-2426b.firebaseapp.com",
+      databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
+      projectId: "vigourservice-2426b",
+      storageBucket: "vigourservice-2426b.appspot.com",
+      messagingSenderId: "559196423373",
+      appId: "1:559196423373:web:c0516b94d9866559b45584",
+      measurementId: "G-0ZBXCN1DQ6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script type="text/javascript">
+    var database = firebase.database();
     var Post;
-		firebase.auth().onAuthStateChanged(user => {  
-			if(user) {         
-				var userId = firebase.auth().currentUser.uid;
-				return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-					Post = (snapshot.val() && snapshot.val().Post);  
+    firebase.auth().onAuthStateChanged(user => {  
+      if(user) {         
+        var userId = firebase.auth().currentUser.uid;
+        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+          Post = (snapshot.val() && snapshot.val().Post);  
           if(Post!="user"){          
-          window.location.href="/authenticate";
-        }                  
-				});				        
-			}
-			else{
-				window.location.href="/authenticate";
-			}
-		})
-	</script>
+            window.location.href="/authenticate";
+          }                  
+        });				        
+      }
+      else{
+        window.location.href="/authenticate";
+      }
+    })
+  </script>
 
 
-	<!-- CSS here -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/slicknav.css">
-	<link rel="stylesheet" href="assets/css/flaticon.css">
-	<link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
-	<link rel="stylesheet" href="assets/css/gijgo.css">
-	<link rel="stylesheet" href="assets/css/animate.min.css">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="assets/css/themify-icons.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/nice-select.css">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-	<link href="profile/style.css" rel="stylesheet">
+  <!-- CSS here -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/slicknav.css">
+  <link rel="stylesheet" href="assets/css/flaticon.css">
+  <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
+  <link rel="stylesheet" href="assets/css/gijgo.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/css/slick.css">
+  <link rel="stylesheet" href="assets/css/nice-select.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="profile/style.css" rel="stylesheet">
 </head>
 <body>
-	<!-- ? Preloader Start -->
-	<div id="preloader-active">
-		<div class="preloader d-flex align-items-center justify-content-center">
-			<div class="preloader-inner position-relative">
-				<div class="preloader-circle"></div>
-				<div class="preloader-img pere-text">
-				Loading</br>profile
-			</div>
-		</div>
-	</div>
+  <!-- ? Preloader Start -->
+  <div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+        Loading</br>profile
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Preloader Start -->
 <header>
-	<!-- Header Start -->
-	<div class="header-area header-transparent">
-		<div class="main-header header-sticky">
-			<div class="container-fluid">
-				<div class="menu-wrapper d-flex align-items-center justify-content-between">
-					<!-- Logo -->
-					<div class="logo">
-						<a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
-					</div>
-					<!-- Main-menu -->
-					<div class="main-menu f-right d-none d-lg-block">
-						<nav>
-							<ul id="navigation">
-								<li><a href="contact.html">About us</a></li>
-								<li><a href="contact.html">Testimonial</a></li>
-								<li><a href="contact.html">Contact us</a></li>
+  <!-- Header Start -->
+  <div class="header-area header-transparent">
+    <div class="main-header header-sticky">
+      <div class="container-fluid">
+        <div class="menu-wrapper d-flex align-items-center justify-content-between">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+          </div>
+          <!-- Main-menu -->
+          <div class="main-menu f-right d-none d-lg-block">
+            <nav>
+              <ul id="navigation">
+                <li><a href="contact.html">About us</a></li>
+                <li><a href="contact.html">Testimonial</a></li>
+                <li><a href="contact.html">Contact us</a></li>
                 <li><a href="/logout">Log out</a></li>
-								<!--login-->
-								<li id="profile_photo"></li>                                    
-							</ul>
-						</nav>
-					</div>          
-					<!-- Header-btn -->
+                <!--login-->
+                <li id="profile_photo"></li>                                    
+              </ul>
+            </nav>
+          </div>          
+          <!-- Header-btn -->
 
-					<!-- Mobile Menu -->
-					<div class="col-12">
-						<div class="mobile_menu d-block d-lg-none"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Header End -->
+          <!-- Mobile Menu -->
+          <div class="col-12">
+            <div class="mobile_menu d-block d-lg-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
 </header>
 
 <main>
-	<div class="main-content">
+  <div class="main-content">
 
-		<!-- Header -->
-		<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
-			<!-- Mask -->
-			<span class="mask bg-gradient-default opacity-8"></span>
-			<!-- Header container -->
-			<div class="container-fluid d-flex align-items-center">
-				<div class="row">
-					<div class="col-lg-7 col-md-10">
-						<h1 class="display-2 text-white" id="greeting">Hi, </h1>
-						<p class="text-white mt-0 mb-5">This is your profile page. You can see your past appointments, edit your profile, and manage users appointed under your profile.</p>						
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Page content -->
-		<div class="container-fluid mt--7">
-			<div class="row">
-				<div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-					<div class="card bg-secondary shadow">           
-						<div class="card-header bg-white border-0">
-							<div class="row align-items-center">
-								<div class="col-8">
-									<h3 class="mb-0">Appointments</h3>
-								</div>                
-							</div>
-						</div>
-						<div class="card-body pt-0 pt-md-4">
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white" id="greeting">Hi, </h1>
+            <p class="text-white mt-0 mb-5">This is your profile page. You can see your past appointments, edit your profile, and manage users appointed under your profile.</p>						
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card bg-secondary shadow">           
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Appointments</h3>
+                </div>                
+              </div>
+            </div>
+            <div class="card-body pt-0 pt-md-4">
 
-							<div class="text-center">
+              <div class="text-center">
 
-								<div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
-									<div class="card bg-secondary shadow">           
-										<div class="card-header bg-white border-0">
-											<div class="row align-items-center">
-												<div class="col-8">
-													<h3 class="mb-0">Appointment 1</h3>
-												</div>                
-											</div>
-										</div>
-										<div class="card-body pt-0 pt-md-4">
+                <div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
+                  <div class="card bg-secondary shadow">           
+                    <div class="card-header bg-white border-0">
+                      <div class="row align-items-center">
+                        <div class="col-8">
+                          <h3 class="mb-0">Appointment 1</h3>
+                        </div>                
+                      </div>
+                    </div>
+                    <div class="card-body pt-0 pt-md-4">
 
-											<div class="text-center">
+                      <div class="text-center">
 
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-8 order-xl-1">
-					<div class="card bg-secondary shadow">
-						<div class="card-header bg-white border-0">
-							<div class="row align-items-center">
-								<div class="col-8">
-									<h3 class="mb-0">My account</h3>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<form>
-								<h6 class="heading-small text-muted mb-4">User information</h6>
-								<div class="pl-lg-4">
-
-									<div class="row">
-										<div class="col-lg-6">
-
-											<div class="row">
-												<div class="form-group focused f">
-													<label class="form-control-label" for="input-username">Username</label>
-													<input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Not set">
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="form-group focused f">
-													<label class="form-control-label" for="input-email">Email address</label>
-													<input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="Not set">
-												</div>
-											</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
 
-											<div class="row">
-												<div class="form-group focused f">
-													<label class="form-control-label" for="input-phone">Phone number</label>
-													<input type="tel" id="input-phone" class="form-control form-control-alternative" placeholder="Not set">
-												</div>
-											</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My account</h3>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form>
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
 
-										</div>
+                  <div class="row">
+                    <div class="col-lg-6">
 
-										<div class="col-lg-6">
+                      <div class="row">
+                        <div class="form-group focused f">
+                          <label class="form-control-label" for="input-username">Username</label>
+                          <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="Not set">
+                        </div>
+                      </div>
 
-
-											<div class="circle text-center">
-												<!-- User Profile Image -->
-												<img class="profile-pic" id="profile-pic" height="250" width="250" src="">                
-											</div>
-											<div class="p-image">
-												<i class="fa fa-camera upload-button rounded float-right"></i>
-												<input class="file-upload" type="file" accept="image/*"/>
-											</div>
-										</div> 
-										<a href="#!" class="btn btn-info">Update profile</a>      
-									</div>
-
-								</div>
-								<hr class="my-4">
-								<!-- Address -->
-								<h6 class="heading-small text-muted mb-4">Appointee information</h6>
-<div id="appointee-container">
-								
+                      <div class="row">
+                        <div class="form-group focused f">
+                          <label class="form-control-label" for="input-email">Email address</label>
+                          <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="Not set">
+                        </div>
+                      </div>
 
 
-</div>
+                      <div class="row">
+                        <div class="form-group focused f">
+                          <label class="form-control-label" for="input-phone">Phone number</label>
+                          <input type="tel" id="input-phone" class="form-control form-control-alternative" placeholder="Not set">
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
 
 
-<button type="button" class="btn btn-info" data-toggle="modal"
-                                        data-target="#signup-modal">Add appointee</button>
-<!-- Description -->
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
+                      <div class="circle text-center">
+                        <!-- User Profile Image -->
+                        <img class="profile-pic" id="profile-pic" height="250" width="250" src="">                
+                      </div>
+                      <div class="p-image">
+                        <i class="fa fa-camera upload-button rounded float-right"></i>
+                        <input class="file-upload" type="file" accept="image/*"/>
+                      </div>
+                    </div> 
+                    <a href="#!" class="btn btn-info">Update profile</a>      
+                  </div>
+
+                </div>
+                <hr class="my-4">
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Appointee information</h6>
+                <div id="appointee-container">
+
+
+
+                </div>
+
+
+                <button type="button" class="btn btn-info" data-toggle="modal"
+                data-target="#signup-modal">Add appointee</button>
+                <!-- Description -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </main>
 <footer class="footer">
-	<div class="align-items-center justify-content-xl-between">
-		<div class="col-xl-6 m-auto text-center">
-			<div class="copyright">
-				<p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Team</p>
-			</div>
-		</div>
-	</div>
+  <div class="align-items-center justify-content-xl-between">
+    <div class="col-xl-6 m-auto text-center">
+      <div class="copyright">
+        <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Team</p>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <!-- Scroll Up -->
 <div id="back-top" >
-	<a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+  <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
 </div>
 
 
 
 
- <!-- Signup modal content -->
-                                <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
+<!-- Signup modal content -->
+<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
 
-                                            <div class="modal-body">
-                                                <div class="text-center mt-2 mb-3">
-                                                    <h1>
-                                                        Add Appointee
-                                                    </h1>
-                                                </div>
+    <div class="modal-body">
+      <div class="text-center mt-2 mb-3">
+        <h1>
+          Add Appointee
+        </h1>
+      </div>
 
-                                                <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_appointee(this)">
+      <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_appointee(this)">
 
-                                                    <div class="form-group">
-                                                        <label for="username">Name</label>
-                                                        <input class="form-control" type="text" id="a_name" name="a_name"
-                                                            required="" placeholder="Patient's name">
-                                                    </div>
+        <div class="form-group">
+          <label for="username">Name</label>
+          <input class="form-control" type="text" id="a_name" name="a_name"
+          required="" placeholder="Patient's name">
+        </div>
 
-                                                    <div class="form-group">
-                                                        <label for="age">Age</label>
-                                                        <input class="form-control" type="tel" required=""
-                                                            id="a_age" name="a_age" placeholder="Age of Patient">
-                                                    </div>
-                                                    
-                                                  <label for="age">Gender</label>
-                                                    <div class="form-group">                                        
-                                                  <select class="" required id="a_gender" name="a_gender">
-                                                      <option selected disabled>Select</option>
-                                                      <option value="Male">Male</option>
-                                                      <option value="Female">Female</option>
-                                                  </select>
-                                              </div>
-                                                   <br>
-                                                    <div class="form-group text-center">
-                                                        <button class="btn btn-primary" onclick="Add_appointee()" type="submit">Add appointee</button>
-                                                    </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input class="form-control" type="tel" required=""
+          id="a_age" name="a_age" placeholder="Age of Patient">
+        </div>
 
-                                                </form>
+        <label for="age">Gender</label>
+        <div class="form-group">                                        
+          <select class="" required id="a_gender" name="a_gender">
+            <option selected disabled>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group text-center">
+          <button class="btn btn-primary" onclick="Add_appointee()" type="submit">Add appointee</button>
+        </div>
 
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
+      </form>
+
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
@@ -320,51 +320,46 @@
 <!-- JS here -->
 <script type="text/javascript">
 
-var last_node;
-var database = firebase.database();
-	firebase.auth().onAuthStateChanged(function(user) {
-		if(user){
-			
-			var userId = firebase.auth().currentUser.uid;
+  var last_node;
+  var database = firebase.database();
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user){
 
-			return firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
+      var userId = firebase.auth().currentUser.uid;
 
-				if(snapshot.exists()){
-					snapshot.forEach(function(data){						
-						var appointee = data.val();   
-            var key = data.key; // Get the key of the child                  					
-						var age= appointee.Age;
-						var name= appointee.Name;
-						var gender=appointee.Gender;	
-            last_node=key;	            
-						document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' disabled id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' disabled id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' disabled id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><button class='btn btn-info' onclick='delete_appointee("+'"'+key+'"'+");'>Remove</button></div></div><hr class='my-4'>";        
-					});
-				}
-			});
-		}
-	});
+      return firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
 
-  
+        if(snapshot.exists()){
+          snapshot.forEach(function(data){						
+            var appointee = data.val();   
+var key = data.key; // Get the key of the child                  					
+var age= appointee.Age;
+var name= appointee.Name;
+var gender=appointee.Gender;	
+last_node=key;
+document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'><div class='row'><div class='col-lg-6'><div class='form-group focused'><label class='form-control-label' for='input-city'>Name</label><input type='text' disabled id='input-city' class='form-control form-control-alternative' placeholder='Name' value='"+name+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='age' for='input-country'>Age</label><input type='number' disabled id='input-postal-code' class='form-control form-control-alternative' placeholder='Age' value='"+age+"'></div></div><div class='col-lg-3'><div class='form-group'><label class='form-control-label' id='gender' for='input-country'>Gender</label><input type='text' disabled id='gender' class='form-control form-control-alternative' placeholder='Gender' value='"+gender+"'></div></div><button class='btn btn-info' onclick='delete_appointee("+'"'+key+'"'+");'>Remove</button></div></div><hr class='my-4'>";
+});
+        }
+      });
+    }
+  });
 
   function delete_appointee( x ){    
     var userId = firebase.auth().currentUser.uid;
-    
+
     firebase.database().ref('/users/' + userId + '/Appointee/'+x).remove() .then(function() {
-    window.location.href="/profile";
-  })
-  .catch(function(error) {
-    console.log("Remove failed: " + error.message)
-  });
+      window.location.href="/profile";
+    })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+    });
   }
 
-
   function Add_appointee(form){
-
     var userId = firebase.auth().currentUser.uid;
     var name= form.a_name.value;
     var age= form.a_age.value;
-    var gender= form.a_gender.value;
-    
+    var gender= form.a_gender.value;    
     var node=last_node;
     if(node){
       var n= last_node.toString().substring(4);
@@ -374,45 +369,45 @@ var database = firebase.database();
     }else{
       node='user0';
     }
-    
-if(age && gender && name){
-  firebase.database().ref('/users/' + userId + '/Appointee/'+node).set({
-    Age: age,
-    Name: name,
-    Gender : gender
-  }).then(function() {
-    window.location.href="/profile";
-  })
-  .catch(function(error) {
-    console.log("addition failed: " + error.message)
-  });
-}
+
+    if(age && gender && name){
+      firebase.database().ref('/users/' + userId + '/Appointee/'+node).set({
+        Age: age,
+        Name: name,
+        Gender : gender
+      }).then(function() {
+        window.location.href="/profile";
+      })
+      .catch(function(error) {
+        console.log("addition failed: " + error.message)
+      });
+    }
   }
 </script>
 <script type="text/javascript">  
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			var photo_url = user.photoURL;   
-			if(photo_url){                                            
-				document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";
-			}else{
-				document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
-			} 
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var photo_url = user.photoURL;   
+      if(photo_url){
+        document.getElementById("profile_photo").innerHTML = "<a href='/profile' class='mr-40'><img style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.2em 0.2em;' height=40px width=40px src='"+photo_url+"'/></a>";
+      }else{
+        document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
+      }
 
-			var displayName = user.displayName;
-			var email = user.email;
-			var phone = user.phoneNumber;  
+      var displayName = user.displayName;
+      var email = user.email;
+      var phone = user.phoneNumber;  
 
-			document.getElementById('greeting').innerHTML +=displayName;            
-			document.getElementById('input-username').value =displayName;
-			document.getElementById('input-email').value = email;            
-			document.getElementById('input-phone').value = phone;
-			document.getElementById("profile-pic").src = photo_url;
+      document.getElementById('greeting').innerHTML +=displayName;            
+      document.getElementById('input-username').value =displayName;
+      document.getElementById('input-email').value = email;            
+      document.getElementById('input-phone').value = phone;
+      document.getElementById("profile-pic").src = photo_url;
 
-		} else {
-			document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
-		}
-	});
+    } else {
+      document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
+    }
+  });
 </script>
 
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -424,26 +419,26 @@ if(age && gender && name){
 <script src="./assets/js/jquery.slicknav.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		var readURL = function(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
+  $(document).ready(function() {
+    var readURL = function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-				reader.onload = function (e) {
-					$('.profile-pic').attr('src', e.target.result);
-				}
+        reader.onload = function (e) {
+          $('.profile-pic').attr('src', e.target.result);
+        }
 
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
-		$(".file-upload").on('change', function(){
-			readURL(this);
-		});
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $(".file-upload").on('change', function(){
+      readURL(this);
+    });
 
-		$(".upload-button").on('click', function() {
-			$(".file-upload").click();
-		});
-	});
+    $(".upload-button").on('click', function() {
+      $(".file-upload").click();
+    });
+  });
 </script>
 
 <!-- Jquery Slick , Owl-Carousel Plugins -->
