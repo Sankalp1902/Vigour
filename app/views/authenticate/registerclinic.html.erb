@@ -183,22 +183,7 @@
     firebase.analytics();
   </script>
   <script type="text/javascript">
-    var database = firebase.database();
-    var Post;
-    firebase.auth().onAuthStateChanged(user => {  
-      if(user) {         
-        var userId = firebase.auth().currentUser.uid;
-        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-          Post = (snapshot.val() && snapshot.val().Post);  
-          if(Post!="user"){          
-            window.location.href="/authenticate";
-          }                  
-        });                     
-      }
-      else{
-        window.location.href="/authenticate";
-      }
-    })
+   
   </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
