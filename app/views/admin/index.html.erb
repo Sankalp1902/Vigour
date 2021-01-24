@@ -256,9 +256,7 @@
                     aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                     class="hide-menu">Receptionist</span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span
-                            class="hide-menu">Add Receptionist
-                        </span></a>
+                        <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal" data-target="#Add_receptionist-modal">Add Receptionist</button>
                     </li>
                     <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
                         class="hide-menu">Close Receptionist
@@ -293,7 +291,7 @@
 <!-- End Sidebar scroll-->
 </aside>
 
-<!-- Signup modal content -->
+<!-- Add Doctor modal content -->
 <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
 aria-hidden="true">
 <div class="modal-dialog">
@@ -363,7 +361,57 @@ aria-hidden="true">
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- Add Receptionist modal content -->
+<div id="Add_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Add Receptionist
+            </h1>
+        </div>
+        <div class="modal-body">
+            <! ,certificate_img,description,status,timing 1 and timing 2-->
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_receptionist(this)">
+                <div class="form-group">
+                    <label for="username">Name</label>
+                    <input class="form-control" type="text"  id="r_name" name="r_name"
+                    required="" placeholder="Name">
+                </div>
 
+                <div class="form-group">
+                    <label for="emailaddress">Aadhar Number</label>
+                    <input class="form-control" type="number" id="r_aadhar" name="r_aadhar"
+                    required="" placeholder="Enter your Aadhar Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Email</label>
+                    <input class="form-control" type="email" required=""
+                    id="r_email" name="r_email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="d_status">Phone Number</label>
+                    <input class="form-control" type="number" required=""
+                    id="r_phoneno" name="r_phoneno" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="password">Address</label>
+                    <input class="form-control" type="text" required=""
+                    id="r_address" name="r_address" placeholder="Address">
+                </div>
+                
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Add Receptionist</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <!-- ============================================================== -->
@@ -672,9 +720,68 @@ aria-hidden="true">
   }).catch(function(error) {
         console.log("addition failed:  in category" + error.message);
       });
-      
-
+    
 }
+function Add_receptionist(form){
+      var name=form.r_name.value;
+      var email=form.r_email.value;
+      var phoneno=form.r_phoneno.value;
+      var aadhar=form.r_aadhar.value;
+      var address=form.r_address.value;
+      var password="12345678";
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+      var yyyy = today.getFullYear();
+      today = dd + '/' + mm + '/' + yyyy;
+      var CloseAccDate=today;
+      var post="Receptionist";
+      var status="On";
+      var uid;
+        var user;
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+        console.log("result.user.displayName");
+    result.user.updateProfile({
+    displayName: name,
+            email: email,
+            phoneNumber: phoneno
+  }).then(function(result) {
+   console.log("updated");
+}).catch(function(error) {
+  console.log(error);
+});
+    
+}).catch(function(error) {
+  console.log(error);
+});
+
+      /*.then((userCredential) => {
+        user = userCredential.user;  
+        console.log(user);
+   /*     user.updateProfile({
+            displayName: name,
+            email: email,
+            phoneNumber: phoneno
+        });
+
+if (user != null) {
+  user.providerData.forEach(function (profile) {
+    console.log("Sign-in provider: " + profile.providerId);
+    console.log("  Provider-specific UID: " + profile.uid);
+    console.log("  Name: " + profile.displayName);
+    console.log("  Email: " + profile.email);
+    console.log("  Photo URL: " + profile.photoURL);
+  });
+}else{
+    console.log("Logged out");
+}
+
+  }).catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode+":"+errorMessage);
+  });*/  
+    } 
 </script>
 
 <!-- All Jquery -->
