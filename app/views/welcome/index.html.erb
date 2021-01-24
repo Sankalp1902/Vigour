@@ -64,31 +64,32 @@
                     <div class="menu-wrapper d-flex align-items-center justify-content-between">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                            <a href="index.html"><img src="assets/img/logo/logo.png"  alt=""></a>
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="contact.html">About us</a></li>
-                                    <li><a href="contact.html">Testimonial</a></li>
+                                    <li><a href="#">Top Ratings</a></li>
+                                    <li><a href="#">My Appointments</a></li>
+                                    <li><a href="#">My Feedbacks</a></li>
+                                    <li><a href="#KnowMore">Know More</a></li>
                                     <li><a href="contact.html">Contact us</a></li>
                                     <li id="logout"></li>
                                     <!--login-->
                                     <li id="profile_photo"></li>
-</ul>
-</nav>
-</div>          
-<!-- Header-btn -->
-
-<!-- Mobile Menu -->
-<div class="col-12">
-    <div class="mobile_menu d-block d-lg-none"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                                </ul>
+                            </nav>
+                        </div>          
+                    <!-- Header-btn -->
+                <!-- Mobile Menu -->
+                <div class="col-12">
+                    <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                   
 <!-- Header End -->
 </header>
 
@@ -106,32 +107,40 @@
                         </div>
                         <!--Hero form -->
                         <form action="#" class="search-box mb-100">
-
                             <div class="select-form">
                                 <div class="select-itms">
                                     <select name="select" id="select1">
                                         <option value="">State</option>
-                                        <option value="">Andher Pradesh</option>
+                                        <option value="">Andhra Pradesh</option>
                                         <option value="">Gujarat</option>
-                                        <option value="">kerla</option>
+                                        <option value="">Kerla</option>
                                         <option value="">Uttrakhand</option>
                                         <option value="">Uttar Pradesh</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="input-form">
-                                <input type="text" placeholder="Doctor/Specialization">
+                            <div class="select-form">
+                                <div class="select-itms">
+                                    <select name="select" id="select1">
+                                        <option value="">City</option>
+                                        <option value="">Prayagraj</option>
+                                        <option value="">Kanpr</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="search-form">
+                            <div class="select-form">
+                                <div class="select-itms">
+                                    <select name="select" id="select1">
+                                        <option value="">Cateogy</option>
+                                        <option value="">Physician</option>
+                                        <option value="">Cardiologist</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="search-form" style="margin:0 auto">
                                 <a href="#"><i class="ti-search"></i> Search</a>
-                            </div>	
+                            </div>
                         </form>	
-                        <!-- hero category1 img //category-img text-center-->
-                        <div class="category-img text-center">
-                            <a href="listing.html"> <img src="assets/images/hero_category1.png" style="border-radius: 20%"></a>
-                            <a href="listing.html"> <img src="assets/images/hero_category2.png" style="border-radius: 20%"></a>
-                            <a href="listing.html"> <img src="assets/images/hero_category3.png" style="border-radius: 20%"></a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -141,25 +150,16 @@
     <!--? Popular Locations Start 01-->
     <div class="popular-location border-bottom section-padding40">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-80">
-                        <h2>Review</h2>
-                    </div>
-                </div>
-            </div>
-
             <!-- Popular Locations End -->
             <!--? Popular Directory Start -->
-            <div class="popular-directorya-area  border-bottom section-padding40 fix">
+            <div class="popular-directorya-area  border-bottom section-padding40 fix" id="TopDoctor">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Section Tittle -->
                             <div class="section-tittle text-center mb-80">
                                 <h2>Top Doctors:</h2>
-                                <p>Let's you know the top doctors appoinment .</p>
+                                <p>Lets you know the top doctors appoinment .</p>
                             </div>
                         </div>
                     </div>
@@ -169,10 +169,6 @@
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
                                     <a href="#"><img src="assets/images/t1.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt=""> 
                                     </div>
@@ -180,10 +176,13 @@
                                 <div class="properties__caption">
                                     <h3><a href="#">Dr. S.k Joshi</a></h3>
                                     <p>Allahabad</p>
+                                    <div class="img-text">
+                                        <span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;&star;</span>
+                                    </div>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                        <i class="fas fa-user-md"></i>
                                         <h3>Heart Doctor</h3>
                                     </div>
                                     <div class="heart">
@@ -197,10 +196,7 @@
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
                                     <a href="#"><img src="assets/images/t2.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
+                                    
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt=""> 
                                     </div>
@@ -208,10 +204,13 @@
                                 <div class="properties__caption">
                                     <h3><a href="#">Dr. Sumit Vannkey</a></h3>
                                     <p>kerla</p>
+                                    <div class="img-text">
+                                        <span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;&star;</span>
+                                    </div>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                        <i class="fas fa-user-md"></i>
                                         <h3>Neurologist</h3>
                                     </div>
                                     <div class="heart">
@@ -225,10 +224,7 @@
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
                                     <a href="#"><img src="assets/images/t3.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
+                                    
                                     <div class="icon">
                                         <img src="assets/img/gallery/categori_icon1.png" alt=""> 
                                     </div>
@@ -236,10 +232,13 @@
                                 <div class="properties__caption">
                                     <h3><a href="#"></a>Dr.Aaron</h3>
                                     <p>Aadher Pradesh</p>
+                                    <div class="img-text">
+                                        <span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;&star;</span>
+                                    </div>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                        <i class="fas fa-user-md"></i>
                                         <h3>Brain Tumer</h3>
                                     </div>
                                     <div class="heart">
@@ -253,10 +252,6 @@
                             <div class="properties__card">
                                 <div class="properties__img overlay1">
                                     <a href="#"><img src="assets/images/t4.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
                                     <div class="icon">
                                         <a href="#"><img src="assets/img/gallery/categori_icon1.png" alt=""></a>
                                     </div>
@@ -264,10 +259,13 @@
                                 <div class="properties__caption">
                                     <h3><a href="#">Dr. Sanjay Singh</a></h3>
                                     <p>Lucknow</p>
+                                    <div class="img-text">
+                                        <span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;&star;</span>
+                                    </div>
                                 </div>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                     <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
+                                        <i class="fas fa-user-md"></i>
                                         <h3>Cardiologist</h3>
                                     </div>
                                     <div class="heart">
@@ -281,18 +279,18 @@
             </div>
             <!--? Popular Directory End -->
             <!--? Want To work 01-->
-            <section class="wantToWork-area">
+            <section class="wantToWork-area" id="How">
                 <div class="container">
                     <div class="wants-wrapper w-padding2">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-xl-7 col-lg-9 col-md-8">
                                 <div class="wantToWork-caption wantToWork-caption2">
                                     <h2>How to apply?</h2>
-                                    <p>Let's you the details about our website.</p>
+                                    <p>Steps for registering your clinic.</p>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-3 col-md-4">
-                                <a href="#" class="btn f-right sm-left">Explore Listing</a>
+                                <a href="#" class="btn f-right sm-left">Register Clinic Now</a>
                             </div>
                         </div>
                     </div>
@@ -309,8 +307,8 @@
                                     <span>01</span>
                                 </div>
                                 <div class="services-cap">
-                                    <h5><a href="#">Find Businesses</a></h5>
-                                    <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
+                                    <h5><a href="#">Go to <br><B>Register Clinic Now</b></a></h5>
+                                    <p>It will take you to the register clinic page.</p>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +318,8 @@
                                     <span>02</span>
                                 </div>
                                 <div class="services-cap">
-                                    <h5><a href="#">Review Listings</a></h5>
-                                    <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
+                                    <h5><a href="#">Fill Details</a></h5>
+                                    <p>Fill the form provided there with all the necessary details and <b>submit</b> it. After submit the provided details will get verified within a week.</p>
                                 </div>
                             </div>
                         </div>
@@ -331,8 +329,8 @@
                                     <span>03</span>
                                 </div>
                                 <div class="services-cap">
-                                    <h5><a href="#">Make a Reservation</a></h5>
-                                    <p>Discover & connect with great local businesses in your local neighborhood like dentists, hair stylists and more.</p>
+                                    <h5><a href="#">Verification</a></h5>
+                                    <p>As details get verified you will recieve the email regarding Clinic Approved or not.<br>Once approved you can login into your clinic.</p>
                                 </div>
                             </div>
                         </div>
@@ -340,195 +338,22 @@
                 </div>
             </div>
             <!-- Our Services End -->
-            <!--? Popular Directory Start -->
-            <div class="popular-directorya-area section-padding40 border-bottom fix">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle text-center mb-80">
-                                <h2>New Directory</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="directory-active">
-                        <!-- Single -->
-                        <div class="properties pb-20">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="assets/img/gallery/doctor.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
-                                    <div class="icon">
-                                        <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                    </div>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Dr. Jasmin</a></h3>
-                                    <p>kerla</p>
-                                </div>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                        <h3>General Surgeon</h3>
-                                    </div>
-                                    <div class="heart">
-                                        <img src="assets/img/gallery/heart1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single -->
-                        <div class="properties pb-20">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="assets/img/gallery/doctor4.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
-                                    <div class="icon">
-                                        <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                    </div>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Dr.Myur singaniya</a></h3>
-                                    <p>Jammu and Kashmir</p>
-                                </div>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                        <h3>Dermatologistst</h3>
-                                    </div>
-                                    <div class="heart">
-                                        <img src="assets/img/gallery/heart1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single -->
-                        <div class="properties pb-20">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="assets/img/gallery/doctor3.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
-                                    <div class="icon">
-                                        <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                    </div>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Dr. frankel</a></h3>
-                                    <p>Noida</p>
-                                </div>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                        <h3>Pediatricianst</h3>
-                                    </div>
-                                    <div class="heart">
-                                        <img src="assets/img/gallery/heart1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single -->
-                        <div class="properties pb-20">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="assets/img/gallery/doctor1.png" alt=""></a>
-                                    <div class="img-text">
-                                        <span>$$$</span>
-                                        <span>Closed</span>
-                                    </div>
-                                    <div class="icon">
-                                        <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                    </div>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Dr. Aayush sharma</a></h3>
-                                    <p>Delhi</p>
-                                </div>
-                                <div class="properties__footer d-flex justify-content-between align-items-center">
-                                    <div class="restaurant-name">
-                                        <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                        <h3>General Physicians</h3>
-                                    </div>
-                                    <div class="heart">
-                                        <img src="assets/img/gallery/heart1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Popular Directory End -->
-            <!--? Popular Locations Start 01-->
-            <div class="popular-location border-bottom section-padding40">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Section Tittle -->
-                            <div class="section-tittle text-center mb-80">
-                                <h2>News & Updates</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="single-location mb-30">
-                                <div class="location-img">
-                                    <img src="assets/img/gallery/home-blog1.png" alt="">
-                                </div>
-                                <div class="location-details">
-                                    <a href="#" class="location-btn">Tips</a>
-                                    <ul>
-                                        <li>12 March   I   by Alan</li>
-                                    </ul>
-                                    <p><a href="blog_details.html">The Best Yoga and Exercise For Your Relaxation</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="single-location mb-30">
-                                <div class="location-img">
-                                    <img src="assets/img/gallery/home-blog2.png" alt="">
-                                </div>
-                                <div class="location-details">
-                                    <a href="#" class="location-btn">Tips</a>
-                                    <ul>
-                                        <li>12 March   I   by Alan</li>
-                                    </ul>
-                                    <p><a href="blog_details.html">Fruits are healthy for body as well as mind.</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Popular Locations End -->
+            
             <!--? Want To work 02-->
-            <section class="wantToWork-area">
+            <section class="wantToWork-area" id="KnowMore">
                 <div class="container">
                     <div class="wants-wrapper w-padding2">
                         <div class="row justify-content-between">
                             <div class="col-xl-8 col-lg-8 col-md-7">
                                 <div class="wantToWork-caption wantToWork-caption2">
-                                    <img src="assets/img/logo/logo2_footer.png" alt="" class="mb-20">
-                                    <p>Users and submit their own items. You can create different packages and by connecting with your
-                                    PayPal or Stripe account charge users for registration to your directory portal.</p>
+                                    <img src="assets/img/logo/logo.png"  alt="" class="mb-20">
+                                    <p>Users and clinics can connect with us. Clinics needed to register themselves from the Register Clinic button. Users can simply login into there portal and book their appintments with any number of patients from single login and take appointments.</p>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-5">
                                 <div class="footer-social f-right sm-left">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
                                     <a href="#"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
@@ -547,18 +372,17 @@
                                     <div class="main-menu2">
                                         <nav>
                                             <ul>
-                                                <li><a href="index.html">Home</a></li>
-                                                <li><a href="explore.html">Explore</a></li> 
-                                                <li><a href="pages.html">Pages</a></li>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="#">Search Doctor</a></li>
+                                                <li><a href="#TopDoctor">Top Doctors Rating</a></li>
+                                                <li><a href="#How">How to apply?</a></li> 
+                                                <li><a href="contact.html">Contact Us</a></li>
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-2 col-lg-3 col-md-4">
-                                <a href="#" class="btn f-right sm-left">Add Listing</a>
+                                <a href="#How" class="btn f-right sm-left">Register Your Clinic</a>
                             </div>
                         </div>
                     </div>
@@ -573,10 +397,10 @@
                     <div class="container">
                         <div class="footer-border">
                             <div class="row d-flex justify-content-between align-items-center">
-                                <div class="col-xl-10 col-lg-9 ">
-                                    <div class="footer-copy-right">
+                                <div class="col-xl-10 col-lg-9">
+                                    <div class="footer-copy-right text-center">
                                         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Vigour developers</a>
                                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                         </div>
                                     </div>
