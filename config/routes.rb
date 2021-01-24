@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "loading" => "authenticate#loading"
   get "profile" => "welcome#profile"
   get "register-clinic" => "authenticate#registerclinic"
-  get "clinic-admin"=>"admin#index"
+  get "add-clinic"=>"admin#add_clinic"
+  get "patient"=>"admin#patient"
+  get "feedbacks"=>"admin#feedbacks"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
