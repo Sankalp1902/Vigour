@@ -25,45 +25,7 @@
     <!-- Main CSS-->
     <link href="profile/style.css" rel="stylesheet">
     <link href="css/smain.css" rel="stylesheet" media="all">
-<<<<<<< HEAD
-    <style type="text/css">
-       .file-upload {
-    display: none;
-}
-.circle {
-    border-radius: 1000px !important;
-    overflow: hidden;
-    width: 250px;
-    height: 250px;
-    border: 8px solid rgba(255, 255, 255, 0.7);
-    position: relative;
-    margin: 0 auto        
-}
-img {
-    max-width: 100%;
-    height: auto;
-}
-.p-image {
-  position: relative;
-  color: #666666;
-  margin: 0 auto;
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-}
-.p-image:hover {
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-}
-.upload-button {
-  font-size: 1.2em;
-}
-
-.upload-button:hover {
-  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-  color: #999;
-}
-    </style>
-=======
     
->>>>>>> 705ae500e72a627cbe22eb6c56dfa5ee02b865aa
 </head>
 
 <body>
@@ -100,43 +62,8 @@ img {
                                     <input class="input--style-4" type="text" name="name">
                                 </div>
                             </div>
-                            <div class="circle text-center">
-       <!-- User Profile Image -->
-       <img class="profile-pic" id="profile-pic" height="250" width="250" src="">                
-     </div>
-     <div class="p-image">
-       <i class="fa fa-camera upload-button"></i>
-        <input class="file-upload" type="file" accept="image/*"/>
-     </div>
-                        </div>
-                        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                        <script type="text/javascript">
-  $(document).ready(function() {
-
-    
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('.profile-pic').attr('src', e.target.result);
-            }
-    
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
-    
-    $(".upload-button").on('click', function() {
-       $(".file-upload").click();
-    });
-});
-</script>
-                        <div class="row row-space">
+                        
+                        
                                 <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
@@ -145,7 +72,7 @@ img {
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
-                         </div>   
+                            
                             
                         </div>
                     </div>
@@ -180,12 +107,11 @@ img {
                         </div>
                         <div class="row row-space">
                         <div class="col-2">
-                        	<div class="input-group">
+                          <div class="input-group">
                                     <label class="label">Upload aadhar card </label>
                                     <input class="input--style-4" type="file" name="phone">
                                 </div>                           
                         </div>
-
 
                         <div class="col-2">
                             <div class="input-group">
@@ -257,22 +183,7 @@ img {
     firebase.analytics();
   </script>
   <script type="text/javascript">
-    var database = firebase.database();
-    var Post;
-    firebase.auth().onAuthStateChanged(user => {  
-      if(user) {         
-        var userId = firebase.auth().currentUser.uid;
-        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-          Post = (snapshot.val() && snapshot.val().Post);  
-          if(Post!="user"){          
-            window.location.href="/authenticate";
-          }                  
-        });                     
-      }
-      else{
-        window.location.href="/authenticate";
-      }
-    })
+   
   </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
