@@ -11,6 +11,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+
     <script>
         var firebaseConfig = {
             apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
@@ -24,6 +27,7 @@
         };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+        var database = firebase.database;
     </script>
 
 
@@ -108,34 +112,31 @@
                             <br>
                         </div>
                         <!--Hero form -->
-                        <form action="#" class="search-box mb-100">
+                        <form class="search-box mb-100">
                             <div class="select-form">
                                 <div class="select-itms">
-                                    <select name="select" id="select1">
-                                        <option disabled value="">State</option>
-                                        
+                                    <select id="state" name="state" onchange="addCity()">
+                                        <option selected disabled value="">State</option>               
                                     </select>
                                 </div>
                             </div>
                             <div class="select-form">
-                                <div class="select-itms">
-                                    <select name="select" id="select1">
-                                        <option disabled value="">City</option>
-                                        
+                                <div class="select-items">
+                                    <select name="city" id="city">
+                                        <option selected disabled value="">City</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="select-form">
-                                <div class="select-itms">
-                                    <select name="select" id="select1">
-                                        <option disabled value="">Cateogy</option>
-
+                            <div class="select-form" required>
+                                <div class="select-items">
+                                    <select id="category" >
+                                        <option selected disabled value="" >Category</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="search-form" style="margin:0 auto;">
                                 <br>
-                                <a href="#"><i class="ti-search"></i>Search</a>
+                                <button type="submit" class="btn" onclick="searchDoctors()"><i class="ti-search" ></i>Search</button>
                             </div>
                         </form>	
                     </div>
@@ -426,8 +427,59 @@
                         document.getElementById("profile_photo").innerHTML += "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
                     }
                 });
+
             </script> 
 
+            <script type="text/javascript">  
+                var dbState = firebase.database().ref("Location");
+                dbState.once("value").then(function(states){
+                    states.forEach(function(state){
+                        $("#state").append("<option value='"+state.key+"'>"+state.key+"</option>");
+                        $('#state').niceSelect('update');                       
+                    })  
+                });
+
+                var dbCategories = firebase.database().ref("Category");
+                dbCategories.once("value").then(function(categories){
+                categories.forEach(function(category){
+                        $("#category").append("<option value='"+category.key+"'>"+category.key+"</option>");
+                        $('#category').niceSelect('update');     
+                    });
+                });
+            </script>
+            <script>
+                document.getElementById("city").disabled=true;
+                function addCity() {
+                    var e = document.getElementById("state");
+                    var strUser = e.value;
+                    document.getElementById("city").disabled=false;
+                    $("#city").empty();
+                    var dbCity = firebase.database().ref("Location/"+strUser);
+                    dbCity.once("value").then(function(cities){
+                        cities.forEach(function(city){
+                            $("#city").append("<option value='"+city.key+"'>"+city.key+"</option>");
+                            $('#city').niceSelect('update');     
+                        });
+                    });  
+                }
+
+                /*function searchDoctors(){
+                    var state = document.getElementById("state").value;
+                    var city = document.getElementById("city").value;
+                    var category = document.getElementById("category").value;
+                    if(state=="" && city=="" && category!=""){
+                        var dbCategories = firebase.database().ref("Category/"+category);
+                        dbCategories.once("value").then(function(categories){
+                            categories.forEach(function(category){
+                                console.log(category.key +" " + category.val);   
+                            });
+                        });
+                    }else {
+
+                    }
+                }*/
+                
+            </script>
             <!-- JS here -->
 
             <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
