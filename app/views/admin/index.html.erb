@@ -631,13 +631,10 @@ aria-hidden="true">
             }else{
                 document.getElementById('profile-photo').src="assets/images/users/profile-pic.jpg";
             }
-
             userId = firebase.auth().currentUser.uid;
-
             firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
             clinicid = (snapshot.val() && snapshot.val().Clinic_id);
             });
-
         }
     });
     
