@@ -366,7 +366,7 @@ aria-hidden="true">
             </h1>
         </div>
         <div class="modal-body">
-            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_doctor(this)">
+            <form class="pl-3 pr-3" id="formEl" onsubmit="Delete_doctor(this)">
                 
                 <div class="form-group">
                     <label for="emailaddress">Doctor Id</label>
@@ -764,7 +764,8 @@ aria-hidden="true">
     Description: description,
     Status: status,
     Timing_1: starttime,
-    Timing_2: endtime
+    Timing_2: endtime,
+    Category: category
   }).catch(function(error) {
         console.log("addition failed:  doctor profile" + error.message);
       });
@@ -777,16 +778,31 @@ aria-hidden="true">
       });
     
 }
-function Delete_doctor(form){
-	
+function Delete_doctor(form){	
 	var id=form.d_id.value;
+	var Category;
+
+	firebase.database().ref('doctor/' + id).once('value').then((snapshot) => {
+           Category = (snapshot.val() && snapshot.val().Category);
+console.log(id+Category);
+       /* firebase.database().ref('Category/' + Category + "/" + id).remove() .then(function() { 
+						    
+			firebase.database().ref("clinic/"+clinicid+"/Doctors/" + id).remove() .then(function() {  
+			    	console.log("clinic/"+clinicid+"/Doctors/" + id+ " Removed");
+			    	firebase.database().ref('doctor/' +id).remove() .then(function() {
+						window.location.href="/admin";
+			      })
+			})
+		})*/
+      });
+	//console.log(id+Category);
+/*
+	 */
+    /*
 	
-	firebase.database().ref('doctor/' +id).remove() .then(function() {
-      window.location.href="/index";
-      })
-    .catch(function(error) {
-      console.log("Remove failed: " + error.message)
-    });
+    
+*/
+    
 }
 function Add_receptionist(form){
       var name=form.r_name.value;
@@ -819,7 +835,17 @@ function Add_receptionist(form){
     
 }).catch(function(error) {
   console.log(error);
-});
+});/*
+function Delete_receptionist(form){
+	
+      var aadhar=form.r_aadhar.value;
+	firebase.database().ref('users/' +).remove() .then(function() {
+      window.location.href="/index";
+      })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+    });
+}*/
 
       /*.then((userCredential) => {
         user = userCredential.user;  
