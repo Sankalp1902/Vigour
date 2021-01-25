@@ -258,9 +258,7 @@
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal" data-target="#Add_receptionist-modal">Add Receptionist</button>
                     </li>
-                    <li class="sidebar-item"><a href="form-input-grid.html" class="sidebar-link"><span
-                        class="hide-menu">Close Receptionist
-                    </span></a>
+                    <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal" data-target="#Delete_receptionist-modal">Close Receptionist</button>
                 </li>
             </ul>
         </li>
@@ -272,14 +270,11 @@
                 <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
                     data-target="#signup-modal">Add doctor</button>
                 </li>
-                <li class="sidebar-item"><a href="table-dark-basic.html" class="sidebar-link"><span
-                    class="hide-menu">Update Doctor 
-                </span></a>
+                <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
+                    data-target="#signup-modal">Update Doctor </button>
             </li>
-            <li class="sidebar-item"><a href="table-sizing.html" class="sidebar-link"><span
-                class="hide-menu">
-                Delete Doctor 
-            </span></a>
+            <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
+                    data-target="#Delete_doctor-modal">Delete Doctor </button>
         </li>
     </ul>
 </li>
@@ -360,6 +355,35 @@ aria-hidden="true">
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!-- Delete doctor modal content -->
+<div id="Delete_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Delete Doctor
+            </h1>
+        </div>
+        <div class="modal-body">
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_doctor(this)">
+                
+                <div class="form-group">
+                    <label for="emailaddress">Doctor Id</label>
+                    <input class="form-control" type="number" id="d_id" name="d_id"
+                    required="" placeholder="Enter Doctor Id">
+                </div>
+                   <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Delete Doctor</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <!-- Add Receptionist modal content -->
 <div id="Add_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
@@ -404,6 +428,35 @@ aria-hidden="true">
                 
                     <div class="form-group text-center">
                         <button class="btn btn-primary" type="submit">Add Receptionist</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Delete Receptionist modal content -->
+<div id="Delete_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Delete Receptionist
+            </h1>
+        </div>
+        <div class="modal-body">
+            <! ,certificate_img,description,status,timing 1 and timing 2-->
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_receptionist(this)">
+                
+                <div class="form-group">
+                    <label for="emailaddress">Aadhar Number</label>
+                    <input class="form-control" type="number" id="r_aadhar" name="r_aadhar"
+                    required="" placeholder="Enter your Aadhar Number">
+                </div>
+                   <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Delete Receptionist</button>
                     </div>
 
                 </form>
@@ -724,6 +777,17 @@ aria-hidden="true">
       });
     
 }
+function Delete_doctor(form){
+	
+	var id=form.d_id.value;
+	
+	firebase.database().ref('doctor/' +id).remove() .then(function() {
+      window.location.href="/index";
+      })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message)
+    });
+}
 function Add_receptionist(form){
       var name=form.r_name.value;
       var email=form.r_email.value;
@@ -744,9 +808,9 @@ function Add_receptionist(form){
       firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
         console.log("result.user.displayName");
     result.user.updateProfile({
-    displayName: name,
-            email: email,
-            phoneNumber: phoneno
+        displayName: name,
+        email: email,
+        phoneNumber: phoneno
   }).then(function(result) {
    console.log("updated");
 }).catch(function(error) {
