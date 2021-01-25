@@ -271,7 +271,7 @@
                     data-target="#signup-modal">Add doctor</button>
                 </li>
                 <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
-                    data-target="#signup-modal">Update Doctor </button>
+                    data-target="#update_doctor-modal">Update Doctor </button>
             </li>
             <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
                     data-target="#Delete_doctor-modal">Delete Doctor </button>
@@ -286,7 +286,7 @@
 <!-- End Sidebar scroll-->
 </aside>
 
-<!-- Add Doctor modal content -->
+<!-- update Doctor modal content -->
 <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
 aria-hidden="true">
 <div class="modal-dialog">
@@ -320,11 +320,15 @@ aria-hidden="true">
                     <label for="d_description">Description</label>
                     <textarea class="form-control" id="d_description" name="d_description" rows="3" cols="35"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="d_status">Status</label>
-                    <input class="form-control" type="text" required=""
-                    id="d_status" name="d_status" placeholder="Status">
-                </div>
+               
+                 <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="d_status">Select</label>
+                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                            <option disabled="" selected>Choose...</option>
+                                            <option value="1">On</option>
+                                            <option value="0">off</option>
+                                        </select>
+                                    </div>
                 <div class="form-group">
                     <label for="password">Start Timing</label>
                     <input class="form-control" type="time" required=""
@@ -347,6 +351,51 @@ aria-hidden="true">
 
                     <div class="form-group text-center">
                         <button class="btn btn-primary" type="submit">Add Doctor</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Add Doctor modal content -->
+<div id="update_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Update Doctor
+            </h1>
+        </div>
+        <div class="modal-body">
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return update_doctor(this)">
+                <div class="form-group">
+                    <label for="emailaddress">Doctor Id</label>
+                    <input class="form-control" type="number" id="d_id" name="d_id"
+                    required="" placeholder="Doctor Id">
+                </div>
+                <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="d_status">Select</label>
+                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                            <option disabled="" selected>Choose...</option>
+                                            <option value="1">On</option>
+                                            <option value="0">off</option>
+                                        </select>
+                                    </div>
+                <div class="form-group">
+                    <label for="password">Start Timing</label>
+                    <input class="form-control" type="time" 
+                    id="d_starttime" name="d_starttime" placeholder="Timing">
+                </div>
+                <div class="form-group">
+                    <label for="password">End Timing</label>
+                    <input class="form-control" type="time" 
+                    id="d_endtime" name="d_endtime" placeholder="Timing">
+                </div>
+                 <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Update Doctor</button>
                     </div>
 
                 </form>
@@ -685,19 +734,11 @@ aria-hidden="true">
     <footer class="footer text-center text-muted">
         All Rights Reserved by Vigour 2021
     </footer>
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+    
 </div>
-<!-- ============================================================== -->
-<!-- End Page wrapper  -->
-<!-- ============================================================== -->
+
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
+
 <script type="text/javascript">
     var database = firebase.database();    
     var clinicid;
@@ -775,6 +816,33 @@ aria-hidden="true">
       });
     
 }
+function update_doctor(form){
+	var id=form.d_id.value;
+	var status=form.d_status.value;
+    var starttime= form.d_starttime.value; 
+    var endtime= form.d_endtime.value;
+    if(status){
+firebase.database().ref().child('doctor/'+id)
+        .update({ 
+        	Status: status
+    });
+    }
+    if(starttime){
+firebase.database().ref().child('doctor/'+id)
+        .update({ 
+        	
+		    Timing_1: starttime
+    });
+    }
+    if(endtime){
+    	firebase.database().ref().child('doctor/'+id)
+        .update({ 
+		    Timing_2: endtime
+    });
+    }
+    
+
+}
 function Delete_doctor(form){	
 	var id=form.d_id.value;
 	var Category;
@@ -782,7 +850,7 @@ function Delete_doctor(form){
 	firebase.database().ref('doctor/' + id).once('value').then((snapshot) => {
            Category = (snapshot.val() && snapshot.val().Category);
 console.log(id+Category);
-       /* firebase.database().ref('Category/' + Category + "/" + id).remove() .then(function() { 
+       firebase.database().ref('Category/' + Category + "/" + id).remove() .then(function() { 
 						    
 			firebase.database().ref("clinic/"+clinicid+"/Doctors/" + id).remove() .then(function() {  
 			    	console.log("clinic/"+clinicid+"/Doctors/" + id+ " Removed");
@@ -790,15 +858,8 @@ console.log(id+Category);
 						window.location.href="/admin";
 			      })
 			})
-		})*/
+		})
       });
-	//console.log(id+Category);
-/*
-	 */
-    /*
-	
-    
-*/
     
 }
 function Add_receptionist(form){
