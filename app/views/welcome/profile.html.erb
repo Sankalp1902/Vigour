@@ -326,9 +326,7 @@ aria-hidden="true">
   var database = firebase.database();
   firebase.auth().onAuthStateChanged(function(user) {
     if(user){
-
       var userId = firebase.auth().currentUser.uid;
-
       return firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
 
         if(snapshot.exists()){
