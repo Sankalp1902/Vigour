@@ -474,9 +474,9 @@ firebase.auth().onAuthStateChanged(user => {
                                 let params = (new URL(document.location)).searchParams;
                             var doc_id = params.get("doc_id");
                             var clinic_id = params.get("clinic_id");
-                            var unique=date+doc_id+appointee;
+                            var unique=date+doc_id+appointee+userId;
 
-                            firebase.database().ref('clinic/' + clinic_id + '/Appointments/'+date+ '/'+doc_id).set({
+                            firebase.database().ref('clinic/' + clinic_id + '/Appointments/'+date+ '/'+doc_id+'/unique').set({
                                 id:unique
                               });
 
