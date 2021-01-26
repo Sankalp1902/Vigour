@@ -5,10 +5,10 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
+    <meta name="address" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
-
+    <%= csrf_meta_tags %>
     <!-- Title Page-->
     <title>Register clinic: Vigour</title>
 
@@ -29,6 +29,8 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//geodata.solutions/includes/countrystatecity.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
@@ -53,7 +55,7 @@
                 <div class="card-body">
                     <h2 class="title">Clinic Registration Form</h2>
                     <hr>
-                    <form onsubmit="return Reg_Clinic(this)"><br>                      
+                    <form id="registerClinic" onsubmit="return false;" ><br>
                     <div class="row row-space align-items-center justify-content-center">                        
                     <div class="col-lg-12">
                       <div class="circle text-center" style="font-size: 13rem;">
@@ -68,7 +70,7 @@
                     </div> 
 
 </div>
-<!--div class="row row-space align-items-center justify-content-center">
+<div class="row row-space align-items-center justify-content-center">
                                     <label class="label">User Profile photo</label>
 </div>                   
 </br></br></br>
@@ -79,8 +81,6 @@
                                     <input class="input--style-4" required type="text" name="name" id="name">
                                 </div>
                             </div>
-                        
-                        
                                 <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
@@ -89,12 +89,9 @@
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
-                            
-                            
                         </div>
                     </div>
-
-                        <div class="row row-space">
+                   <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
@@ -102,11 +99,12 @@
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" required="" name="phone" id="phone">
+                              <div class="input-group">
+                                    <label class="label">Create Password</label>
+                                    <input type="password" class="input--style-4" required name="pass" id="pass">
                                 </div>
                             </div>
+                            
                         </div>
                          <div class="row row-space">
                             <div class="col-2">
@@ -117,16 +115,22 @@
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" required="" name="phone" id="phone">
+                                </div>
+                            </div>  
+                            
+                        </div>  
+                        <br><hr width="100%">  <br> 
+                        <div class="row row-space text-center">
+                            <h2 > Clinic Details</h2>
+                        </div>     
+                        <br>             
+                        <div class="row row-space">
+                        <div class="col-2">
+                                <div class="input-group">
                                     <label class="label">Clinic id</label>
                                     <input class="input--style-4" type="text" required name="clinic_id" id="clinic_id">
-                                </div>
-                            </div>
-                        </div>                        
-                        <div class="row row-space">
-                            <div class="col-2">
-                              <div class="input-group">
-                                    <label class="label">Create Password</label>
-                                    <input type="password" class="input--style-4" required name="password" id="password">
                                 </div>
                             </div>
                         <div class="col-2">
@@ -137,20 +141,20 @@
                         </div>
                         </div>
                         <div class="input-group">
-                                    <label class="label">Clinic Description</label>                                    
-                                    <textarea class="input--style-4" id="description" required name="description" id="description" rows="3" cols="65"></textarea>
+                                    <label class="label">Clinic Address</label>                                    
+                                    <textarea class="input--style-4" id="address" required name="address" id="address" rows="3" cols="65"></textarea>
                                 </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Telephone</label>
+                                    <label class="label">Telephone/Mobile No.</label>
                                     <input class="input--style-4" type="tel" required name="telephone" id="telephone">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Website</label>
-                                    <input class="input--style-4" type="text" required name="website" id="website">
+                                    <input class="input--style-4" type="text"  name="website" id="website">
                                 </div>
                             </div>
                         </div>
@@ -160,31 +164,31 @@
                                     <label class="label">Half days</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Monday
-                                            <input type="checkbox" value="Monday" name="h_1">
+                                            <input type="checkbox" value="Monday" name="h_1" id="h_1">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Tuesday
-                                            <input type="checkbox" value="Tuesday" name="h_2">
+                                            <input type="checkbox" value="Tuesday" name="h_2" id="h_2">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Wednesday
-                                            <input type="checkbox" name="h_3" value="Wednesday">
+                                            <input type="checkbox" name="h_3" value="Wednesday" id="h_3">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Thursday
-                                            <input type="checkbox" name="h_4" value="Thursday">
+                                            <input type="checkbox" name="h_4" value="Thursday" id="h_4">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Friday
-                                            <input type="checkbox" name="h_5" value="Friday">
+                                            <input type="checkbox" name="h_5" value="Friday" id="h_5">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Saturday
-                                            <input type="checkbox" name="h_6" value="Saturday">
+                                            <input type="checkbox" name="h_6" value="Saturday" id="h_6">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Sunday
-                                            <input type="checkbox" name="h_7" value="Sunday">
+                                            <input type="checkbox" name="h_7" value="Sunday" id="h_7">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -195,31 +199,31 @@
                                     <label class="label">Regular days</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Monday
-                                            <input type="checkbox" value="Monday" name="f_1">
+                                            <input type="checkbox" value="Monday" name="f_1" id="f_1">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Tuesday
-                                            <input type="checkbox" value="Tuesday" name="f_2">
+                                            <input type="checkbox" value="Tuesday" name="f_2" id="f_2">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Wednesday
-                                            <input type="checkbox" name="f_3" value="Wednesday">
+                                            <input type="checkbox" name="f_3" value="Wednesday" id="f_3">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Thursday
-                                            <input type="checkbox" name="f_4" value="Thursday">
+                                            <input type="checkbox" name="f_4" value="Thursday" id="f_4">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Friday
-                                            <input type="checkbox" name="f_5" value="Friday">
+                                            <input type="checkbox" name="f_5" value="Friday" id="f_5">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Saturday
-                                            <input type="checkbox" name="f_6" value="Saturday">
+                                            <input type="checkbox" name="f_6" value="Saturday" id="f_6">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container m-r-45">Sunday
-                                            <input type="checkbox" name="f_7" value="Sunday">
+                                            <input type="checkbox" name="f_7" value="Sunday" id="f_7">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -255,44 +259,52 @@
                             </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-6">
-                            <label class="label">District</label>
+                            <div class="col-4">
+                            <label class="label">Clinic Country</label>
                                 <div class="input-group">
                             
                             <div class="rs-select2 js-select-simple">
-                                <select required name="district" id="district">
-                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>Prayagraj</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
-                                </select>
+                                <select required name="country" class="countries form-control" id="countryId">
+                                    <option value="">Select Country</option>
+                            </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                             </div>
-                            <div class="col-6">
-                            <label class="label">State</label>
+                        <div class="col-4">
+                            <label class="label">Clinic State</label>
                                 <div class="input-group">
                             
                             <div class="rs-select2 js-select-simple">
-                                <select required name="state" id="state">
-                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>Uttar Pradesh</option>
-                                    <option>Subject 2</option>
-                                    <option>Subject 3</option>
-                                </select>
+                                <select name="state" class="states form-control" id="stateId" required>
+    <option value="">Select State</option>
+</select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                             </div>
-                        </div-->
+                            <div class="col-4">
+                            <label class="label">Clinic District</label>
+                                <div class="input-group">
+                            
+                            <div class="rs-select2 js-select-simple">
+                                <select required name="city" class="cities form-control" id="cityId">
+    <option value="">Select City</option>
+</select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                        </form>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--green" style="float: right;" type="submit">Submit</button>
+                            <button class="btn btn--radius-2 btn--green" style="float: right;" form="registerClinic" onclick="Reg_Clinic(this)" 
+                            type="submit">Submit</button>
                         </div>
                         <div class="p-t-15">
-                            <a style="color: grey" class=" btn--radius-2" href="/" type="submit">  <u>Back to homepage</u></a>
+                            <a style="color: grey" class=" btn--radius-2" href="/" type="button">  <u>Back to homepage</u></a>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -308,94 +320,176 @@
     <!-- Main JS-->
     <script src="js/sglobal.js"></script>
     <script type="text/javascript">
-  $(document).ready(function() {
-    var readURL = function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('.profile-pic').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $(".file-upload").on('change', function(){
-      readURL(this);
-    });
-    $(".upload-button").on('click', function() {
-      $(".file-upload").click();
-    });
-  });
+        $(document).ready(function() {
+            var readURL = function(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.profile-pic').attr('src', e.target.result);
+                    }
+                reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $(".file-upload").on('change', function(){
+              readURL(this);
+            });
+            $(".upload-button").on('click', function() {
+              $(".file-upload").click();
+            });
+        });
 </script>
   <script type="text/javascript">
 
-    function Reg_Clinic(data){
-     /*var name= data.name.value;
-      var photo= data.profile_photo.value;
-      var bday= data.birthday.value;
-      var email = data.email.value;
-      var phone = data.phone.value;
-      var aadhar=data.aadhar.value;
-      var clinic_id=data.clinic_id.value;
-      var description=data.description.value;
-      var telephone=data.telephone.value;
-      var website=data.website.value;
-      var h_1=data.h_1.value;
-      var h_2=data.h_2.value;
-      var h_3=data.h_3.value;
-      var h_4=data.h_4.value;
-      var h_5=data.h_5.value;
-      var h_6=data.h_6.value;
-      var h_7=data.h_7.value;
-      var f_1=data.f_1.value;
-      var f_2=data.f_2.value;
-      var f_3=data.f_3.value;
-      var f_4=data.f_4.value;
-      var f_5=data.f_5.value;
-      var f_6=data.f_6.value;
-      var f_7=data.f_7.value;
-      var h_o_t=data.h_o_t.value;
-      var h_c_t=data.h_c_t.value;
-      var f_o_t=data.f_o_t.value;
-      var f_c_t=data.f_c_t.value;
-      var District=data.district.value;
-      var state=data.state.value;
-      var password=data.password.value;
-      var status="On";     
-      console.log(email+password) ;*/
-/*
-firebase.auth().signOut().then(() => {
-  console.log("logged out");*/
+    function Reg_Clinic(data){      
+        
+        //Admin Details
+         var name= $("#name").val();
+      var photo= $("#profile_photo").val();
+      var bday= $("#birthday").val();
+      var email = $("#email").val();
+      var passw=$("#pass").val();
+      var phone = $("#phone").val();
+      var aadhar=$("#aadhar").val();
 
-firebase.auth().createUserWithEmailAndPassword("mrX@gmail.com", "12345678")
-  .then(function(userCredential){
-    
-    var user = userCredential.user;   
+      //Clinic Details
+      var clinic_id=$("#clinic_id").val();
+      var address=$("#address").val();
+      var telephone=$("#telephone").val();
+      var website=$("#website").val();
+      
+      var h_1=$("#h_1").val();
+      var h_2=$("#h_2").val();
+      var h_3=$("#h_3").val();
+      var h_4=$("#h_4").val();
+      var h_5=$("#h_5").val();
+      var h_6=$("#h_6").val();
+      var h_7=$("#h_7").val();
+      var f_1=$("#f_1").val();
+      var f_2=$("#f_2").val();
+      var f_3=$("#f_3").val();
+      var f_4=$("#f_4").val();
+      var f_5=$("#f_5").val();
+      var f_6=$("#f_6").val();
+      var f_7=$("#f_7").val();
+      
+      var h_o_t=$("#h_o_t").val();
+      var h_c_t=$("#h_c_t").val();
+      var f_o_t=$("#f_o_t").val();
+      var f_c_t=$("#f_c_t").val();
 
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log("error");
-  });
- // console.log(" Sign-out successful");
-/*
-}).catch((error) => {
-  console.log(" Sign-out errorCode");
-});
-*/
-/*  firebase.database().ref('/clinic/' + clinic_id + '/Appointee/'+node).set({
-Age: age,
-Name: name,
-Gender : gender
-}).then(function() {
-window.location.href="/profile";
-}).catch(function(error) {
-console.log("addition failed: " + error.message)
-});*/
-}
+      var state=$("#stateId").val();
+      var district=$("#cityId").val();
+
+      var status=1;  
+
+      if(email.length>0 && passw.length>0 && state.length>0 && district.length>0){
+        //console.log(email+passw) ;
+        firebase.auth().signOut();
+        firebase.auth().createUserWithEmailAndPassword(email, passw).then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            //alert(user.uid);
+            alert("Please wait. Do not close the page.");
+            //update details to userInfo
+            user.updateProfile({
+                displayName: name,
+                phoneNumber: phone
+            }).catch(function(error) {
+                console.log(error.message);
+            });
+
+            //update clinic details
+            firebase.database().ref('/users/' + user.uid ).set({
+                Approved:0,
+                Clinic_id: clinic_id,
+                DOB: bday,
+                AadharNo: aadhar,
+                Verified:0,
+                Post:"Clinic_admin"
+            }).then(function(){
+                firebase.database().ref('/clinic/' + clinic_id ).set({
+                    Full_address:address,
+                    Status:status,
+                    Telephone:telephone,
+                    Website:website,
+                    HalfDays:{
+                        Days: h_1+" "+h_2+" "+h_3+" "+h_4+" "+h_5+" "+h_6+" "+h_7,
+                        TimeOpen: h_o_t,
+                        TimeClose: h_c_t
+                    },
+                    OpenDays:{
+                        Days: f_1+" "+f_2+" "+f_3+" "+f_4+" "+f_5+" "+f_6+" "+f_7,
+                        TimeOpen: f_o_t,
+                        TimeClose: f_c_t
+                    }
+                }).then(function(){
+                    firebase.database().ref('/Location/' + state + "/" + district).set({
+                            Clinic_id:clinic_id
+                    }).then(function(){
+                        alert("Details submitted successfully.");
+                        //reseting the form
+                        $("#registerClinic")[0].reset();
+                        $("#profile-pic").attr("src", "");
+                    }).catch(function(error) {
+                        console.log("addition failed: " + error.message)
+                    });
+                }).catch(function(error) {
+                console.log("addition failed: " + error.message)
+                });
+            }).catch(function(error) {
+                console.log("addition failed: " + error.message)
+            });
+        }).catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/invalid-email') {
+                alert('Email provided is invalid    .');
+            } else if (errorCode == 'auth/weak-password') {
+                alert('The password is too weak.');
+            } else {
+                alert(errorMessage);
+            }
+        });
+            
+        
+      }else{
+          return;
+      }  
+      /*firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                     // User is signed in.
+                    //window.location.href = "admin.html"
+                    alert(user.uid);
+                } 
+            });*/
+
+
+        //Send Verification Link for user-email
+            /*
+            {
+            var actionCodeSettings = {
+            url: 'https://vigour.herokuapp.com/',
+            iOS: {
+              bundleId: 'com.example.Vigour'
+            },
+            android: {
+              packageName: 'com.example.Vigour',
+              installApp: true
+            },
+            handleCodeInApp: true
+            };
+            firebase.auth().currentUser.sendEmailVerification()
+            .then(function() {
+                // Verification email sent.
+                alert("Email verification link is send to provided email. Click on the link to verify email.");
+            })
+            .catch(function(error) {
+              // Error occurred. Inspect error.code.
+            });*/
+    }
   </script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
 <!-- end document-->
