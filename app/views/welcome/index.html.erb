@@ -26,8 +26,7 @@
             measurementId: "G-0ZBXCN1DQ6"
         };
         firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        var database = firebase.database;
+        firebase.analytics();        
     </script>
 
 
@@ -47,7 +46,7 @@
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body onload="hide()" >
     <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -107,12 +106,12 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-10 col-lg-10">
                         <!-- Hero Caption -->
-                        <div class="hero__caption ">
+                        <div class="hero__caption " id = "SearchDoctor">
                             <h2 style="color: white; font-size: 5vh;">Best online Doctor's appointment scheduling platform!</h2>
                             <br>
                         </div>
                         <!--Hero form -->
-                        <form class="search-box mb-100">
+                        <form class="search-box mb-100" action="/listing">
                             <div class="select-form">
                                 <div class="select-itms">
                                     <select id="state" name="state" onchange="addCity()">
@@ -129,14 +128,14 @@
                             </div>
                             <div class="select-form" required>
                                 <div class="select-items">
-                                    <select id="category" >
+                                    <select id="category" name="category" >
                                         <option selected disabled value="" >Category</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="search-form" style="margin:0 auto;">
                                 <br>
-                                <button type="submit" class="btn" onclick="searchDoctors()"><i class="ti-search" ></i>Search</button>
+                                <button type='submit' class="btn"><i class="ti-search" ></i>Search</button>
                             </div>
                         </form>	
                     </div>
@@ -144,7 +143,10 @@
             </div>
         </div>
     </div>
+
     <!--Hero Area End-->
+
+
     <!--? Popular Locations Start 01-->
     <div class="popular-location border-bottom section-padding40">
         <div class="container">
@@ -369,7 +371,7 @@
                                     <div class="main-menu2">
                                         <nav>
                                             <ul>
-                                                <li><a href="#">Search Doctor</a></li>
+                                                <li><a href="#SearchDoctor">Search Doctor</a></li>
                                                 <li><a href="#TopDoctor">Top Doctors Rating</a></li>
                                                 <li><a href="#How">How to apply?</a></li> 
                                                 <li><a href="contact.html">Contact Us</a></li>
@@ -463,22 +465,7 @@
                     });  
                 }
 
-                /*function searchDoctors(){
-                    var state = document.getElementById("state").value;
-                    var city = document.getElementById("city").value;
-                    var category = document.getElementById("category").value;
-                    if(state=="" && city=="" && category!=""){
-                        var dbCategories = firebase.database().ref("Category/"+category);
-                        dbCategories.once("value").then(function(categories){
-                            categories.forEach(function(category){
-                                console.log(category.key +" " + category.val);   
-                            });
-                        });
-                    }else {
-
-                    }
-                }*/
-                
+        
             </script>
             <!-- JS here -->
 
