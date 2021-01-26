@@ -357,20 +357,51 @@
       var telephone=$("#telephone").val();
       var website=$("#website").val();
       
-      var h_1=$("#h_1").val();
-      var h_2=$("#h_2").val();
-      var h_3=$("#h_3").val();
-      var h_4=$("#h_4").val();
-      var h_5=$("#h_5").val();
-      var h_6=$("#h_6").val();
-      var h_7=$("#h_7").val();
-      var f_1=$("#f_1").val();
-      var f_2=$("#f_2").val();
-      var f_3=$("#f_3").val();
-      var f_4=$("#f_4").val();
-      var f_5=$("#f_5").val();
-      var f_6=$("#f_6").val();
-      var f_7=$("#f_7").val();
+      var h_1="",h_2="",h_3="",h_4="",h_5="",h_6="",h_7="";
+      var f_1="",f_2="",f_3="",f_4="",f_5="",f_6="",f_7="";
+
+        if($("#h_1").is(":checked")){
+            h_1=$("#h_1").val()+" ";
+        }
+      if($("#h_2").is(":checked")){
+             h_2=$("#h_2").val()+" ";
+        }
+      if($("#h_3").is(":checked")){
+             h_3=$("#h_3").val()+" ";
+        }
+      if($("#h_4").is(":checked")){
+             h_4=$("#h_4").val()+" ";
+        }
+      if($("#h_5").is(":checked")){
+             h_5=$("#h_5").val()+" ";
+        }
+      if($("#h_6").is(":checked")){
+             h_6=$("#h_6").val()+" ";
+        }
+      if($("#h_7").is(":checked")){
+             h_7=$("#h_7").val()+" ";
+        }
+      if($("#f_1").is(":checked")){
+             f_1=$("#f_1").val()+" ";
+        }
+      if($("#f_2").is(":checked")){
+             f_2=$("#f_2").val()+" ";
+        }
+      if($("#f_3").is(":checked")){
+             f_3=$("#f_3").val()+" ";
+        }
+      if($("#f_4").is(":checked")){
+             f_4=$("#f_4").val()+" ";
+        }
+      if($("#f_5").is(":checked")){
+             f_5=$("#f_5").val()+" ";
+        }
+      if($("#f_6").is(":checked")){
+             f_6=$("#f_6").val()+" ";
+        }
+      if($("#f_7").is(":checked")){
+             f_7=$("#f_7").val()+" ";
+        }
       
       var h_o_t=$("#h_o_t").val();
       var h_c_t=$("#h_c_t").val();
@@ -381,7 +412,7 @@
       var district=$("#cityId").val();
 
       var status=1;  
-
+        
       if(email.length>0 && passw.length>0 && state.length>0 && district.length>0){
         //console.log(email+passw) ;
         firebase.auth().signOut();
@@ -413,12 +444,12 @@
                     Telephone:telephone,
                     Website:website,
                     HalfDays:{
-                        Days: h_1+" "+h_2+" "+h_3+" "+h_4+" "+h_5+" "+h_6+" "+h_7,
+                        Days: h_1+h_2+h_3+h_4+h_5+h_6+h_7,
                         TimeOpen: h_o_t,
                         TimeClose: h_c_t
                     },
                     OpenDays:{
-                        Days: f_1+" "+f_2+" "+f_3+" "+f_4+" "+f_5+" "+f_6+" "+f_7,
+                        Days: f_1+f_2+f_3+f_4+f_5+f_6+f_7,
                         TimeOpen: f_o_t,
                         TimeClose: f_c_t
                     }
