@@ -271,6 +271,7 @@
                             </ul>
                         </li>
 
+<<<<<<< HEAD
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                                 aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
                                     class="hide-menu"> Doctor</span></a>
@@ -360,6 +361,31 @@
                                         <input type="checkbox" required class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">I
                                             accept <a href="#">Terms and Conditions</a></label>
+=======
+                <div class="form-group">
+                    <label for="emailaddress">Doctor Id</label>
+                    <input class="form-control" type="number" min="1" maxlength = "8" max = 99999999  id="d_id" name="d_id"
+                    required="" placeholder="Doctor Id">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Category</label>
+                    <input class="form-control" type="text" required=""
+                    id="d_category" name="d_category" placeholder="Enter your Category">
+                </div>
+                <div class="form-group">
+                    <label for="d_description">Description</label>
+                    <textarea class="form-control" id="d_description" name="d_description" rows="3" cols="35"></textarea>
+                </div>
+               
+                 <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="d_status">Select</label>
+                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                            <option disabled="" selected>Choose...</option>
+                                            <option value="1">Available</option>
+                                            <option value="0">Not Available</option>
+                                        </select>
+>>>>>>> a5c8f77da470f3853209829b0c588d24b266a7e7
                                     </div>
                                 </div>
 
@@ -440,12 +466,57 @@
 
                         </form>
 
+<<<<<<< HEAD
+=======
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Add Doctor modal content -->
+<div id="update_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Update Doctor
+            </h1>
+        </div>
+        <div class="modal-body">
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return update_doctor(this)">
+                <div class="form-group">
+                    <label for="emailaddress">Doctor Id</label>
+                    <input class="form-control" type="number" min="1" maxlength = "8" max = 99999999  id="d_id" name="d_id"
+                    required="" placeholder="Doctor Id">
+                </div>
+                <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="d_status">Select</label>
+                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                            <option disabled="" selected>Choose...</option>
+                                            <option value="1">Available</option>
+                                            <option value="0">Not Available</option>
+                                        </select>
+                                    </div>
+                <div class="form-group">
+                    <label for="password">Start Timing</label>
+                    <input class="form-control" type="time" 
+                    id="d_starttime" name="d_starttime" placeholder="Timing">
+                </div>
+                <div class="form-group">
+                    <label for="password">End Timing</label>
+                    <input class="form-control" type="time" 
+                    id="d_endtime" name="d_endtime" placeholder="Timing">
+                </div>
+                 <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Update Doctor</button>
+>>>>>>> a5c8f77da470f3853209829b0c588d24b266a7e7
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
 
+<<<<<<< HEAD
         <!-- Add Receptionist modal content -->
         <div id="Add_receptionist-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
@@ -454,6 +525,32 @@
                         <h1>
                             Add Receptionist
                         </h1>
+=======
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Delete doctor modal content -->
+<div id="Delete_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Delete Doctor
+            </h1>
+        </div>
+        <div class="modal-body">
+            <form class="pl-3 pr-3" id="formEl" onsubmit="Delete_doctor(this)">
+                
+                <div class="form-group">
+                    <label for="emailaddress">Doctor Id</label>
+                    <input class="form-control" type="number" min="1" maxlength = "12"  id="d_id" name="d_id"
+                    required="" placeholder="Enter Doctor Id">
+                </div>
+                   <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Delete Doctor</button>
+>>>>>>> a5c8f77da470f3853209829b0c588d24b266a7e7
                     </div>
                     <div class="modal-body">
                         <!-- ,certificate_img,description,status,timing 1 and timing 2-->
@@ -495,8 +592,35 @@
                                     <button class="btn btn-primary" form="formE1" onclick="Add_receptionist(this)" type="submit">Add Receptionist</button>
                                 </div>
 
+<<<<<<< HEAD
                             
 
+=======
+                <div class="form-group">
+                    <label for="emailaddress">Aadhar Number</label>
+                    <input class="form-control" type="number" min="900000000000" max="999999999999" maxlength = "12" minlength = "12" id="r_aadhar" name="r_aadhar"
+                    required="" placeholder="Enter your Aadhar Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Email</label>
+                    <input class="form-control" type="email" required=""
+                    id="r_email" name="r_email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="d_status">Phone Number</label>
+                    <input class="form-control" type="tel" maxlength = "12" minlength = "10"  required=""
+                    id="r_phoneno" name="r_phoneno" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="password">Address</label>
+                    <input class="form-control" type="text" required=""
+                    id="r_address" name="r_address" placeholder="Address">
+                </div>
+                
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Add Receptionist</button>
+>>>>>>> a5c8f77da470f3853209829b0c588d24b266a7e7
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -527,6 +651,35 @@
 
                             </form>
 
+<<<<<<< HEAD
+=======
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Delete Receptionist modal content -->
+<div id="Delete_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
+aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="text-center mt-2 mb-3">
+            <h1>
+                Delete Receptionist
+            </h1>
+        </div>
+        <div class="modal-body">
+            <! ,certificate_img,description,status,timing 1 and timing 2-->
+            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_receptionist(this)">
+                
+                <div class="form-group">
+                    <label for="emailaddress">Aadhar Number</label>
+                    <input class="form-control" type="number" maxlength = "12" minlength = "12" min="900000000000" max="999999999999" id="r_aadhar" name="r_aadhar"
+                    required="" placeholder="Enter your Aadhar Number">
+                </div>
+                   <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Delete Receptionist</button>
+>>>>>>> a5c8f77da470f3853209829b0c588d24b266a7e7
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

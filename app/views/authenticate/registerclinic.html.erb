@@ -78,15 +78,15 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Name</label>
-                                    <input class="input--style-4" required type="text" name="name" id="name">
+                                    <input class="input--style-4" maxlength = "12" minlength = "3" required type="text" name="name" id="name">
                                 </div>
                             </div>
                                 <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group">
-                                        <input class="input--style-4 js-datepicker" required type="text" name="birthday" id="birthday">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        <input class="input--style-4" required type="date" name="birthday" id="birthday">
+                                        <!--i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i-->
                                     </div>
                                 </div>
                         </div>
@@ -101,7 +101,7 @@
                             <div class="col-2">
                               <div class="input-group">
                                     <label class="label">Create Password</label>
-                                    <input type="password" class="input--style-4" required name="pass" id="pass">
+                                    <input type="password"  maxlength = "18" minlength = "8" class="input--style-4" required name="pass" id="pass">
                                 </div>
                             </div>
                             
@@ -110,13 +110,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Aadhar number</label>
-                                    <input class="input--style-4" type="text" required name="aadhar" id="aadhar">
+                                    <input class="input--style-4" type="number"  min="100000000000" max="999999999999"  maxlength = "12" minlength = "10" required name="aadhar" id="aadhar">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" required="" name="phone" id="phone">
+                                    <input class="input--style-4" type="tel" maxlength = "12" minlength = "10" required="" name="phone" id="phone">
                                 </div>
                             </div>  
                             
@@ -130,7 +130,7 @@
                         <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Clinic id</label>
-                                    <input class="input--style-4" type="text" required name="clinic_id" id="clinic_id">
+                                    <input class="input--style-4" type="number" maxlength = "8" min="1" required name="clinic_id" id="clinic_id">
                                 </div>
                             </div>
                         <div class="col-2">
@@ -148,7 +148,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Telephone/Mobile No.</label>
-                                    <input class="input--style-4" type="tel" required name="telephone" id="telephone">
+                                    <input class="input--style-4" type="tel" maxlength = "12" minlength = "10" required name="telephone" id="telephone">
                                 </div>
                             </div>
                             <div class="col-2">
