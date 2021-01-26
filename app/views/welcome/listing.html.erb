@@ -45,7 +45,7 @@
         firebase.analytics();        
     </script>
 </head>
-<body>
+<body onload="searchDoctors()">
     <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -132,7 +132,7 @@
                             </div>
                             <div class="search-form" style="margin:0 auto;">
                                 <br>
-                                <button type='submit' class="btn"><i class="ti-search" ></i>Search</button>
+                                <button type='submit' onclick="searchDoctors()" class="btn"><i class="ti-search" ></i>Search</button>
                             </div>
                         </form>	
                     </div>
@@ -265,127 +265,8 @@
                 </div>
                 <!--? Popular Directory Start -->
                 <div class="popular-directorya-area fix">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties1.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties2.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <!-- Single -->
-                                <div class="properties properties2 mb-30">
-                                    <div class="properties__card">
-                                        <div class="properties__img overlay1">
-                                            <a href="#"><img src="assets/img/gallery/properties3.png" alt=""></a>
-                                            <div class="img-text">
-                                                <span>$$$</span>
-                                                <span>Closed</span>
-                                            </div>
-                                            <div class="icon">
-                                                <img src="assets/img/gallery/categori_icon1.png" alt=""> 
-                                            </div>
-                                        </div>
-                                        <div class="properties__caption">
-                                            <h3><a href="#">Urban areas</a></h3>
-                                            <p>Let's uncover the best places to eat, drink</p>
-                                        </div>
-                                        <div class="properties__footer d-flex justify-content-between align-items-center">
-                                            <div class="restaurant-name">
-                                                <img src="assets/img/gallery/restaurant-icon.png" alt="">
-                                                <h3>Food & Restaurant</h3>
-                                            </div>
-                                            <div class="heart">
-                                                <img src="assets/img/gallery/heart1.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row" id="listing">                            
+                            
                         </div>
                 </div>
                 <!--? Popular Directory End -->
@@ -515,22 +396,62 @@
             </script> 
     <script type="text/javascript">
          function searchDoctors(){
-                    var state = document.getElementById("state").value;
-                    var city = document.getElementById("city").value;
-                    var category = document.getElementById("category").value;
-                    if(state=="" && city=="" && category!=""){
-                        var dbCategories = firebase.database().ref("Category/"+category);
+                    let params = (new URL(document.location)).searchParams;                
+                    var state = params.get("state");
+                    var city = params.get("city");
+                    var category = params.get("category");
+                    var name;
+                    var clinic_address;
+                    var docStartTime;
+                    var docEndTime;            
+                    var clinic_id;
+                console.log(state+"  "+city+"  "+category);
+
+                    if(state==null && city==null && category!=""){
                         
-/*
-                        dbCategories.once("value").then(function(categories){
-                            categories.forEach(function(category){
-                                console.log(category.key +" " + category.val);   
-                            });
-                        });*/
-                    }else if(state!="" && city!="" && category!=""){
 
+       firebase.database().ref("Category/"+category).once('value').then((snapshot) => {
+            
+            if(snapshot.exists()){
+              snapshot.forEach(function(data){  
+                var status;  
+                var status1;                  
+                var doc_id=data.key;   
+                console.log(doc_id);                                                            
+                    firebase.database().ref("doctor/"+doc_id).once('value').then((snapshot1) => {
+                            status=snapshot1.val().Status;
+                            clinic_id=snapshot1.val().Clinic_id;
+                            console.log(clinic_id+status);
+                            if(status=="1"){
+                                        firebase.database().ref("clinic/"+clinic_id).once('value').then((snapshot) => {
+                                            status1=snapshot.val().Status;
 
-                    }
+                                            if(status1=="1"){
+                                                clinic_address=snapshot.val().Full_address;
+                                                name=snapshot1.val().Name;
+                                                docStartTime=snapshot1.val().Timing_1;
+                                                docEndTime=snapshot1.val().Timing_2;
+                                                
+document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a href=''><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><img src='assets/img/gallery/restaurant-icon.png'><h3>"+category+"</h3></div><div class='heart'><img src='assets/img/gallery/heart1.png'></div></div></div></div></div>";
+                                            
+
+                                            }else{
+                                                console.log("status 0 for clinic "+clinic_id);
+                                            }
+                                        });
+
+                            }else{                                
+                                console.log("status 0 for doctor "+doc_id);
+                            }
+                    });
+            }); 
+        }
+      });
+            
+                    }else{ if(state!=null && city!=null && category!=null){
+
+console.log("no params");
+                    }}
                 }
     </script>
 
