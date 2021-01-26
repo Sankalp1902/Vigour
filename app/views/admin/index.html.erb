@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
     <script type="text/javascript">
-     var firebaseConfig = {
+        var firebaseConfig = {
             apiKey: "AIzaSyCp1RFkfg83VbZNUoExp3f63N0lOAXkraU",
             authDomain: "vigourservice-2426b.firebaseapp.com",
             databaseURL: "https://vigourservice-2426b-default-rtdb.firebaseio.com",
@@ -20,21 +21,21 @@
         firebase.analytics();
 
         var database = firebase.database();
-        firebase.auth().onAuthStateChanged(user => {  
-            if(user) { 
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
                 var userId = firebase.auth().currentUser.uid;
                 return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
                     var Post = (snapshot.val() && snapshot.val().Post);
-                    if(Post!="Clinic_admin"){
-                        window.location.href="/authenticate";
+                    if (Post != "Clinic_admin") {
+                        window.location.href = "/authenticate";
                     }
                 });
             }
-            else{
-                window.location.href="/authenticate";
+            else {
+                window.location.href = "/authenticate";
             }
         })
-    </script>    
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -65,16 +66,16 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
-    <!-- ============================================================== -->
-    <!-- Topbar header - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <header class="topbar" data-navbarbg="skin6">
-        <nav class="navbar top-navbar navbar-expand-md">
-            <div class="navbar-header" data-logobg="skin6">
-                <!-- This is for the sidebar toggle which is visible on mobile only -->
-                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                    class="ti-menu ti-close"></i></a>
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
@@ -83,7 +84,8 @@
                         <a href="index.html">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="assets/img/logo/logo-dark.png" alt="homepage" width="110%" class="dark-logo" />
+                                <img src="assets/img/logo/logo-dark.png" alt="homepage" width="110%"
+                                    class="dark-logo" />
                             </b>
                         </a>
                     </div>
@@ -94,10 +96,10 @@
                     <!-- Toggle which is visible on mobile only -->
                     <!-- ============================================================== -->
                     <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
-                    data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
-                    class="ti-more"></i></a>
-            </div>
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                            class="ti-more"></i></a>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
@@ -109,853 +111,1038 @@
                         <!-- Notification -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
-                            id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <span><i data-feather="bell" class="svg-icon"></i></span>
-                            <span class="badge badge-primary notify-no rounded-circle">5</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
-                            <ul class="list-style-none">
-                                <li>
-                                    <div class="message-center notifications position-relative">
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)"
-                                        class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <div class="btn btn-danger rounded-circle btn-circle"><i
-                                            data-feather="airplay" class="text-white"></i></div>
-                                            <div class="w-75 d-inline-block v-middle pl-2">
-                                                <h6 class="message-title mb-0 mt-1">Launch Admin</h6>
-                                                <span class="font-12 text-nowrap d-block text-muted">Just see
-                                                    the my new
-                                                admin!</span>
-                                                <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)"
-                                        class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                        <span class="btn btn-success text-white rounded-circle btn-circle"><i
-                                            data-feather="calendar" class="text-white"></i></span>
-                                            <div class="w-75 d-inline-block v-middle pl-2">
-                                                <h6 class="message-title mb-0 mt-1">Event today</h6>
-                                                <span
-                                                class="font-12 text-nowrap d-block text-muted text-truncate">Just
-                                            a reminder that you have event</span>
-                                            <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)"
-                                    class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                    <span class="btn btn-info rounded-circle btn-circle"><i
-                                        data-feather="settings" class="text-white"></i></span>
-                                        <div class="w-75 d-inline-block v-middle pl-2">
-                                            <h6 class="message-title mb-0 mt-1">Settings</h6>
-                                            <span
-                                            class="font-12 text-nowrap d-block text-muted text-truncate">You
-                                        can customize this templateas you want</span>
-                                        <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
-                                    </div>
-                                </a>
+                                id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span><i data-feather="bell" class="svg-icon"></i></span>
+                                <span class="badge badge-primary notify-no rounded-circle">5</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
+                                <ul class="list-style-none">
+                                    <li>
+                                        <div class="message-center notifications position-relative">
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)" 
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <div class="btn btn-danger rounded-circle btn-circle"><i
+                                                        data-feather="airplay" class="text-white"></i></div>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Launch Admin</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted">Just see
+                                                        the my new
+                                                        admin!</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-success text-white rounded-circle btn-circle"><i
+                                                        data-feather="calendar" class="text-white"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Event today</h6>
+                                                    <span
+                                                        class="font-12 text-nowrap d-block text-muted text-truncate">Just
+                                                        a reminder that you have event</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)"
+                                                class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <span class="btn btn-info rounded-circle btn-circle"><i
+                                                        data-feather="settings" class="text-white"></i></span>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">Settings</h6>
+                                                    <span
+                                                        class="font-12 text-nowrap d-block text-muted text-truncate">You
+                                                        can customize this templateas you want</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">9:08 AM</span>
+                                                </div>
+                                            </a>
 
+                                        </div>
+
+
+                                    </li>
+                                    <li>
+                                        <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
+                                            <strong>Check all notifications</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </li>
-                        <li>
-                            <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
-                                <strong>Check all notifications</strong>
-                                <i class="fa fa-angle-right"></i>
+                        <!-- End Notification -->
+                        <!-- ============================================================== -->
+                        <!-- create new -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i data-feather="settings" class="svg-icon"></i>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
                         </li>
+
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="" id="profile-photo" alt="user" class="rounded-circle" width="40">
+                                <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> 
+                                <span class="text-dark" id="name"></span>
+                                 <i data-feather="chevron-down" class="svg-icon"></i></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    My Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout"><i data-feather="power"
+                                        class="svg-icon mr-2 ml-1"></i>
+                                    Logout</a>
+                                                               
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
                     </ul>
                 </div>
-            </li>
-            <!-- End Notification -->
-            <!-- ============================================================== -->
-            <!-- create new -->
-            <!-- ============================================================== -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i data-feather="settings" class="svg-icon"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-
-    </ul>
-    <!-- ============================================================== -->
-    <!-- Right side toggle and nav items -->
-    <!-- ============================================================== -->
-    <ul class="navbar-nav float-right">
+            </nav>
+        </header>
         <!-- ============================================================== -->
-        <!-- User profile and search -->
+        <!-- End Topbar header -->
         <!-- ============================================================== -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img src="" id="profile-photo" alt="user" class="rounded-circle"
-            width="40">
-            <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
-            class="text-dark" id="name" ></span> <i data-feather="chevron-down"
-            class="svg-icon"></i></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
-                class="svg-icon mr-2 ml-1"></i>
-            My Profile</a>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
-                class="svg-icon mr-2 ml-1"></i>
-            My Balance</a>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
-                class="svg-icon mr-2 ml-1"></i>
-            Inbox</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
-                class="svg-icon mr-2 ml-1"></i>
-            Account Setting</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/logout"><i data-feather="power"
-                class="svg-icon mr-2 ml-1"></i>
-            Logout</a>
-            <div class="dropdown-divider"></div>
-            <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-            Profile</a></div>
-        </div>
-    </li>
-    <!-- ============================================================== -->
-    <!-- User profile and search -->
-    <!-- ============================================================== -->
-</ul>
-</div>
-</nav>
-</header>
-<!-- ============================================================== -->
-<!-- End Topbar header -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-<aside class="left-sidebar" data-sidebarbg="skin6">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar" data-sidebarbg="skin6">
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
-                    aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
-                    class="hide-menu">Admin Dashboard</span></a>
-                </li>
-                <li class="list-divider">
-                </li>
-                <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
-                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-                    aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                    class="hide-menu">Receptionist</span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal" data-target="#Add_receptionist-modal">Add Receptionist</button>
-                    </li>
-                    <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal" data-target="#Delete_receptionist-modal">Close Receptionist</button>
-                </li>
-            </ul>
-        </li>
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/admin"
+                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                    class="hide-menu">Admin Dashboard</span></a>
+                        </li>
+                        <li class="list-divider">
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">All Appointments</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">View All Receptionist</span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/allDoctors"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">View All Doctors</span></a>
+                        </li>
+                        <br>
+                        <li class="nav-small-cap"><span class="hide-menu">More Settings</span></li>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">Receptionist</span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><button type="button" class="sidebar-link"
+                                        style="border: none;" data-toggle="modal"
+                                        data-target="#Add_receptionist-modal">Add Receptionist</button>
+                                </li>
+                                <li class="sidebar-item"><button type="button" class="sidebar-link"
+                                        style="border: none;" data-toggle="modal"
+                                        data-target="#Delete_receptionist-modal">Close Receptionist</button>
+                                </li>
+                            </ul>
+                        </li>
 
-        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
-            aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
-            class="hide-menu"> Doctor </span></a>
-            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
-                    data-target="#signup-modal">Add doctor</button>
-                </li>
-                <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
-                    data-target="#update_doctor-modal">Update Doctor </button>
-            </li>
-            <li class="sidebar-item"><button type="button" class="sidebar-link" style="border: none;" data-toggle="modal"
-                    data-target="#Delete_doctor-modal">Delete Doctor </button>
-        </li>
-    </ul>
-</li>
-</ul>
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                aria-expanded="false"><i data-feather="grid" class="feather-icon"></i><span
+                                    class="hide-menu"> Doctor</span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><button type="button" class="sidebar-link"
+                                        style="border: none;" data-toggle="modal" data-target="#signup-modal">Add
+                                        doctor</button>
+                                </li>
+                                <li class="sidebar-item"><button type="button" class="sidebar-link"
+                                        style="border: none;" data-toggle="modal"
+                                        data-target="#update_doctor-modal">Update Doctor </button>
+                                </li>
+                                <li class="sidebar-item"><button type="button" class="sidebar-link"
+                                        style="border: none;" data-toggle="modal"
+                                        data-target="#Delete_doctor-modal">Delete Doctor </button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/feedbacks"
+                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                                    class="hide-menu">Clinic Feedbacks</span></a>
+                        </li>
+                    </ul>
 
-</nav>
-<!-- End Sidebar navigation -->
-</div>
-<!-- End Sidebar scroll-->
-</aside>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
 
-<!-- update Doctor modal content -->
-<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="text-center mt-2 mb-3">
-            <h1>
-                Add Doctor
-            </h1>
-        </div>
-        <div class="modal-body">
-            <! ,certificate_img,description,status,timing 1 and timing 2-->
-            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_doctor(this)">
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input class="form-control" type="text"  id="d_name" name="d_name"
-                    required="" placeholder="Name">
-                </div>
+        <!-- update Doctor modal content -->
+        <div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center mt-2 mb-3">
+                        <h1>
+                            Add Doctor
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <!-- ,certificate_img,description,status,timing 1 and timing 2-->
+                            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_doctor(this)">
+                                <div class="form-group">
+                                    <label for="username">Name</label>
+                                    <input class="form-control" type="text" id="d_name" name="d_name" required=""
+                                        placeholder="Name">
+                                </div>
 
-                <div class="form-group">
-                    <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
-                    required="" placeholder="Doctor Id">
-                </div>
+                                <div class="form-group">
+                                    <label for="emailaddress">Doctor Id</label>
+                                    <input class="form-control" type="number" min="1" id="d_id" name="d_id" required=""
+                                        placeholder="Doctor Id">
+                                </div>
 
-                <div class="form-group">
-                    <label for="password">Category</label>
-                    <input class="form-control" type="text" required=""
-                    id="d_category" name="d_category" placeholder="Enter your Category">
-                </div>
-                <div class="form-group">
-                    <label for="d_description">Description</label>
-                    <textarea class="form-control" id="d_description" name="d_description" rows="3" cols="35"></textarea>
-                </div>
-               
-                 <div class="form-group mb-4">
-                                        <label class="mr-sm-2" for="d_status">Select</label>
-                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
-                                            <option disabled="" selected>Choose...</option>
-                                            <option value="1">Available</option>
-                                            <option value="0">Unavailable</option>
-                                        </select>
+                                <div class="form-group">
+                                    <label for="password">Category</label>
+                                    <input class="form-control" type="text" required="" id="d_category"
+                                        name="d_category" placeholder="Enter your Category">
+                                </div>
+                                <div class="form-group">
+                                    <label for="d_description">Description</label>
+                                    <textarea class="form-control" id="d_description" name="d_description" rows="3"
+                                        cols="35"></textarea>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label class="mr-sm-2" for="d_status">Select</label>
+                                    <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                        <option disabled="" selected>Choose...</option>
+                                        <option value="1">Available</option>
+                                        <option value="0">Unavailable</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Start Timing</label>
+                                    <input class="form-control" type="time" required="" id="d_starttime"
+                                        name="d_starttime" placeholder="Timing">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">End Timing</label>
+                                    <input class="form-control" type="time" required="" id="d_endtime" name="d_endtime"
+                                        placeholder="Timing">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" required class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">I
+                                            accept <a href="#">Terms and Conditions</a></label>
                                     </div>
-                <div class="form-group">
-                    <label for="password">Start Timing</label>
-                    <input class="form-control" type="time" required=""
-                    id="d_starttime" name="d_starttime" placeholder="Timing">
-                </div>
-                <div class="form-group">
-                    <label for="password">End Timing</label>
-                    <input class="form-control" type="time" required=""
-                    id="d_endtime" name="d_endtime" placeholder="Timing">
-                </div>
+                                </div>
 
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" required class="custom-control-input"
-                        id="customCheck1">
-                        <label class="custom-control-label" for="customCheck1">I
-                            accept <a href="#">Terms and Conditions</a></label>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">Add Doctor</button>
+                                </div>
+
+                            </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- Add Doctor modal content -->
+        <div id="update_doctor-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center mt-2 mb-3">
+                        <h1>
+                            Update Doctor
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return update_doctor(this)">
+                            <div class="form-group">
+                                <label for="emailaddress">Doctor Id</label>
+                                <input class="form-control" type="number" min="1" id="d_id" name="d_id" required=""
+                                    placeholder="Doctor Id">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="mr-sm-2" for="d_status">Select</label>
+                                <select class="custom-select mr-sm-2" name="d_status" id="d_status">
+                                    <option disabled="" selected>Choose...</option>
+                                    <option value="1">Available</option>
+                                    <option value="0">Unavailable</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Start Timing</label>
+                                <input class="form-control" type="time" id="d_starttime" name="d_starttime"
+                                    placeholder="Timing">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">End Timing</label>
+                                <input class="form-control" type="time" id="d_endtime" name="d_endtime"
+                                    placeholder="Timing">
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" type="submit">Update Doctor</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- Delete doctor modal content -->
+        <div id="Delete_doctor-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center mt-2 mb-3">
+                        <h1>
+                            Delete Doctor
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <form class="pl-3 pr-3" id="formEl" onsubmit="Delete_doctor(this)">
+
+                            <div class="form-group">
+                                <label for="emailaddress">Doctor Id</label>
+                                <input class="form-control" type="number" min="1" id="d_id" name="d_id" required=""
+                                    placeholder="Enter Doctor Id">
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary" type="submit">Delete Doctor</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- Add Receptionist modal content -->
+        <div id="Add_receptionist-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center mt-2 mb-3">
+                        <h1>
+                            Add Receptionist
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <!-- ,certificate_img,description,status,timing 1 and timing 2-->
+                            <form class="pl-3 pr-3" onsubmit="return false;" id="formEl">
+                                <div class="form-group">
+                                    <label for="r_name">Name</label>
+                                    <input class="form-control" type="text" id="r_name" name="r_name" required=""
+                                        placeholder="Name">
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="r_aadhar">Aadhar Number</label>
+                                    <input class="form-control" type="number" min="100000000000" max="999999999999"
+                                        id="r_aadhar" name="r_aadhar" required=""
+                                        placeholder="Enter your Aadhar Number">
+                                        
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="r_email">Email</label>
+                                    <input class="form-control" type="email" required="" id="r_email" name="r_email"
+                                        placeholder="Email">
+                                        
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="r_phoneno">Phone Number</label>
+                                    <input class="form-control" type="number" min="1000000000" max="9999999999"
+                                        required="" id="r_phoneno" name="r_phoneno" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <label for=""r_address">Address</label>
+                                    <input class="form-control" type="text" required="" id="r_address" name="r_address"
+                                        placeholder="Address">
+                                </div>
+                            </form>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" form="formE1" onclick="Add_receptionist(this)" type="submit">Add Receptionist</button>
+                                </div>
+
+                            
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Delete Receptionist modal content -->
+        <div id="Delete_receptionist-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center mt-2 mb-3">
+                        <h1>
+                            Delete Receptionist
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <!-- ,certificate_img,description,status,timing 1 and timing 2-->
+                            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_receptionist(this)">
+
+                                <div class="form-group">
+                                    <label for="emailaddress">Aadhar Number</label>
+                                    <input class="form-control" type="number" min="900000000000" max="999999999999"
+                                        id="r_aadhar" name="r_aadhar" required=""
+                                        placeholder="Enter your Aadhar Number">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary" type="submit">Delete Receptionist</button>
+                                </div>
+
+                            </form>
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1" id="greeting"></h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Clinic Admin</a>
+                                    </li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
-
-                    <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit">Add Doctor</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- Add Doctor modal content -->
-<div id="update_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="text-center mt-2 mb-3">
-            <h1>
-                Update Doctor
-            </h1>
-        </div>
-        <div class="modal-body">
-            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return update_doctor(this)">
-                <div class="form-group">
-                    <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
-                    required="" placeholder="Doctor Id">
                 </div>
-                <div class="form-group mb-4">
-                                        <label class="mr-sm-2" for="d_status">Select</label>
-                                        <select class="custom-select mr-sm-2" name="d_status" id="d_status">
-                                            <option disabled="" selected>Choose...</option>
-                                            <option value="1">Available</option>
-                                            <option value="0">Unavailable</option>
-                                        </select>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- *************************************************************** -->
+                <!-- Start First Cards -->
+                <!-- *************************************************************** -->
+                <div class="card-group">
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">236</h2>
+
                                     </div>
-                <div class="form-group">
-                    <label for="password">Start Timing</label>
-                    <input class="form-control" type="time" 
-                    id="d_starttime" name="d_starttime" placeholder="Timing">
-                </div>
-                <div class="form-group">
-                    <label for="password">End Timing</label>
-                    <input class="form-control" type="time" 
-                    id="d_endtime" name="d_endtime" placeholder="Timing">
-                </div>
-                 <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit">Update Doctor</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- Delete doctor modal content -->
-<div id="Delete_doctor-modal" class="modal fade" tabindex="-1" role="dialog"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="text-center mt-2 mb-3">
-            <h1>
-                Delete Doctor
-            </h1>
-        </div>
-        <div class="modal-body">
-            <form class="pl-3 pr-3" id="formEl" onsubmit="Delete_doctor(this)">
-                
-                <div class="form-group">
-                    <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
-                    required="" placeholder="Enter Doctor Id">
-                </div>
-                   <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit">Delete Doctor</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- Add Receptionist modal content -->
-<div id="Add_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="text-center mt-2 mb-3">
-            <h1>
-                Add Receptionist
-            </h1>
-        </div>
-        <div class="modal-body">
-            <! ,certificate_img,description,status,timing 1 and timing 2-->
-            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Add_receptionist(this)">
-                <div class="form-group">
-                    <label for="username">Name</label>
-                    <input class="form-control" type="text"  id="r_name" name="r_name"
-                    required="" placeholder="Name">
-                </div>
-
-                <div class="form-group">
-                    <label for="emailaddress">Aadhar Number</label>
-                    <input class="form-control" type="number" min="900000000000" max="999999999999" id="r_aadhar" name="r_aadhar"
-                    required="" placeholder="Enter your Aadhar Number">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Email</label>
-                    <input class="form-control" type="email" required=""
-                    id="r_email" name="r_email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="d_status">Phone Number</label>
-                    <input class="form-control" type="number" min="1000000000" max="9999999999" required=""
-                    id="r_phoneno" name="r_phoneno" placeholder="Phone Number">
-                </div>
-                <div class="form-group">
-                    <label for="password">Address</label>
-                    <input class="form-control" type="text" required=""
-                    id="r_address" name="r_address" placeholder="Address">
-                </div>
-                
-                    <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit">Add Receptionist</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Delete Receptionist modal content -->
-<div id="Delete_receptionist-modal" class="modal fade" tabindex="-1" role="dialog"
-aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="text-center mt-2 mb-3">
-            <h1>
-                Delete Receptionist
-            </h1>
-        </div>
-        <div class="modal-body">
-            <! ,certificate_img,description,status,timing 1 and timing 2-->
-            <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return Delete_receptionist(this)">
-                
-                <div class="form-group">
-                    <label for="emailaddress">Aadhar Number</label>
-                    <input class="form-control" type="number" min="900000000000" max="999999999999" id="r_aadhar" name="r_aadhar"
-                    required="" placeholder="Enter your Aadhar Number">
-                </div>
-                   <div class="form-group text-center">
-                        <button class="btn btn-primary" type="submit">Delete Receptionist</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- ============================================================== -->
-<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Page wrapper  -->
-<!-- ============================================================== -->
-<div class="page-wrapper">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-7 align-self-center">
-                <h3 class="page-title text-truncate text-dark font-weight-medium mb-1" id="greeting"></h3>
-                <div class="d-flex align-items-center">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb m-0 p-0">
-                            <li class="breadcrumb-item"><a href="index.html">Clinic Admin</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
-        <!-- *************************************************************** -->
-        <!-- Start First Cards -->
-        <!-- *************************************************************** -->
-        <div class="card-group">
-            <div class="card border-right">
-                <div class="card-body">
-                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                        <div>
-                            <div class="d-inline-flex align-items-center">
-                                <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-
-                            </div>
-                            <a href="/patient"><h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">View patient</h6></a>
-                        </div>
-                        <div class="ml-auto mt-md-3 mt-lg-0"><a>
-                            <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card border-right">
-                <div class="card-body">
-                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                        <div>
-                            <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">18,306</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Doctor Status
-                            </h6>
-                        </div>
-                        <div class="ml-auto mt-md-3 mt-lg-0">
-                            <span class="opacity-7 text-muted"><i class="fa fa-check" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card border-right">
-                <div class="card-body">
-                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                        <div>
-                            <div class="d-inline-flex align-items-center">
-                                <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                            </div>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Appointment Status</h6>
-                        </div>
-                        <div class="ml-auto mt-md-3 mt-lg-0">
-                            <span class="opacity-7 text-muted"><i class="fa fa-file" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                        <a href="/feedbacks">
-                        <div>
-                            <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Feedback</h6>
-                        </div>
-                    </a>
-                        <div class="ml-auto mt-md-3 mt-lg-0">
-                            <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- *************************************************************** -->
-        <!-- End First Cards -->
-        <!-- *************************************************************** -->
-        <!-- *************************************************************** -->
-        <!-- Start Sales Charts Section -->
-        <!-- *************************************************************** -->
-        <div class="row">
-            <div class="col-lg-4 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Total Sales</h4>
-                        <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
-                        <ul class="list-style-none mb-0">
-                            <li>
-                                <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                                <span class="text-muted">Direct Sales</span>
-                                <span class="text-dark float-right font-weight-medium">$2346</span>
-                            </li>
-                            <li class="mt-3">
-                                <i class="fas fa-circle text-danger font-10 mr-2"></i>
-                                <span class="text-muted">Referral Sales</span>
-                                <span class="text-dark float-right font-weight-medium">$2108</span>
-                            </li>
-                            <li class="mt-3">
-                                <i class="fas fa-circle text-cyan font-10 mr-2"></i>
-                                <span class="text-muted">Affiliate Sales</span>
-                                <span class="text-dark float-right font-weight-medium">$1204</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Net Income</h4>
-                        <div class="net-income mt-4 position-relative" style="height:294px;"></div>
-                        <ul class="list-inline text-center mt-5 mb-2">
-                            <li class="list-inline-item text-muted font-italic">Sales for this month</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Earning by Location</h4>
-                        <div class="" style="height:180px">
-                            <div id="visitbylocate" style="height:100%"></div>
-                        </div>
-                        <div class="row mb-3 align-items-center mt-1 mt-5">
-                            <div class="col-4 text-right">
-                                <span class="text-muted font-14">India</span>
-                            </div>
-                            <div class="col-5">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <a href="/patient">
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">View patient
+                                        </h6>
+                                    </a>
+                                    
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0"><a>
+                                        <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span></a>
                                 </div>
                             </div>
-                            <div class="col-3 text-right">
-                                <span class="mb-0 font-14 text-dark font-weight-medium">28%</span>
-                            </div>
                         </div>
-                        <div class="row mb-3 align-items-center">
-                            <div class="col-4 text-right">
-                                <span class="text-muted font-14">UK</span>
-                            </div>
-                            <div class="col-5">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 74%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="totalDoc"></h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Doctors in Clinic
+                                    </h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i class="fa fa-check"
+                                            aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                            <div class="col-3 text-right">
-                                <span class="mb-0 font-14 text-dark font-weight-medium">21%</span>
-                            </div>
                         </div>
-                        <div class="row mb-3 align-items-center">
-                            <div class="col-4 text-right">
-                                <span class="text-muted font-14">USA</span>
-                            </div>
-                            <div class="col-5">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-cyan" role="progressbar" style="width: 60%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="card border-right">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Appointment
+                                        Status</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i class="fa fa-file"
+                                            aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                            <div class="col-3 text-right">
-                                <span class="mb-0 font-14 text-dark font-weight-medium">18%</span>
-                            </div>
                         </div>
-                        <div class="row align-items-center">
-                            <div class="col-4 text-right">
-                                <span class="text-muted font-14">China</span>
-                            </div>
-                            <div class="col-5">
-                                <div class="progress" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <a href="/feedbacks">
+                                    <div>
+                                        <h2 class="text-dark mb-1 font-weight-medium">0</h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Feedback</h6>
+                                    </div>
+                                </a>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
                                 </div>
-                            </div>
-                            <div class="col-3 text-right">
-                                <span class="mb-0 font-14 text-dark font-weight-medium">12%</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- *************************************************************** -->
+                <!-- End First Cards -->
+                <!-- *************************************************************** -->
+                <!-- *************************************************************** -->
+                <!-- Start Sales Charts Section -->
+                <!-- *************************************************************** -->
+                <div class="row">
+                    <div class="container-fluid">
+                <!-- Doctor's feedback -->
+                <!-- order table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Current Doctors </h4>
+                                
+                                <div class="table-responsive">
+                                    <table id="default_order" class="table table-striped table-bordered display no-wrap"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Doctors_1">
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Doctors Not Available</h4>
+                                <h6 class="card-subtitle">Doctors left or currently not Available.</h6>
+                                <div class="table-responsive">
+                                    <table id="default_order" class="table table-striped table-bordered display no-wrap"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="Doctors_2">
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- *************************************************************** -->
+              <!-- *************************************************************** -->
+                <!-- *************************************************************** -->
+
+                <!-- *************************************************************** -->
             </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Total Sales</h4>
+                                <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
+                                <ul class="list-style-none mb-0">
+                                    <li>
+                                        <i class="fas fa-circle text-primary font-10 mr-2"></i>
+                                        <span class="text-muted">Direct Sales</span>
+                                        <span class="text-dark float-right font-weight-medium">$2346</span>
+                                    </li>
+                                    <li class="mt-3">
+                                        <i class="fas fa-circle text-danger font-10 mr-2"></i>
+                                        <span class="text-muted">Referral Sales</span>
+                                        <span class="text-dark float-right font-weight-medium">$2108</span>
+                                    </li>
+                                    <li class="mt-3">
+                                        <i class="fas fa-circle text-cyan font-10 mr-2"></i>
+                                        <span class="text-muted">Affiliate Sales</span>
+                                        <span class="text-dark float-right font-weight-medium">$1204</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Net Income</h4>
+                                <div class="net-income mt-4 position-relative" style="height:294px;"></div>
+                                <ul class="list-inline text-center mt-5 mb-2">
+                                    <li class="list-inline-item text-muted font-italic">Sales for this month</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-4">Earning by Location</h4>
+                                <div class="" style="height:180px">
+                                    <div id="visitbylocate" style="height:100%"></div>
+                                </div>
+                                <div class="row mb-3 align-items-center mt-1 mt-5">
+                                    <div class="col-4 text-right">
+                                        <span class="text-muted font-14">India</span>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <span class="mb-0 font-14 text-dark font-weight-medium">28%</span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-4 text-right">
+                                        <span class="text-muted font-14">UK</span>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 74%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <span class="mb-0 font-14 text-dark font-weight-medium">21%</span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-4 text-right">
+                                        <span class="text-muted font-14">USA</span>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-cyan" role="progressbar" style="width: 60%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <span class="mb-0 font-14 text-dark font-weight-medium">18%</span>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-4 text-right">
+                                        <span class="text-muted font-14">China</span>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <span class="mb-0 font-14 text-dark font-weight-medium">12%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center text-muted">
+                All Rights Reserved by Vigour 2021
+            </footer>
+
         </div>
 
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
-    <footer class="footer text-center text-muted">
-        All Rights Reserved by Vigour 2021
-    </footer>
+
+    <script type="text/javascript">
+        var database = firebase.database();
+        var clinicid;
+        var userId;
+        var totalDoctors;
+        
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                var name = user.displayName;
+                var welcome;
+                var date = new Date();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                if (minute < 10) {
+                    minute = "0" + minute;
+                }
+                if (second < 10) {
+                    second = "0" + second;
+                }
+                if (hour < 12) {
+                    welcome = "Good morning";
+                } else if (hour < 17) {
+                    welcome = "Good afternoon";
+                } else {
+                    welcome = "Good evening";
+                }
+                var photoUrl = user.photoURL;
+                document.getElementById('name').innerHTML = name;
+                document.getElementById('greeting').innerHTML = welcome + ' ' + name + "!";
+                if (photoUrl) {
+                    document.getElementById('profile-photo').src = photoUrl;
+                } else {
+                    document.getElementById('profile-photo').src = "assets/images/users/profile-pic.jpg";
+                }
+                userId = firebase.auth().currentUser.uid;
+                firebase.database().ref('users/' + userId).once('value').then((snapsh) => {
+                    clinicid = snapsh.child("Clinic_id").val();
+                    
+                    firebase.database().ref('clinic/' +clinicid +"/Doctors").once('value').then((snap) => {
     
-</div>
+                        document.getElementById('totalDoc').innerHTML = snap.numChildren(); // 1 ("name")
+                        
+                        snap.forEach(function(childSnapshot) {
+                            // key will be "ada" the first time and "alan" the second time
+                            var categorieshtml="";
+                            var dr_id = childSnapshot.key;
+                            firebase.database().ref('doctor/'+dr_id).once('value').then((docdetails) => {
+                                
+                                categorieshtml+= "<tr>";
+                
+                                //for category name
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Name').val();
+                                categorieshtml+= "</td>";
 
-</div>
+                                //for category description
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Description').val();    
+                                categorieshtml+= "</td>";
 
-<script type="text/javascript">
-    var database = firebase.database();    
-    var clinicid;
-    var userId;
+                                //for category thumbnail
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Category').val();    
+                                categorieshtml+= "</td>";
 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            var name=user.displayName;
-            var welcome;  
-            var date = new Date();  
-            var hour = date.getHours();  
-            var minute = date.getMinutes();  
-            var second = date.getSeconds();  
-            if (minute < 10) {  
-                minute = "0" + minute;  
+                                 categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Timing_1').val();    
+                                categorieshtml+= "</td>";
+
+                                 categorieshtml+= "<td>";
+                                categorieshtml+=  docdetails.child('Timing_2').val();    
+                                categorieshtml+= "</td>";
+
+                                categorieshtml+= "</tr>";
+                                if(docdetails.child('Status').val()=="1"){
+                                    $("#Doctors_1").append(categorieshtml);
+                                }else{
+                                    $("#Doctors_2").append(categorieshtml);
+                                }
+                                
+                            });
+                            
+                        });
+                    });
+                });
             }
-            if (second < 10) {  
-                second = "0" + second;  
-            }  
-            if (hour < 12) {  
-                welcome = "Good morning";  
-            } else if (hour < 17) {  
-                welcome = "Good afternoon";  
-            } else {
-                welcome = "Good evening";  
-            }  
-            var photoUrl =user.photoURL;
-            document.getElementById('name').innerHTML=name;
-            document.getElementById('greeting').innerHTML=welcome+' '+name+"!";
-            if(photoUrl){
-                document.getElementById('profile-photo').src=photoUrl;
-            }else{
-                document.getElementById('profile-photo').src="assets/images/users/profile-pic.jpg";
-            }
-            userId = firebase.auth().currentUser.uid;
-            firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-            clinicid = (snapshot.val() && snapshot.val().Clinic_id);
-            });
-        }
-    });
-    
-    
-    function Add_doctor(form){
-    var name=form.d_name.value;
-    var id= form.d_id.value;
-    var category= form.d_category.value; 
-    var description= form.d_description.value;
-    var status=form.d_status.value;
-    var starttime= form.d_starttime.value; 
-    var endtime= form.d_endtime.value;    
-
-  firebase.database().ref("clinic/"+clinicid+"/Doctors/" + id).set({
-    Category: category
-  }).catch(function(error) {
-        console.log("addition failed: in clinic/"+clinicid+"/Doctors/" + id +"error:"+ error.message);
-      });
-       
-   firebase.database().ref('doctor/' + id).set({
-    Clinic_id: clinicid,
-    Name: name,
-    Description: description,
-    Status: status,
-    Timing_1: starttime,
-    Timing_2: endtime,
-    Category: category
-  }).catch(function(error) {
-        console.log("addition failed:  doctor profile" + error.message);
-      });
-
-
-    firebase.database().ref('Category/' + category + "/" + id).set({
-        Name:name
-  }).catch(function(error) {
-        console.log("addition failed:  in category" + error.message);
-      });
-    
-}
-function update_doctor(form){
-	var id=form.d_id.value;
-	var status=form.d_status.value;
-    var starttime= form.d_starttime.value; 
-    var endtime= form.d_endtime.value;
-    if(status){
-firebase.database().ref().child('doctor/'+id)
-        .update({ 
-        	Status: status
-    });
-    }
-    if(starttime){
-firebase.database().ref().child('doctor/'+id)
-        .update({ 
-        	
-		    Timing_1: starttime
-    });
-    }
-    if(endtime){
-    	firebase.database().ref().child('doctor/'+id)
-        .update({ 
-		    Timing_2: endtime
-    });
-    }
-    
-
-}
-function Delete_doctor(form){	
-	var id=form.d_id.value;
-	var Category;
-
-	firebase.database().ref('doctor/' + id).once('value').then((snapshot) => {
-           Category = (snapshot.val() && snapshot.val().Category);
-console.log(id+Category);
-       firebase.database().ref('Category/' + Category + "/" + id).remove() .then(function() { 
-						    
-			firebase.database().ref("clinic/"+clinicid+"/Doctors/" + id).remove() .then(function() {  
-			    	console.log("clinic/"+clinicid+"/Doctors/" + id+ " Removed");
-			    	firebase.database().ref('doctor/' +id).remove() .then(function() {
-						window.location.href="/admin";
-			      })
-			})
-		})
-      });
-    
-}
-function Add_receptionist(form){
-      var name=form.r_name.value;
-      var email=form.r_email.value;
-      var phoneno=form.r_phoneno.value;
-      var aadhar=form.r_aadhar.value;
-      var address=form.r_address.value;
-      var password="12345678";
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-      var yyyy = today.getFullYear();
-      today = dd + '/' + mm + '/' + yyyy;
-      var CloseAccDate=today;
-      var post="Receptionist";
-      var status="On";
-      var uid;
-        var user;
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-        console.log("result.user.displayName");
-    result.user.updateProfile({
-        displayName: name,
-        email: email,
-        phoneNumber: phoneno
-  }).then(function(result) {
-   console.log("updated");
-}).catch(function(error) {
-  console.log(error);
-});
-    
-}).catch(function(error) {
-  console.log(error);
-});/*
-function Delete_receptionist(form){
-	
-      var aadhar=form.r_aadhar.value;
-	firebase.database().ref('users/' +).remove() .then(function() {
-      window.location.href="/index";
-      })
-    .catch(function(error) {
-      console.log("Remove failed: " + error.message)
-    });
-}*/
-
-      /*.then((userCredential) => {
-        user = userCredential.user;  
-        console.log(user);
-   /*     user.updateProfile({
-            displayName: name,
-            email: email,
-            phoneNumber: phoneno
         });
+        function Add_doctor(form) {
+            var name = form.d_name.value;
+            var id = form.d_id.value;
+            var category = form.d_category.value;
+            var description = form.d_description.value;
+            var status = form.d_status.value;
+            var starttime = form.d_starttime.value;
+            var endtime = form.d_endtime.value;
 
-if (user != null) {
-  user.providerData.forEach(function (profile) {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-  });
-}else{
-    console.log("Logged out");
-}
+            firebase.database().ref("clinic/" + clinicid + "/Doctors/" + id).set({
+                Category: category
+            }).catch(function (error) {
+                console.log("addition failed: in clinic/" + clinicid + "/Doctors/" + id + "error:" + error.message);
+            });
 
-  }).catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode+":"+errorMessage);
-  });*/  
-    } 
-</script>
+            firebase.database().ref('doctor/' + id).set({
+                Clinic_id: clinicid,
+                Name: name,
+                Description: description,
+                Status: status,
+                Timing_1: starttime,
+                Timing_2: endtime,
+                Category: category
+            }).catch(function (error) {
+                console.log("addition failed:  doctor profile" + error.message);
+            });
 
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- apps -->
-<!-- apps -->
-<script src="dist/js/app-style-switcher.js"></script>
-<script src="dist/js/feather.min.js"></script>
-<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="dist/js/sidebarmenu.js"></script>
-<!--Custom JavaScript -->
-<script src="dist/js/custom.min.js"></script>
-<!--This page JavaScript -->
-<script src="assets/extra-libs/c3/d3.min.js"></script>
-<script src="assets/extra-libs/c3/c3.min.js"></script>
-<script src="assets/libs/chartist/dist/chartist.min.js"></script>
-<script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-<script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
-<script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
+
+            firebase.database().ref('Category/' + category + "/" + id).set({
+                Name: name
+            }).catch(function (error) {
+                console.log("addition failed:  in category" + error.message);
+            });
+
+        }
+        function update_doctor(form) {
+            var id = form.d_id.value;
+            var status = form.d_status.value;
+            var starttime = form.d_starttime.value;
+            var endtime = form.d_endtime.value;
+            if (status) {
+                firebase.database().ref().child('doctor/' + id)
+                    .update({
+                        Status: status
+                    });
+            }
+            if (starttime) {
+                firebase.database().ref().child('doctor/' + id)
+                    .update({
+
+                        Timing_1: starttime
+                    });
+            }
+            if (endtime) {
+                firebase.database().ref().child('doctor/' + id)
+                    .update({
+                        Timing_2: endtime
+                    });
+            }
+
+
+        }
+        function Delete_doctor(form) {
+            var id = form.d_id.value;
+            var Category;
+
+            firebase.database().ref('doctor/' + id).once('value').then((snapshot) => {
+                Category = (snapshot.val() && snapshot.val().Category);
+                console.log(id + Category);
+                firebase.database().ref('Category/' + Category + "/" + id).remove().then(function () {
+
+                    firebase.database().ref("clinic/" + clinicid + "/Doctors/" + id).remove().then(function () {
+                        console.log("clinic/" + clinicid + "/Doctors/" + id + " Removed");
+                        firebase.database().ref('doctor/' + id).remove().then(function () {
+                            window.location.href = "/admin";
+                        })
+                    })
+                })
+            });
+
+        }
+        function Add_receptionist() {
+            var name = $("#r_name").val();
+            var email = $("#r_email").val();
+            var phoneno = $("#r_phoneno").val();
+            var aadhar = $("#r_aadhar").val();
+            var address = $("#r_address").val();
+            var passw = phoneno;
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            today = dd + '/' + mm + '/' + yyyy;
+            var joiningAccDate = today;
+            var post = "Receptionist";
+            var status = 1;
+
+            if(name.length>0 && email.length>0 && phoneno.length>0 && aadhar.length>0 && address.length>0){
+                firebase.auth().createUserWithEmailAndPassword(email, passw).then((userCredential) => {
+                    // Signed in 
+                    var user = userCredential.user;
+                    //alert(user.uid);
+                    
+                    alert("Please wait. Do not close the page.");
+                    //update details to userInfo
+                    user.updateProfile({
+                    displayName: name,
+                    phoneNumber: phoneno
+                    }).catch(function(error) {
+                    console.log(error.message);
+                    });
+
+                    //update clinic details
+                    firebase.database().ref('/users/' + user.uid ).set({
+                        Clinic_id: clinicid,
+                        JoinDate: joiningAccDate,
+                        AadharNo: aadhar,
+                        Post:post,
+                        Status:status
+                    }).then(function(){
+                        
+                        firebase.database().ref('/clinic/' + clinic_id ).set({
+                            Receptionist: user.uid
+                        }).then(function(){
+                            alert("Receptionist added successfully.");
+                            firebase.auth().signOut();
+                        }).catch(function(error) {
+                        console.log("addition failed: " + error.message)
+                        });
+                    }).catch(function(error) {
+                        console.log("addition failed: " + error.message)
+                    });
+                }).catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    if (errorCode == 'auth/invalid-email') {
+                        alert('Email provided is invalid    .');
+                    } else if (errorCode == 'auth/weak-password') {
+                        alert('The password is too weak.');
+                    } else {
+                    alert(errorMessage);
+                    }
+                });
+            }else{
+                alert("Fill all details");
+                return;
+            }
+        } 
+        /*function Delete_receptionist(form){
+            var aadhar=form.r_aadhar.value;
+        	firebase.database().ref('users/' +).remove() .then(function() {
+                window.location.href="/index";
+            }).catch(function(error) {
+                console.log("Remove failed: " + error.message)
+            });
+        }*/
+
+            /*.then((userCredential) => {
+              user = userCredential.user;  
+              console.log(user);
+         /*     user.updateProfile({
+                  displayName: name,
+                  email: email,
+                  phoneNumber: phoneno
+              });
+      
+      if (user != null) {
+        user.providerData.forEach(function (profile) {
+          console.log("Sign-in provider: " + profile.providerId);
+          console.log("  Provider-specific UID: " + profile.uid);
+          console.log("  Name: " + profile.displayName);
+          console.log("  Email: " + profile.email);
+          console.log("  Photo URL: " + profile.photoURL);
+        });
+      }else{
+          console.log("Logged out");
+      }
+      
+        }).catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode+":"+errorMessage);
+        });*/
+    </script>
+
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="dist/js/app-style-switcher.js"></script>
+    <script src="dist/js/feather.min.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="assets/extra-libs/c3/d3.min.js"></script>
+    <script src="assets/extra-libs/c3/c3.min.js"></script>
+    <script src="assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="dist/js/pages/dashboards/dashboard1.min.js"></script>
 </body>
 
 </html>

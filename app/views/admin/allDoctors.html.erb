@@ -250,7 +250,7 @@
                                 aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                     class="hide-menu">View All Receptionist</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/allDoctors"
+                        <li class="sidebar-item"> <a class="sidebar-link" href="javascript:void(0)"
                                 aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
                                     class="hide-menu">View All Doctors</span></a>
                         </li>
@@ -593,8 +593,8 @@
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
-                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">18,306</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Doctor Status
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="totalDoc"></h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Doctors in Clinic
                                     </h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
@@ -639,10 +639,7 @@
                 </div>
                 <!-- *************************************************************** -->
                 <!-- End First Cards -->
-                <!-- *************************************************************** -->
-                <!-- *************************************************************** -->
-                <!-- Start Sales Charts Section -->
-                <!-- *************************************************************** -->
+                
                 <div class="row">
                     <div class="container-fluid">
                 <!-- Doctor's feedback -->
@@ -651,7 +648,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Feedbacks we recieved for clinics</h4>
+                                <h4 class="card-title">Current Doctors</h4>
                                 <h6 class="card-subtitle">With DataTables you can alter the ordering characteristics of
                                     the table at initialisation time. Using the<code> order | option</code> order
                                     initialisation parameter, you can set the table to display the data in exactly the
@@ -662,71 +659,23 @@
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Stars</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Michael Bruce</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Singapore</td>
-                                                <td>29</td>
-                                                <td>2011/06/27</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td><span><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
+                                        <tbody id="Doctors_1">
+
+
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Stars</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -752,47 +701,22 @@
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Stars</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>New York</td>
-                                                <td>27</td>
-                                                <td>2011/01/25</td>
-                                                <td><span><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></td>
-                                            </tr>
+                                        <tbody id="Doctors_2">
+                                            
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Stars</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>From</th>
+                                                <th>To</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -801,12 +725,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- *************************************************************** -->
-              <!-- *************************************************************** -->
-                <!-- *************************************************************** -->
-
-                <!-- *************************************************************** -->
             </div>
                     <div class="col-lg-4 col-md-12">
                         <div class="card">
@@ -931,7 +849,8 @@
         var database = firebase.database();
         var clinicid;
         var userId;
-
+        var totalDoctors;
+        
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 var name = user.displayName;
@@ -962,167 +881,59 @@
                     document.getElementById('profile-photo').src = "assets/images/users/profile-pic.jpg";
                 }
                 userId = firebase.auth().currentUser.uid;
-                firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
-                    clinicid = (snapshot.val() && snapshot.val().Clinic_id);
+                firebase.database().ref('users/' + userId).once('value').then((snapsh) => {
+                    clinicid = snapsh.child("Clinic_id").val();
+                    
+                    firebase.database().ref('clinic/' +clinicid +"/Doctors").once('value').then((snap) => {
+    
+                        document.getElementById('totalDoc').innerHTML = snap.numChildren(); // 1 ("name")
+                        
+                        snap.forEach(function(childSnapshot) {
+                            // key will be "ada" the first time and "alan" the second time
+                            var categorieshtml="";
+                            var dr_id = childSnapshot.key;
+                            firebase.database().ref('doctor/'+dr_id).once('value').then((docdetails) => {
+                                
+                                categorieshtml+= "<tr>";
+                
+                                //for category name
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Name').val();
+                                categorieshtml+= "</td>";
+
+                                //for category description
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Description').val();    
+                                categorieshtml+= "</td>";
+
+                                //for category thumbnail
+                                categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Category').val();    
+                                categorieshtml+= "</td>";
+
+                                 categorieshtml+= "<td>";
+                                categorieshtml+= docdetails.child('Timing_1').val();    
+                                categorieshtml+= "</td>";
+
+                                 categorieshtml+= "<td>";
+                                categorieshtml+=  docdetails.child('Timing_2').val();    
+                                categorieshtml+= "</td>";
+
+                                categorieshtml+= "</tr>";
+                                if(docdetails.child('Status').val()=="1"){
+                                    $("#Doctors_1").append(categorieshtml);
+                                }else{
+                                    $("#Doctors_2").append(categorieshtml);
+                                }
+                                
+                            });
+                            
+                        });
+                    });
                 });
             }
         });
-        function Add_doctor(form) {
-            var name = form.d_name.value;
-            var id = form.d_id.value;
-            var category = form.d_category.value;
-            var description = form.d_description.value;
-            var status = form.d_status.value;
-            var starttime = form.d_starttime.value;
-            var endtime = form.d_endtime.value;
-
-            firebase.database().ref("clinic/" + clinicid + "/Doctors/" + id).set({
-                Category: category
-            }).catch(function (error) {
-                console.log("addition failed: in clinic/" + clinicid + "/Doctors/" + id + "error:" + error.message);
-            });
-
-            firebase.database().ref('doctor/' + id).set({
-                Clinic_id: clinicid,
-                Name: name,
-                Description: description,
-                Status: status,
-                Timing_1: starttime,
-                Timing_2: endtime,
-                Category: category
-            }).catch(function (error) {
-                console.log("addition failed:  doctor profile" + error.message);
-            });
-
-
-            firebase.database().ref('Category/' + category + "/" + id).set({
-                Name: name
-            }).catch(function (error) {
-                console.log("addition failed:  in category" + error.message);
-            });
-
-        }
-        function update_doctor(form) {
-            var id = form.d_id.value;
-            var status = form.d_status.value;
-            var starttime = form.d_starttime.value;
-            var endtime = form.d_endtime.value;
-            if (status) {
-                firebase.database().ref().child('doctor/' + id)
-                    .update({
-                        Status: status
-                    });
-            }
-            if (starttime) {
-                firebase.database().ref().child('doctor/' + id)
-                    .update({
-
-                        Timing_1: starttime
-                    });
-            }
-            if (endtime) {
-                firebase.database().ref().child('doctor/' + id)
-                    .update({
-                        Timing_2: endtime
-                    });
-            }
-
-
-        }
-        function Delete_doctor(form) {
-            var id = form.d_id.value;
-            var Category;
-
-            firebase.database().ref('doctor/' + id).once('value').then((snapshot) => {
-                Category = (snapshot.val() && snapshot.val().Category);
-                console.log(id + Category);
-                firebase.database().ref('Category/' + Category + "/" + id).remove().then(function () {
-
-                    firebase.database().ref("clinic/" + clinicid + "/Doctors/" + id).remove().then(function () {
-                        console.log("clinic/" + clinicid + "/Doctors/" + id + " Removed");
-                        firebase.database().ref('doctor/' + id).remove().then(function () {
-                            window.location.href = "/admin";
-                        })
-                    })
-                })
-            });
-
-        }
-        function Add_receptionist() {
-            var name = $("#r_name").val();
-            var email = $("#r_email").val();
-            var phoneno = $("#r_phoneno").val();
-            var aadhar = $("#r_aadhar").val();
-            var address = $("#r_address").val();
-            var passw = phoneno;
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0');
-            var yyyy = today.getFullYear();
-            today = dd + '/' + mm + '/' + yyyy;
-            var joiningAccDate = today;
-            var post = "Receptionist";
-            var status = 1;
-
-            if(name.length>0 && email.length>0 && phoneno.length>0 && aadhar.length>0 && address.length>0){
-                firebase.auth().createUserWithEmailAndPassword(email, passw).then((userCredential) => {
-                    // Signed in 
-                    var user = userCredential.user;
-                    //alert(user.uid);
-                    
-                    alert("Please wait. Do not close the page.");
-                    //update details to userInfo
-                    user.updateProfile({
-                    displayName: name,
-                    phoneNumber: phoneno
-                    }).catch(function(error) {
-                    console.log(error.message);
-                    });
-
-                    //update clinic details
-                    firebase.database().ref('/users/' + user.uid ).set({
-                        Clinic_id: clinicid,
-                        JoinDate: joiningAccDate,
-                        AadharNo: aadhar,
-                        Post:post,
-                        Status:status
-                    }).then(function(){
-                        
-                        firebase.database().ref('/clinic/' + clinic_id ).set({
-                            Receptionist: user.uid
-                        }).then(function(){
-                            alert("Receptionist added successfully.");
-                            firebase.auth().signOut();
-                        }).catch(function(error) {
-                        console.log("addition failed: " + error.message)
-                        });
-                    }).catch(function(error) {
-                        console.log("addition failed: " + error.message)
-                    });
-                }).catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    if (errorCode == 'auth/invalid-email') {
-                        alert('Email provided is invalid    .');
-                    } else if (errorCode == 'auth/weak-password') {
-                        alert('The password is too weak.');
-                    } else {
-                    alert(errorMessage);
-                    }
-                });
-            }else{
-                alert("Fill all details");
-                return;
-            }
-        } 
-        /*function Delete_receptionist(form){
-            var aadhar=form.r_aadhar.value;
-        	firebase.database().ref('users/' +).remove() .then(function() {
-                window.location.href="/index";
-            }).catch(function(error) {
-                console.log("Remove failed: " + error.message)
-            });
-        }*/
+       
 
             /*.then((userCredential) => {
               user = userCredential.user;  
