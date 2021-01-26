@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get "patient"=>"admin#patient"
   get "feedbacks"=>"admin#feedbacks"
   get "listing" => "welcome#listing"
+  get "getappointment" =>"authenticate#directory_details"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
