@@ -307,7 +307,7 @@ aria-hidden="true">
 
                 <div class="form-group">
                     <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" id="d_id" name="d_id"
+                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
                     required="" placeholder="Doctor Id">
                 </div>
 
@@ -325,8 +325,8 @@ aria-hidden="true">
                                         <label class="mr-sm-2" for="d_status">Select</label>
                                         <select class="custom-select mr-sm-2" name="d_status" id="d_status">
                                             <option disabled="" selected>Choose...</option>
-                                            <option value="1">On</option>
-                                            <option value="0">off</option>
+                                            <option value="1">Available</option>
+                                            <option value="0">Unavailable</option>
                                         </select>
                                     </div>
                 <div class="form-group">
@@ -373,15 +373,15 @@ aria-hidden="true">
             <form class="pl-3 pr-3" action="#" id="formEl" onsubmit="return update_doctor(this)">
                 <div class="form-group">
                     <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" id="d_id" name="d_id"
+                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
                     required="" placeholder="Doctor Id">
                 </div>
                 <div class="form-group mb-4">
                                         <label class="mr-sm-2" for="d_status">Select</label>
                                         <select class="custom-select mr-sm-2" name="d_status" id="d_status">
                                             <option disabled="" selected>Choose...</option>
-                                            <option value="1">On</option>
-                                            <option value="0">off</option>
+                                            <option value="1">Available</option>
+                                            <option value="0">Unavailable</option>
                                         </select>
                                     </div>
                 <div class="form-group">
@@ -419,7 +419,7 @@ aria-hidden="true">
                 
                 <div class="form-group">
                     <label for="emailaddress">Doctor Id</label>
-                    <input class="form-control" type="number" id="d_id" name="d_id"
+                    <input class="form-control" type="number" min="1" id="d_id" name="d_id"
                     required="" placeholder="Enter Doctor Id">
                 </div>
                    <div class="form-group text-center">
@@ -455,7 +455,7 @@ aria-hidden="true">
 
                 <div class="form-group">
                     <label for="emailaddress">Aadhar Number</label>
-                    <input class="form-control" type="number" id="r_aadhar" name="r_aadhar"
+                    <input class="form-control" type="number" min="000000000000" max="999999999999" id="r_aadhar" name="r_aadhar"
                     required="" placeholder="Enter your Aadhar Number">
                 </div>
 
@@ -501,7 +501,7 @@ aria-hidden="true">
                 
                 <div class="form-group">
                     <label for="emailaddress">Aadhar Number</label>
-                    <input class="form-control" type="number" id="r_aadhar" name="r_aadhar"
+                    <input class="form-control" type="number" min="000000000000" max="999999999999" id="r_aadhar" name="r_aadhar"
                     required="" placeholder="Enter your Aadhar Number">
                 </div>
                    <div class="form-group text-center">
