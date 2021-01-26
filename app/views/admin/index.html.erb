@@ -791,7 +791,7 @@ aria-hidden="true">
     var endtime= form.d_endtime.value;    
 
   firebase.database().ref("clinic/"+clinicid+"/Doctors/" + id).set({
-    Name: name
+    Category: category
   }).catch(function(error) {
         console.log("addition failed: in clinic/"+clinicid+"/Doctors/" + id +"error:"+ error.message);
       });
