@@ -52,7 +52,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    Please wait
                 </div>
             </div>
         </div>
@@ -405,7 +405,7 @@
                 var docStartTime;
                 var docEndTime;            
                 var clinic_id;                
-var count=0;
+                var count=0;
                 if(state==null && city==null && category!=""){
 
 
@@ -428,7 +428,7 @@ var count=0;
                                             if(status1=="1"){
 
                                                 count=count+1;
-document.getElementById('counter').innerHTML=count+" Listings available:";
+                                                document.getElementById('counter').innerHTML=count+" Listings available:";
                                                 clinic_address=snapshot2.val().Full_address;
                                                 name=snapshot1.val().Name;
                                                 docStartTime=snapshot1.val().Timing_1;
@@ -452,136 +452,128 @@ document.getElementById('counter').innerHTML=count+" Listings available:";
                 }else{ 
                     if(state!=null && city!=null && category!=null){
 
-                    
-
-                    firebase.database().ref("Location/"+state+"/"+city).once('value').then((snapshot) => {
-
-                        if(snapshot.exists()){
-                            snapshot.forEach(function(data){                  
-                                clinic_id=data.val();   
-
-                                firebase.database().ref("clinic/"+clinic_id).once('value').then((snapshot1) => {
-                                    var status=snapshot1.val().Status;  
-                                    clinic_address=snapshot1.val().Full_address;                          
-                                    if(status=="1"){
-                                        firebase.database().ref("clinic/"+clinic_id+"/Doctors").once('value').then((snapshot2) => {
-                                            if(snapshot2.exists()){
-                                                snapshot2.forEach(function(data2){   
-                                                    doc_id=data2.key;
 
 
+                        firebase.database().ref("Location/"+state+"/"+city).once('value').then((snapshot) => {
 
-                        if((data2.val().Category)==category){
-                            count=count+1;
-document.getElementById('counter').innerHTML=count+" Listings available:";
-                            firebase.database().ref("doctor/"+doc_id).once('value').then((details) => {
-                                name=details.val().Name;                                
-                                docStartTime=details.val().Timing_1;
-                                docEndTime=details.val().Timing_2;
+                            if(snapshot.exists()){
+                                snapshot.forEach(function(data){                  
+                                    clinic_id=data.val();   
 
-                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc_id="+doc_id+"&clinic_id="+clinic_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";
-
-                            });
-                                                        
-                                                        
-                                                    }
-
-
-                                                }); 
-                                            }                                        
-
-});
-
-                                    }else{                                
-                                        console.log("status 0 for clinic "+clinic_id);
-                                    }
-                                });
-                            }); 
-                        }
-                    });
+                                    firebase.database().ref("clinic/"+clinic_id).once('value').then((snapshot1) => {
+                                        var status=snapshot1.val().Status;  
+                                        clinic_address=snapshot1.val().Full_address;                          
+                                        if(status=="1"){
+                                            firebase.database().ref("clinic/"+clinic_id+"/Doctors").once('value').then((snapshot2) => {
+                                                if(snapshot2.exists()){
+                                                    snapshot2.forEach(function(data2){   
+                                                        doc_id=data2.key;
 
 
-                }}
 
+                                                        if((data2.val().Category)==category){
+                                                            count=count+1;
+                                                            document.getElementById('counter').innerHTML=count+" Listings available:";
+                                                            firebase.database().ref("doctor/"+doc_id).once('value').then((details) => {
+                                                                name=details.val().Name;                                
+                                                                docStartTime=details.val().Timing_1;
+                                                                docEndTime=details.val().Timing_2;
 
-            }
-        </script>
+                                                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc_id="+doc_id+"&clinic_id="+clinic_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";
 
-        <script type="text/javascript">  
-            var dbState = firebase.database().ref("Location");
-            dbState.once("value").then(function(states){
-                states.forEach(function(state){
-                    $("#state").append("<option value='"+state.key+"'>"+state.key+"</option>");
-                    $('#state').niceSelect('update');                       
-                })  
-            });
+                                                            });     
+                                                        }
+                                                    }); 
+                                                }                                        
 
-            var dbCategories = firebase.database().ref("Category");
-            dbCategories.once("value").then(function(categories){
-                categories.forEach(function(category){
-                    $("#category").append("<option value='"+category.key+"'>"+category.key+"</option>");
-                    $('#category').niceSelect('update');     
+                                            });
+
+                                        }else{                                
+                                            console.log("status 0 for clinic "+clinic_id);
+                                        }
+                                    });
+                                }); 
+                            }
+                        });
+                    }}
+                }
+            </script>
+
+            <script type="text/javascript">  
+                var dbState = firebase.database().ref("Location");
+                dbState.once("value").then(function(states){
+                    states.forEach(function(state){
+                        $("#state").append("<option value='"+state.key+"'>"+state.key+"</option>");
+                        $('#state').niceSelect('update');                       
+                    })  
                 });
-            });
-        </script>
-        <script>
-            document.getElementById("city").disabled=true;
-            function addCity() {
-                var e = document.getElementById("state");
-                var strUser = e.value;
-                document.getElementById("city").disabled=false;
-                $("#city").empty();
-                var dbCity = firebase.database().ref("Location/"+strUser);
-                dbCity.once("value").then(function(cities){
-                    cities.forEach(function(city){
-                        $("#city").append("<option value='"+city.key+"'>"+city.key+"</option>");
-                        $('#city').niceSelect('update');     
+
+                var dbCategories = firebase.database().ref("Category");
+                dbCategories.once("value").then(function(categories){
+                    categories.forEach(function(category){
+                        $("#category").append("<option value='"+category.key+"'>"+category.key+"</option>");
+                        $('#category').niceSelect('update');     
                     });
-                });  
-            }
-        </script>
+                });
+            </script>
+            <script>
+                document.getElementById("city").disabled=true;
+                function addCity() {
+                    var e = document.getElementById("state");
+                    var strUser = e.value;
+                    document.getElementById("city").disabled=false;
+                    $("#city").empty();
+                    var dbCity = firebase.database().ref("Location/"+strUser);
+                    dbCity.once("value").then(function(cities){
+                        cities.forEach(function(city){
+                            $("#city").append("<option value='"+city.key+"'>"+city.key+"</option>");
+                            $('#city').niceSelect('update');     
+                        });
+                    });  
+                }
+            </script>
 
-        <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <!-- Jquery, Popper, Bootstrap -->
-        <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="./assets/js/popper.min.js"></script>
-        <script src="./assets/js/bootstrap.min.js"></script>
-        <!-- Jquery Mobile Menu -->
-        <script src="./assets/js/jquery.slicknav.min.js"></script>
+            <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+            <!-- Jquery, Popper, Bootstrap -->
+            <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+            <script src="./assets/js/popper.min.js"></script>
+            <script src="./assets/js/bootstrap.min.js"></script>
+            <!-- Jquery Mobile Menu -->
+            <script src="./assets/js/jquery.slicknav.min.js"></script>
 
-        <!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="./assets/js/owl.carousel.min.js"></script>
-        <script src="./assets/js/slick.min.js"></script>
-        <!-- One Page, Animated-HeadLin -->
-        <script src="./assets/js/wow.min.js"></script>
-        <script src="./assets/js/animated.headline.js"></script>
-        <script src="./assets/js/jquery.magnific-popup.js"></script>
+            <!-- Jquery Slick , Owl-Carousel Plugins -->
+            <script src="./assets/js/owl.carousel.min.js"></script>
+            <script src="./assets/js/slick.min.js"></script>
+            <!-- One Page, Animated-HeadLin -->
+            <script src="./assets/js/wow.min.js"></script>
+            <script src="./assets/js/animated.headline.js"></script>
+            <script src="./assets/js/jquery.magnific-popup.js"></script>
 
-        <!-- Date Picker -->
-        <script src="./assets/js/gijgo.min.js"></script>
-        <!-- Nice-select, sticky -->
-        <script src="./assets/js/jquery.nice-select.min.js"></script>
-        <script src="./assets/js/jquery.sticky.js"></script>
-        <!-- Progress -->
-        <script src="./assets/js/jquery.barfiller.js"></script>
+            <!-- Date Picker -->
+            <script src="./assets/js/gijgo.min.js"></script>
+            <!-- Nice-select, sticky -->
+            <script src="./assets/js/jquery.nice-select.min.js"></script>
+            <script src="./assets/js/jquery.sticky.js"></script>
+            <!-- Progress -->
+            <script src="./assets/js/jquery.barfiller.js"></script>
 
-        <!-- counter , waypoint,Hover Direction -->
-        <script src="./assets/js/jquery.counterup.min.js"></script>
-        <script src="./assets/js/waypoints.min.js"></script>
-        <script src="./assets/js/jquery.countdown.min.js"></script>
-        <script src="./assets/js/hover-direction-snake.min.js"></script>
+            <!-- counter , waypoint,Hover Direction -->
+            <script src="./assets/js/jquery.counterup.min.js"></script>
+            <script src="./assets/js/waypoints.min.js"></script>
+            <script src="./assets/js/jquery.countdown.min.js"></script>
+            <script src="./assets/js/hover-direction-snake.min.js"></script>
 
-        <!-- contact js -->
-        <script src="./assets/js/contact.js"></script>
-        <script src="./assets/js/jquery.form.js"></script>
-        <script src="./assets/js/jquery.validate.min.js"></script>
-        <script src="./assets/js/mail-script.js"></script>
-        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+            <!-- contact js -->
+            <script src="./assets/js/contact.js"></script>
+            <script src="./assets/js/jquery.form.js"></script>
+            <script src="./assets/js/jquery.validate.min.js"></script>
+            <script src="./assets/js/mail-script.js"></script>
+            <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
 
-        <!-- Jquery Plugins, main Jquery -->	
-        <script src="./assets/js/plugins.js"></script>
-        <script src="./assets/js/main.js"></script>
+            <!-- Jquery Plugins, main Jquery -->	
+            <script src="./assets/js/plugins.js"></script>
+            <script src="./assets/js/main.js"></script>
 
 
-    </body>
-    </html>
+        </body>
+        </html>

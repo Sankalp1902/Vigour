@@ -44,6 +44,24 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();        
     </script>
+      <script type="text/javascript">
+    var database = firebase.database();
+    var Post;
+    firebase.auth().onAuthStateChanged(user => {  
+      if(user) {         
+        var userId = firebase.auth().currentUser.uid;
+        return firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
+          Post = (snapshot.val() && snapshot.val().Post);  
+          if(Post!="user"){          
+            window.location.href="/authenticate";
+          }                  
+        });                     
+      }
+      else{
+        window.location.href="/authenticate";
+      }
+    })
+  </script>
 </head>
 <body onload="filldata()">
     <!-- ? Preloader Start -->
@@ -52,7 +70,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    Loading..
                 </div>
             </div>
         </div>
@@ -180,40 +198,20 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="map">
-                        <img src="assets/img/gallery/map.png" alt="">
-                    </div>
                     <div class="form-wrapper pt-80">
                         <div class="row ">
                             <div class="col-xl-12">
-                                <div class="small-tittle mb-30">
-                                    <h2>Contact</h2>
+                                <div class="small-tittle mb-30">                                    
+                                    <button id="phonelink" data-toggle="modal"
+                                        data-target="#login-modal" class="btn w-btn wantToWork-btn"><i class="fas fa-check"></i>Confirm Booking</button>
                                 </div>
                             </div>
                         </div>
-                        <form id="contact-form" action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-box user-icon mb-15">
-                                        <input type="text" name="name" placeholder="Your name">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-box email-icon mb-15">
-                                        <input type="text" name="email" placeholder="Email address">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-box message-icon mb-15">
-                                        <textarea name="message" id="message" placeholder="Comment"></textarea>
-                                    </div>
-                                    <div class="submit-info">
-                                        <button class="submit-btn2" type="submit">Send Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form> 
                     </div>
+                    <div class="map">
+                        <img src="assets/img/gallery/map.png" alt="">
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -299,6 +297,48 @@
                 <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
             </div>  
 
+<div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div class="text-center mt-2 mb-4">
+                                                    <a href="index.html" class="text-success">
+                                                        <span><img class="mr-2" src="assets/images/logo-icon.png"
+                                                                alt="" height="18"><img
+                                                                src="assets/images/logo-text.png" alt=""
+                                                                height="18"></span>
+                                                    </a>
+                                                </div>
+
+                                                <form onsubmit="book(); return false;" class="pl-3 pr-3">
+                                                                <br>
+                                                            <label for="emailaddress1">Select appointee</label>
+                                                    <div class="input-group-icon mt-10">
+                                    
+                                    <div class="form-select" id="default-select">
+                                                <select required id="appointeeSelect">
+                                                    <option disabled selected>Select an appointee</option>                                                                                            
+                                                </select>
+                                                    </div>
+                                                </div>  
+                                                    <div class="form-group"><br>
+                                                        <label for="emailaddress1">Please enter a reason:</label>                                                       
+                                                            <div class="mt-10">
+                                    <textarea class="single-textarea" id="reason" placeholder="Message" required="" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Message'" required></textarea>
+                                </div>
+                                                    </div>
+
+                                                    <div class="form-group text-center">
+                                                        <button class="btn btn-rounded btn-primary" type="submit">Confirm booking</button>
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div>
  <script type="text/javascript">  
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
@@ -363,19 +403,6 @@
 
                         c_oto=snapshot.child("OpenDays/TimeClose").val();
                         document.getElementById("c_oto").innerHTML+=c_oto;
-/*
-                        fulldays=snapshot.child("OpenDays/Days").val();
-                        document.getElementById("odays").innerHTML+=fulldays;
-*/
-                        /*
-<p id="c_ofrom">From </p>
-<p id="c_oto">to </p>
-<p id="hdays">Open days: </p>
-
-<p id="">to</p>*/
-
-
-
                 });
 
                 firebase.database().ref("doctor/"+doc_id).once('value').then((snapshot1) => {
@@ -391,8 +418,92 @@
                         d_time2=snapshot1.val().Timing_2;
                         document.getElementById("d_to").innerHTML=d_time2;
                 });
+
+
+firebase.auth().onAuthStateChanged(user => {  
+                  if(user) {         
+                      var userId = firebase.auth().currentUser.uid;
+                    firebase.database().ref('/users/' + userId + '/Appointee').once('value').then((snapshot) => {
+                            snapshot.forEach(function(data){ 
+                            var t = data.val().Name;
+                            var node = data.key;
+                            $("#appointeeSelect").append("<option value='"+node+"'>"+t+"</option>");
+                            $('#appointeeSelect').niceSelect('update'); 
+                            });                                            
+                    }); 
+                  }                 
+                });
+                
+            }
+
+            function book(){                                    
+                var Name;
+                var Age;
+                var Gender;
+                var Phone;
+                var Shown="0";
+                var appointee=document.getElementById('appointeeSelect').value;
+                var reason = document.getElementById('reason'.value);
+                //appointeeSelect
+                firebase.auth().onAuthStateChanged(user => {  
+                  if(user) {         
+                      var userId = firebase.auth().currentUser.uid;
+                      
+                    firebase.database().ref('/users/' + userId + '/Appointee/'+appointee).once('value').then((snapshot) => {
+                            
+                                Name = snapshot.val().Name;
+                                Age= snapshot.val().Age;
+                                Gender=snapshot.val().Gender;
+                                Phone=user.phoneNumber;
+
+                                var d= new Date();
+                                var year=d.getFullYear();
+                                var month=d.getMonth();
+                                month++;
+                                var day=d.getDate();
+                                if(day<10){
+                                    day="0"+day;
+                                }
+                                if(month<10){
+                                    month="0"+month;
+                                }
+                                
+                                var date=year+month+day;
+
+
+                                let params = (new URL(document.location)).searchParams;
+                            var doc_id = params.get("doc_id");
+                            var clinic_id = params.get("clinic_id");
+                            var unique=date+doc_id+appointee;
+
+                            firebase.database().ref('clinic/' + clinic_id + '/Appointments/'+date+ '/'+doc_id).set({
+                                id:unique
+                              });
+
+                            firebase.database().ref('Appointments/' + date + '/'+doc_id+ '/'+unique).set({
+                                Age:Age,
+                                Gender:Gender,
+                                Name: Name,
+                                Phone: Phone,
+                                Shown: Shown,
+                                Reason: reason
+                              });
+
+                            firebase.database().ref('users/' + userId + '/Appointment/'+ date).set({
+                                Dr:doc_id,
+                                id:unique
+                              });
+
+window.location.href="/profile";
+                                                                    
+                    }); 
+
+                  }                 
+                });
+
             }
         </script>
+
 
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
