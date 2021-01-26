@@ -358,7 +358,7 @@
             <div class="footer-bottom-area">
                 <div class="container">
                     <div class="footer-border">
-                        <div class="row d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="col-xl-10 col-lg-9">
                                 <div class="footer-copy-right text-center">
                                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -426,12 +426,15 @@ var count=0;
                                             status1=snapshot2.val().Status;
 
                                             if(status1=="1"){
+
+                                                count=count+1;
+document.getElementById('counter').innerHTML=count+" Listings available:";
                                                 clinic_address=snapshot2.val().Full_address;
                                                 name=snapshot1.val().Name;
                                                 docStartTime=snapshot1.val().Timing_1;
                                                 docEndTime=snapshot1.val().Timing_2;
 
-                                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a href=''><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc="+doc_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";                                            
+                                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc_id="+doc_id+"&clinic_id="+clinic_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";                                            
 
                                             }else{
                                                 console.log("status 0 for clinic "+clinic_id);
@@ -476,7 +479,7 @@ document.getElementById('counter').innerHTML=count+" Listings available:";
                                 docStartTime=details.val().Timing_1;
                                 docEndTime=details.val().Timing_2;
 
-                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a href=''><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc="+doc_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";
+                                document.getElementById('listing').innerHTML+="<div class='col-lg-6'><div class='properties properties2 mb-30'><div class='properties__card'><div class='properties__img overlay1'><a><img src='assets/img/gallery/properties3.png'></a><div class='img-text'><span>"+docStartTime+"</span><span>"+docEndTime+"</span></div><div class='icon'><img src='assets/img/gallery/categori_icon1.png'></div></div><div class=properties__caption><h3><a>"+name+"</a></h3><p>"+clinic_address+"</p></div><div class='properties__footer d-flex justify-content-between align-items-center'><div class='restaurant-name'><h3>"+category+"</h3></div><div class='heart'><a href='/getappointment?doc_id="+doc_id+"&clinic_id="+clinic_id+"' class='genric-btn success circle'>Get appointment</a></div></div></div></div></div>";
 
                             });
                                                         

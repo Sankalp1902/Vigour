@@ -9,21 +9,21 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
+	<!-- CSS here -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/slicknav.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
     <link rel="stylesheet" href="assets/css/gijgo.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/animated-headline.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="assets/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/css/slick.css">
+	<link rel="stylesheet" href="assets/css/nice-select.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
@@ -45,7 +45,7 @@
         firebase.analytics();        
     </script>
 </head>
-<body onload="filldata()">
+<body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -111,16 +111,15 @@
                                         <img src="assets/img/gallery/categori_icon1.png" alt=""> 
                                     </div>
                                     <div class="properties__caption">
-                                        <h2 style="color: white;" id="name"></h2>
-                                        <h3 id="category"></h3>
-                                        <p id="address"></p>
+                                        <h3><a href="#">Urban areas</a></h3>
+                                        <p>Let's uncover the best places to eat, drink</p>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="col-xl-4">
                                     <div class="double-btn f-right  d-flex flex-wrap">
-                                        <a href="" id="weblink" class="border-btn w-btn wantToWork-btn mr-20" target="_blank"><i class="fas fa-globe"></i>Website</a>
-                                        <a href="" id="phonelink" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>
+                                        <a href="#" class="border-btn w-btn wantToWork-btn mr-20"><i class="fas fa-globe"></i>Website</a>
+                                        <a href="#" class="btn w-btn wantToWork-btn"><i class="fas fa-phone"></i>Call Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -139,28 +138,10 @@
                         <h2>Description</h2>
                     </div>
                     <div class="directory-cap mb-40">
-                        <p id="description"></p>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
                     </div>
                     <div class="small-tittle mb-20">
-                        <h2>Doctor's sitting hours:</h2>
-                    </div>
-                    <div class="directory-cap mb-40">                        
-                        <p id="d_from">From </p>
-                        <p id="d_to">to</p>
-                    </div>
-                    <div class="small-tittle mb-20">
-                        <h2>Clinic hours:</h2>
-                    </div>
-                    <div class="directory-cap mb-40">
-                        <p id="odays">Open days: </p>
-                        <p id="c_ofrom">From </p>
-                        <p id="c_oto">to </p>
-                        <p id="hdays">Half days: </p>
-                        <p id="c_hfrom">From </p>
-                        <p id="c_hto">to </p>
-                    </div>
-                    <div class="small-tittle mb-20">
-                        <h2>Gallery</h2>
+                        <h2>Description</h2>
                     </div>
                     <div class="gallery-img">
                         <div class="row">
@@ -302,6 +283,7 @@
  <script type="text/javascript">  
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
+                    console.log("fen");
                     document.getElementById("logout").innerHTML = "<a href='/logout'>Logout</a>";
                     var photo_url = user.photoURL;   
                     if(photo_url){                                            
@@ -310,88 +292,11 @@
                         document.getElementById("profile_photo").innerHTML += "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
                     }   
                 } else {
+                    console.log("fefffn");
                     document.getElementById("profile_photo").innerHTML += "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
                 }
             });
 
-        </script>
-
-        <script type="text/javascript">
-            function filldata(){
-                let params = (new URL(document.location)).searchParams;                
-                var doc_id = params.get("doc_id");
-                var clinic_id = params.get("clinic_id");
-                var website;
-                var phone;
-                var add;
-                var category;
-                var Description;
-                var name;
-                var d_time;
-                var d_time2;
-
-                var c_hfrom;
-                var c_hto;
-                var c_ofrom;
-                var c_oto;
-
-                var halfdays;
-                var fulldays;
-
-                firebase.database().ref("clinic/"+clinic_id).once('value').then((snapshot) => {
-                        website=snapshot.val().Website;
-                         document.getElementById("weblink").href = "https://"+website; 
-                         phone=snapshot.val().Telephone;
-                         document.getElementById("phonelink").href = "tel:"+phone; 
-                        add=snapshot.val().Full_address;
-                        document.getElementById("address").innerHTML=add;
-
-                        fulldays=snapshot.child("OpenDays/Days").val();
-                        document.getElementById("odays").innerHTML+=fulldays;
-
-                        halfdays=snapshot.child("HalfDays/Days").val();
-                        document.getElementById("hdays").innerHTML+=halfdays;
-
-                        c_hfrom=snapshot.child("HalfDays/TimeOpen").val();
-                        document.getElementById("c_hfrom").innerHTML+=c_hfrom;
-
-                        c_hto=snapshot.child("HalfDays/TimeClose").val();
-                        document.getElementById("c_hto").innerHTML+=c_hto;
-
-                        c_ofrom=snapshot.child("OpenDays/TimeOpen").val();
-                        document.getElementById("c_ofrom").innerHTML+=c_ofrom;
-
-                        c_oto=snapshot.child("OpenDays/TimeClose").val();
-                        document.getElementById("c_oto").innerHTML+=c_oto;
-/*
-                        fulldays=snapshot.child("OpenDays/Days").val();
-                        document.getElementById("odays").innerHTML+=fulldays;
-*/
-                        /*
-<p id="c_ofrom">From </p>
-<p id="c_oto">to </p>
-<p id="hdays">Open days: </p>
-
-<p id="">to</p>*/
-
-
-
-                });
-
-                firebase.database().ref("doctor/"+doc_id).once('value').then((snapshot1) => {
-                        category=snapshot1.val().Category;
-                         document.getElementById("category").innerHTML = "("+category+")"; 
-                         Description=snapshot1.val().Description;
-                         document.getElementById("description").innerHTML =Description; 
-                        name=snapshot1.val().Name;
-                        document.getElementById("name").innerHTML=name;
-
-                        d_time=snapshot1.val().Timing_1;
-                        document.getElementById("d_from").innerHTML=d_time;
-                        d_time2=snapshot1.val().Timing_2;
-                        document.getElementById("d_to").innerHTML=d_time2;
-                });
-            }
         </script>
 
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -431,7 +336,7 @@
     <script src="./assets/js/mail-script.js"></script>
     <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
     
-    <!-- Jquery Plugins, main Jquery -->    
+    <!-- Jquery Plugins, main Jquery -->	
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
 
