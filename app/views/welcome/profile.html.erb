@@ -64,7 +64,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link href="profile/style.css" rel="stylesheet">
 </head>
-<body>
+<body onload="display_appointment()" >
   <!-- ? Preloader Start -->
   <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -142,31 +142,7 @@
                 </div>                
               </div>
             </div>
-            <div class="card-body pt-0 pt-md-4">
-
-              <div class="text-center">
-
-                <div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
-                  <div class="card bg-secondary shadow">           
-                    <div class="card-header bg-white border-0">
-                      <div class="row align-items-center">
-                        <div class="col-8">
-                          <h3 class="mb-0">Appointment 1</h3>
-                        </div>                
-                      </div>
-                    </div>
-                    <div class="card-body pt-0 pt-md-4">
-
-                      <div class="text-center">
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
+            <div class="card-body pt-0 pt-md-4" id="appoint" ></div>
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
@@ -408,6 +384,53 @@ document.getElementById('appointee-container').innerHTML+="<div class='pl-lg-4'>
       document.getElementById("profile_photo").innerHTML = "<a href='/authenticate' class='mr-40'><i class='ti-user' style='display: inline-block; border-radius: 60px; box-shadow: 0px 0px 3px #888; padding: 0.5em 0.6em;'></i></a>";
     }
   });
+
+  function display_appointment(){
+  	var name;
+  	var dr_id;
+  	var Id;
+  	var dr_name;
+  	var appointments_id;
+  	var date;
+  	var reason;
+  	var Status;
+  	firebase.auth().onAuthStateChanged(user => {  
+      if(user) {         
+        var userId = firebase.auth().currentUser.uid;
+         firebase.database().ref('/users/' + userId + '/Appointment').once('value').then((snapshot) => {
+            if(snapshot.exists()){
+                snapshot.forEach(function(data){
+                	//console.log(data.key);
+                	date=data.key;
+                	dr_id=data.val().Dr;
+                	Id =data.val().id;
+                	firebase.database().ref('/doctor/' +dr_id).once('value').then((snapshot1) => {
+                		if(snapshot1.exists()){
+                			dr_name=snapshot1.val().Name;
+                		}
+                	});
+
+                	firebase.database().ref('Appointments/' +date+'/'+dr_id+'/'+Id).once('value').then((snapshot2) => {
+                		if(snapshot2.exists()){
+                			name=snapshot2.val().Name;
+                			reason=snapshot2.val().Reason;
+                			Status=snapshot2.val().Shown;
+                			if(Status=="1"){
+                				Status="Visited";
+                			}else{
+                				Status="Not visited till now";
+                			}
+                			document.getElementById("appoint").innerHTML="<div class='col-xl-12 order-xl-2 mb-5 mb-xl-0'><div class='card bg-secondary shadow'><div class='card-header bg-white border-0'><div class='row align-items-center'><div class='col-8'><h3 class='mb-0'>Appointment id: "+Id+"</h3></div></div></div><div class='card-body pt-0 pt-md-4'><p>Name: "+name+"</p><p>Doctor Name: "+dr_name+"</p><p>Reason: "+reason+"</p><p>Date: "+date+"</p><p>Status:"+Status+"</p><div class='text-center'></div></div></div></div>";
+                		}
+                	});
+                }
+			)}
+        });				        
+      }
+    });
+
+
+  } 
 </script>
 
 <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
