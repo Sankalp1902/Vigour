@@ -1,5 +1,10 @@
 # README
 
+This is a medical appointment booking platform, developed using firebase and ruby on rails
+
+The project is hosted @ https://vigour.herokuapp.com/
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
